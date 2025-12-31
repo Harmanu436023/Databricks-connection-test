@@ -114,13 +114,13 @@ emailFromHdr = formataddr((str(Header(r'OpsAnalysis-IKC')), emailFrom))
 
 # Distribution list
 if mode == 'TEST':
-    listEmailTo = ['opsanalysis-ikc@united.com']
-    listEmailCc = ['opsanalysis-ikc@united.com']
-    listEmailBcc = ['opsanalysis-ikc@united.com']
+    listEmailTo = ['harmanpreet.singh@united.com']
+    listEmailCc = []
+    listEmailBcc = []
 else:
-    listEmailTo = ['teamsite@commutair.com', 'flightdata@commutair.com', 'Amita.kale@commutair.com', 'c5IT@commutair.com', 'OpsAnalysis-IKC@united.com']
-    listEmailCc = ['NOC-GRP-GGN@united.com', 'pat.oldfield@united.com']
-    listEmailBcc = ['prashant.agarwal@united.com', 'harsh.gautam@united.com']
+    listEmailTo = ['harmanpreet.singh@united.com']
+    listEmailCc = []
+    listEmailBcc = []
 
 # Create message container - the correct MIME type is multipart/alternative.
 msg = MIMEMultipart()
