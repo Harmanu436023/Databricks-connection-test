@@ -1,0 +1,2 @@
+express partner,flight num,dep stn,arrv stn,date,nose,sch dep time (local),est dep time (local),sch arrv time (local),est arrv time (local)
+OO-Skywest,5021,ORD ,SUX ,2025-10-29,0916,2025-10-29 21:10:00,2025-10-30 13:00:00,2025-10-29 22:59:00,2025-10-30 14:50:00

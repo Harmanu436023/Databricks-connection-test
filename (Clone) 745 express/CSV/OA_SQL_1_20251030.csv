@@ -1,0 +1,3 @@
+carrier,report_yr,report_month,ml_ex_ind,Scheduled_Flights,D00_Flights,Completed_Flights,A00_Flights,A14_Flights,Yest_Scheduled_Flights,Yest_D00_Flights,Yest_Completed_Flights,Yest_A00_Flights,Yest_A14_Flights,DateMinus2_Scheduled_Flights,DateMinus2_D00_Flights,DateMinus2_Completed_Flights,DateMinus2_A00_Flights,DateMinus2_A14_Flights
+AA,2025,10,Express,86239.0,61642.0,85897.0,56196.0,68883.0,2836.0,2028.0,2832.0,1691.0,2212.0,2724.0,2035.0,2724.0,1718.0,2193.0
+DL,2025,10,Express,51498.0,40213.0,51297.0,38014.0,43861.0,1699.0,1354.0,1699.0,1197.0,1422.0,1694.0,1343.0,1693.0,1220.0,1428.0

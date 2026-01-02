@@ -1,0 +1,328 @@
+2025-10-30 10:49:02,540 Connecting to Teradata
+2025-10-30 10:56:58,309 Connecting to Teradata
+2025-10-30 10:58:25,230 Checking SuperSnapshot data - yesterdays
+2025-10-30 10:58:26,498 Number of rows in SuperSnapsot: 0
+2025-10-30 10:58:27,103 Number of rows in SuperSnapsot: 4753
+2025-10-30 10:58:27,112 Running EDW SQL queries
+2025-10-30 11:01:55,344 Running MF SQL queries
+2025-10-30 11:01:55,344 Connecting to Masflight
+2025-10-30 11:31:11,815 Connecting to Teradata
+2025-10-30 11:31:14,633 Checking SuperSnapshot data - yesterdays
+2025-10-30 11:31:35,521 Number of rows in SuperSnapsot: 0
+2025-10-30 11:31:49,072 Number of rows in SuperSnapsot: 4753
+2025-10-30 11:31:49,088 Running EDW SQL queries
+2025-10-30 11:34:57,273 Running MF SQL queries
+2025-10-30 11:34:57,273 Connecting to Masflight
+2025-10-30 12:01:15,053 Checking SuperSnapshot data - yesterdays
+2025-10-30 12:01:31,871 Connecting to Teradata
+2025-10-30 12:01:34,522 Checking SuperSnapshot data - yesterdays
+2025-10-30 12:01:40,378 Number of rows in SuperSnapsot: 0
+2025-10-30 12:01:46,518 Number of rows in SuperSnapsot: 4753
+2025-10-30 12:01:46,521 Running EDW SQL queries
+2025-10-30 12:03:37,798 Running MF SQL queries
+2025-10-30 12:03:37,798 Connecting to Masflight
+2025-10-30 12:05:40,819 Connecting to Teradata
+2025-10-30 12:05:43,265 Checking SuperSnapshot data - yesterdays
+2025-10-30 12:05:46,657 Number of rows in SuperSnapsot: 0
+2025-10-30 12:05:48,437 Number of rows in SuperSnapsot: 4753
+2025-10-30 12:05:48,439 Running EDW SQL queries
+2025-10-30 12:07:48,566 Running MF SQL queries
+2025-10-30 12:07:48,567 Connecting to Masflight
+2025-10-30 12:15:44,671 Connecting to Teradata
+2025-10-30 12:15:46,802 Checking SuperSnapshot data - yesterdays
+2025-10-30 12:15:56,657 Number of rows in SuperSnapsot: 0
+2025-10-30 12:16:01,111 Number of rows in SuperSnapsot: 4753
+2025-10-30 12:16:01,111 Running EDW SQL queries
+2025-10-30 12:18:40,214 Running MF SQL queries
+2025-10-30 12:18:40,214 Connecting to Masflight
+2025-10-30 12:33:21,480 Connecting to Teradata
+2025-10-30 12:33:23,655 Checking SuperSnapshot data - yesterdays
+2025-10-30 12:33:27,967 Number of rows in SuperSnapsot: 0
+2025-10-30 12:33:30,941 Number of rows in SuperSnapsot: 4753
+2025-10-30 12:33:30,945 Running EDW SQL queries
+2025-10-30 12:35:55,599 Connecting to Teradata
+2025-10-30 12:37:00,122 Connecting to Teradata
+2025-10-30 12:41:18,805 Connecting to Teradata
+2025-10-30 12:43:17,555 Connecting to Teradata
+2025-10-30 12:44:33,992 Connecting to Teradata
+2025-10-30 12:45:38,044 Connecting to Teradata
+2025-10-30 12:45:59,303 SQL queries run
+2025-10-30 12:46:05,979 Connecting to Teradata
+2025-10-30 12:46:08,326 Checking SuperSnapshot data - yesterdays
+2025-10-30 12:46:15,137 Number of rows in SuperSnapsot: 0
+2025-10-30 12:46:21,215 Number of rows in SuperSnapsot: 4753
+2025-10-30 12:46:21,229 Running EDW SQL queries
+2025-10-30 12:48:32,047 Running MF SQL queries
+2025-10-30 12:48:32,047 Connecting to Masflight
+2025-10-30 12:48:49,806 SQL queries run
+2025-10-30 12:49:39,122 Opening excel file
+2025-10-30 12:50:06,348 Clearing raw data Sheets
+2025-10-30 12:50:07,863 Importing data from csv
+2025-10-30 12:50:08,930 Creating image
+2025-10-30 12:51:20,294 Clearing raw data Sheets
+2025-10-30 12:51:21,546 Importing data from csv
+2025-10-30 12:51:22,722 Creating image
+2025-10-30 12:51:27,973 Opening excel file for flight level details
+2025-10-30 12:51:31,946 Clearing raw data Sheets
+2025-10-30 12:51:54,780 Importing data from csv
+2025-10-30 12:52:02,888 Create image for email
+2025-10-30 12:52:03,050 STREAM b'IHDR' 16 13
+2025-10-30 12:52:03,050 STREAM b'sRGB' 41 1
+2025-10-30 12:52:03,050 STREAM b'gAMA' 54 4
+2025-10-30 12:52:03,050 STREAM b'pHYs' 70 9
+2025-10-30 12:52:03,050 STREAM b'IDAT' 91 65445
+2025-10-30 12:52:03,081 STREAM b'IHDR' 16 13
+2025-10-30 12:52:03,081 STREAM b'sRGB' 41 1
+2025-10-30 12:52:03,081 STREAM b'gAMA' 54 4
+2025-10-30 12:52:03,081 STREAM b'pHYs' 70 9
+2025-10-30 12:52:03,081 STREAM b'IDAT' 91 65445
+2025-10-30 12:52:03,097 Importing AvifImagePlugin
+2025-10-30 12:52:03,133 Importing BlpImagePlugin
+2025-10-30 12:52:03,140 Importing BmpImagePlugin
+2025-10-30 12:52:03,140 Importing BufrStubImagePlugin
+2025-10-30 12:52:03,140 Importing CurImagePlugin
+2025-10-30 12:52:03,144 Importing DcxImagePlugin
+2025-10-30 12:52:03,152 Importing DdsImagePlugin
+2025-10-30 12:52:03,167 Importing EpsImagePlugin
+2025-10-30 12:52:03,177 Importing FitsImagePlugin
+2025-10-30 12:52:03,177 Importing FliImagePlugin
+2025-10-30 12:52:03,177 Importing FpxImagePlugin
+2025-10-30 12:52:03,221 Importing FtexImagePlugin
+2025-10-30 12:52:03,226 Importing GbrImagePlugin
+2025-10-30 12:52:03,229 Importing GifImagePlugin
+2025-10-30 12:52:03,229 Importing GribStubImagePlugin
+2025-10-30 12:52:03,233 Importing Hdf5StubImagePlugin
+2025-10-30 12:52:03,240 Importing IcnsImagePlugin
+2025-10-30 12:52:03,256 Importing IcoImagePlugin
+2025-10-30 12:52:03,263 Importing ImImagePlugin
+2025-10-30 12:52:03,273 Importing ImtImagePlugin
+2025-10-30 12:52:03,278 Importing IptcImagePlugin
+2025-10-30 12:52:03,278 Importing JpegImagePlugin
+2025-10-30 12:52:03,278 Importing Jpeg2KImagePlugin
+2025-10-30 12:52:03,278 Importing McIdasImagePlugin
+2025-10-30 12:52:03,278 Importing MicImagePlugin
+2025-10-30 12:52:03,320 Importing MpegImagePlugin
+2025-10-30 12:52:03,320 Importing MpoImagePlugin
+2025-10-30 12:52:03,327 Importing MspImagePlugin
+2025-10-30 12:52:03,330 Importing PalmImagePlugin
+2025-10-30 12:52:03,343 Importing PcdImagePlugin
+2025-10-30 12:52:03,345 Importing PcxImagePlugin
+2025-10-30 12:52:03,345 Importing PdfImagePlugin
+2025-10-30 12:52:03,386 Importing PixarImagePlugin
+2025-10-30 12:52:03,386 Importing PngImagePlugin
+2025-10-30 12:52:03,390 Importing PpmImagePlugin
+2025-10-30 12:52:03,390 Importing PsdImagePlugin
+2025-10-30 12:52:03,394 Importing QoiImagePlugin
+2025-10-30 12:52:03,398 Importing SgiImagePlugin
+2025-10-30 12:52:03,398 Importing SpiderImagePlugin
+2025-10-30 12:52:03,398 Importing SunImagePlugin
+2025-10-30 12:52:03,413 Importing TgaImagePlugin
+2025-10-30 12:52:03,415 Importing TiffImagePlugin
+2025-10-30 12:52:03,415 Importing WebPImagePlugin
+2025-10-30 12:52:03,437 Importing WmfImagePlugin
+2025-10-30 12:52:03,445 Importing XbmImagePlugin
+2025-10-30 12:52:03,454 Importing XpmImagePlugin
+2025-10-30 12:52:03,460 Importing XVThumbImagePlugin
+2025-10-30 12:52:54,285 Connecting to Teradata
+2025-10-30 12:52:56,644 Checking SuperSnapshot data - yesterdays
+2025-10-30 12:52:59,919 Number of rows in SuperSnapsot: 0
+2025-10-30 12:53:10,671 Number of rows in SuperSnapsot: 4753
+2025-10-30 12:53:10,671 Running EDW SQL queries
+2025-10-30 12:54:40,522 Running MF SQL queries
+2025-10-30 12:54:40,522 Connecting to Masflight
+2025-10-30 12:55:04,521 SQL queries run
+2025-10-30 12:55:04,534 Opening excel file
+2025-10-30 12:55:07,905 Clearing raw data Sheets
+2025-10-30 12:55:09,256 Importing data from csv
+2025-10-30 12:55:10,284 Creating image
+2025-10-30 12:55:13,818 Opening excel file for flight level details
+2025-10-30 12:55:17,179 Clearing raw data Sheets
+2025-10-30 12:55:17,951 Importing data from csv
+2025-10-30 12:55:25,549 Create image for email
+2025-10-30 12:55:25,568 STREAM b'IHDR' 16 13
+2025-10-30 12:55:25,568 STREAM b'sRGB' 41 1
+2025-10-30 12:55:25,568 STREAM b'gAMA' 54 4
+2025-10-30 12:55:25,568 STREAM b'PLTE' 70 12
+2025-10-30 12:55:25,568 STREAM b'tRNS' 94 2
+2025-10-30 12:55:25,568 STREAM b'pHYs' 108 9
+2025-10-30 12:55:25,568 STREAM b'IDAT' 129 3251
+2025-10-30 12:55:25,597 STREAM b'IHDR' 16 13
+2025-10-30 12:55:25,597 STREAM b'sRGB' 41 1
+2025-10-30 12:55:25,597 STREAM b'gAMA' 54 4
+2025-10-30 12:55:25,597 STREAM b'pHYs' 70 9
+2025-10-30 12:55:25,597 STREAM b'IDAT' 91 65445
+2025-10-30 12:59:26,174 Connecting to Teradata
+2025-10-30 12:59:28,521 Checking SuperSnapshot data - yesterdays
+2025-10-30 12:59:36,189 Number of rows in SuperSnapsot: 0
+2025-10-30 12:59:39,805 Number of rows in SuperSnapsot: 4753
+2025-10-30 12:59:39,805 Running EDW SQL queries
+2025-10-30 13:03:38,958 Running MF SQL queries
+2025-10-30 13:03:38,958 Connecting to Masflight
+2025-10-30 13:03:55,718 SQL queries run
+2025-10-30 13:03:55,743 Opening excel file
+2025-10-30 13:03:58,634 Clearing raw data Sheets
+2025-10-30 13:03:59,846 Importing data from csv
+2025-10-30 13:04:00,809 Creating image
+2025-10-30 13:04:03,890 Opening excel file for flight level details
+2025-10-30 13:04:07,502 Clearing raw data Sheets
+2025-10-30 13:04:08,191 Importing data from csv
+2025-10-30 13:04:14,835 Create image for email
+2025-10-30 13:04:14,852 STREAM b'IHDR' 16 13
+2025-10-30 13:04:14,852 STREAM b'sRGB' 41 1
+2025-10-30 13:04:14,852 STREAM b'gAMA' 54 4
+2025-10-30 13:04:14,852 STREAM b'PLTE' 70 12
+2025-10-30 13:04:14,852 STREAM b'tRNS' 94 2
+2025-10-30 13:04:14,852 STREAM b'pHYs' 108 9
+2025-10-30 13:04:14,852 STREAM b'IDAT' 129 3251
+2025-10-30 13:04:14,869 STREAM b'IHDR' 16 13
+2025-10-30 13:04:14,869 STREAM b'sRGB' 41 1
+2025-10-30 13:04:14,869 STREAM b'gAMA' 54 4
+2025-10-30 13:04:14,869 STREAM b'pHYs' 70 9
+2025-10-30 13:04:14,869 STREAM b'IDAT' 91 65445
+2025-10-30 13:09:09,457 No such comm target registered: jupyter.widget.control
+2025-10-30 13:09:09,487 No such comm: b7a9da6f-8c3c-4ef2-8cfa-236097b63d21
+2025-10-30 13:09:09,487 Current comms: []
+2025-10-30 13:11:41,375 Connecting to Teradata
+2025-10-30 13:11:47,094 Checking SuperSnapshot data - yesterdays
+2025-10-30 13:11:52,390 Number of rows in SuperSnapsot: 0
+2025-10-30 13:11:56,713 Number of rows in SuperSnapsot: 4753
+2025-10-30 13:11:56,713 Running EDW SQL queries
+2025-10-30 13:14:24,435 Running MF SQL queries
+2025-10-30 13:14:24,435 Connecting to Masflight
+2025-10-30 13:14:41,217 SQL queries run
+2025-10-30 13:14:41,241 Opening excel file
+2025-10-30 13:14:45,188 Clearing raw data Sheets
+2025-10-30 13:14:46,427 Importing data from csv
+2025-10-30 13:14:47,458 Creating image
+2025-10-30 13:14:52,289 Opening excel file for flight level details
+2025-10-30 13:14:56,378 Clearing raw data Sheets
+2025-10-30 13:14:57,295 Importing data from csv
+2025-10-30 13:15:02,143 Create image for email
+2025-10-30 13:15:02,158 STREAM b'IHDR' 16 13
+2025-10-30 13:15:02,158 STREAM b'sRGB' 41 1
+2025-10-30 13:15:02,158 STREAM b'gAMA' 54 4
+2025-10-30 13:15:02,158 STREAM b'PLTE' 70 12
+2025-10-30 13:15:02,158 STREAM b'tRNS' 94 2
+2025-10-30 13:15:02,169 STREAM b'pHYs' 108 9
+2025-10-30 13:15:02,169 STREAM b'IDAT' 129 3251
+2025-10-30 13:15:02,183 STREAM b'IHDR' 16 13
+2025-10-30 13:15:02,185 STREAM b'sRGB' 41 1
+2025-10-30 13:15:02,185 STREAM b'gAMA' 54 4
+2025-10-30 13:15:02,185 STREAM b'pHYs' 70 9
+2025-10-30 13:15:02,186 STREAM b'IDAT' 91 65445
+2025-10-30 14:26:17,036 No such comm target registered: jupyter.widget.control
+2025-10-30 14:26:17,067 No such comm: 0b5f8520-42c5-4509-a3df-97b62725b269
+2025-10-30 14:26:17,068 Current comms: []
+2025-10-30 14:39:38,088 No such comm target registered: jupyter.widget.control
+2025-10-30 14:39:38,099 No such comm: d487b1d3-9155-4b97-bdd9-f9079c7e2227
+2025-10-30 14:39:38,099 Current comms: []
+2025-10-30 14:42:32,006 Connecting to Teradata
+2025-10-30 14:42:34,693 Checking SuperSnapshot data - yesterdays
+2025-10-30 14:42:37,934 Number of rows in SuperSnapsot: 4862
+2025-10-30 14:42:37,941 Running EDW SQL queries
+2025-10-30 14:44:09,660 Running MF SQL queries
+2025-10-30 14:44:09,660 Connecting to Masflight
+2025-10-30 14:44:27,342 SQL queries run
+2025-10-30 14:44:27,342 Opening excel file
+2025-10-30 14:44:31,628 Clearing raw data Sheets
+2025-10-30 14:44:33,044 Importing data from csv
+2025-10-30 14:44:34,139 Creating image
+2025-10-30 14:44:36,849 Opening excel file for flight level details
+2025-10-30 14:44:39,916 Clearing raw data Sheets
+2025-10-30 14:44:40,634 Importing data from csv
+2025-10-30 14:44:44,682 Create image for email
+2025-10-30 14:44:44,729 STREAM b'IHDR' 16 13
+2025-10-30 14:44:44,729 STREAM b'sRGB' 41 1
+2025-10-30 14:44:44,729 STREAM b'gAMA' 54 4
+2025-10-30 14:44:44,729 STREAM b'pHYs' 70 9
+2025-10-30 14:44:44,729 STREAM b'IDAT' 91 65445
+2025-10-30 14:44:44,745 STREAM b'IHDR' 16 13
+2025-10-30 14:44:44,745 STREAM b'sRGB' 41 1
+2025-10-30 14:44:44,745 STREAM b'gAMA' 54 4
+2025-10-30 14:44:44,745 STREAM b'pHYs' 70 9
+2025-10-30 14:44:44,745 STREAM b'IDAT' 91 65445
+2025-10-30 14:44:44,848 Sending email
+2025-10-30 14:44:50,845 Email sent and process is completed
+2025-10-30 14:48:17,655 Connecting to Teradata
+2025-10-30 14:48:20,352 Checking SuperSnapshot data - yesterdays
+2025-10-30 14:48:24,419 Number of rows in SuperSnapsot: 4862
+2025-10-30 14:48:24,430 Running EDW SQL queries
+2025-10-30 14:51:05,278 Running MF SQL queries
+2025-10-30 14:51:05,278 Connecting to Masflight
+2025-10-30 14:51:20,023 SQL queries run
+2025-10-30 14:51:20,025 Opening excel file
+2025-10-30 14:51:24,204 Clearing raw data Sheets
+2025-10-30 14:51:25,377 Importing data from csv
+2025-10-30 14:51:26,454 Creating image
+2025-10-30 14:51:30,585 Opening excel file for flight level details
+2025-10-30 14:51:33,752 Clearing raw data Sheets
+2025-10-30 14:51:33,914 Importing data from csv
+2025-10-30 14:51:37,367 Create image for email
+2025-10-30 14:51:37,383 STREAM b'IHDR' 16 13
+2025-10-30 14:51:37,383 STREAM b'sRGB' 41 1
+2025-10-30 14:51:37,383 STREAM b'gAMA' 54 4
+2025-10-30 14:51:37,383 STREAM b'pHYs' 70 9
+2025-10-30 14:51:37,383 STREAM b'IDAT' 91 65445
+2025-10-30 14:51:37,388 STREAM b'IHDR' 16 13
+2025-10-30 14:51:37,388 STREAM b'sRGB' 41 1
+2025-10-30 14:51:37,388 STREAM b'gAMA' 54 4
+2025-10-30 14:51:37,388 STREAM b'pHYs' 70 9
+2025-10-30 14:51:37,388 STREAM b'IDAT' 91 65445
+2025-10-30 14:51:37,446 Sending email
+2025-10-30 14:51:42,560 Email sent and process is completed
+2025-10-30 14:56:21,182 Connecting to Teradata
+2025-10-30 14:56:23,434 Checking SuperSnapshot data - yesterdays
+2025-10-30 14:56:40,112 Number of rows in SuperSnapsot: 4862
+2025-10-30 14:56:40,115 Running EDW SQL queries
+2025-10-30 14:59:39,093 Running MF SQL queries
+2025-10-30 14:59:39,093 Connecting to Masflight
+2025-10-30 14:59:54,853 SQL queries run
+2025-10-30 14:59:54,853 Opening excel file
+2025-10-30 14:59:58,210 Clearing raw data Sheets
+2025-10-30 14:59:59,580 Importing data from csv
+2025-10-30 15:00:00,652 Creating image
+2025-10-30 15:00:03,273 Opening excel file for flight level details
+2025-10-30 15:00:06,535 Clearing raw data Sheets
+2025-10-30 15:00:06,786 Importing data from csv
+2025-10-30 15:00:11,395 Create image for email
+2025-10-30 15:00:11,420 STREAM b'IHDR' 16 13
+2025-10-30 15:00:11,420 STREAM b'sRGB' 41 1
+2025-10-30 15:00:11,420 STREAM b'gAMA' 54 4
+2025-10-30 15:00:11,421 STREAM b'pHYs' 70 9
+2025-10-30 15:00:11,421 STREAM b'IDAT' 91 65445
+2025-10-30 15:00:11,433 STREAM b'IHDR' 16 13
+2025-10-30 15:00:11,433 STREAM b'sRGB' 41 1
+2025-10-30 15:00:11,433 STREAM b'gAMA' 54 4
+2025-10-30 15:00:11,433 STREAM b'pHYs' 70 9
+2025-10-30 15:00:11,433 STREAM b'IDAT' 91 65445
+2025-10-30 15:00:11,483 Sending email
+2025-10-30 15:00:16,967 Email sent and process is completed
+2025-10-30 15:04:31,837 Connecting to Teradata
+2025-10-30 15:04:34,492 Checking SuperSnapshot data - yesterdays
+2025-10-30 15:04:38,108 Number of rows in SuperSnapsot: 4862
+2025-10-30 15:04:38,122 Running EDW SQL queries
+2025-10-30 15:08:06,650 Running MF SQL queries
+2025-10-30 15:08:06,650 Connecting to Masflight
+2025-10-30 15:08:21,835 SQL queries run
+2025-10-30 15:08:21,835 Opening excel file
+2025-10-30 15:08:26,501 Clearing raw data Sheets
+2025-10-30 15:08:27,477 Importing data from csv
+2025-10-30 15:08:28,566 Creating image
+2025-10-30 15:08:31,073 Opening excel file for flight level details
+2025-10-30 15:08:34,129 Clearing raw data Sheets
+2025-10-30 15:08:34,869 Importing data from csv
+2025-10-30 15:08:40,672 Create image for email
+2025-10-30 15:08:40,688 STREAM b'IHDR' 16 13
+2025-10-30 15:08:40,688 STREAM b'sRGB' 41 1
+2025-10-30 15:08:40,688 STREAM b'gAMA' 54 4
+2025-10-30 15:08:40,688 STREAM b'pHYs' 70 9
+2025-10-30 15:08:40,688 STREAM b'IDAT' 91 65445
+2025-10-30 15:08:40,699 STREAM b'IHDR' 16 13
+2025-10-30 15:08:40,701 STREAM b'sRGB' 41 1
+2025-10-30 15:08:40,701 STREAM b'gAMA' 54 4
+2025-10-30 15:08:40,701 STREAM b'pHYs' 70 9
+2025-10-30 15:08:40,701 STREAM b'IDAT' 91 65445
+2025-10-30 15:08:40,753 Sending email
+2025-10-30 15:08:46,144 Email sent and process is completed
+2025-10-30 15:08:46,846 Error inserting monitoring log: permission denied for relation email_reports_monitoring
+
