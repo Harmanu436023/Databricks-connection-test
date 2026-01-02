@@ -1,0 +1,957 @@
+SELECT COALESCE(o1.TIME_STAMP, NULL) AS TIME_STAMP
+	,COALESCE(o1.CITY, i1.CITY) AS CITY
+	,COALESCE(o1.STATION, i1.STATION) AS STATION
+	,COALESCE(o1.CARRIER, i1.CARRIER) AS CARRIER
+	,COALESCE(o1.ml_ex_ind, i1.ml_ex_ind) AS ML_EX_IND
+	,COALESCE(o1.sched_flt_LW, 0) AS sched_flt_LW
+	,COALESCE(o1.cnxl_flt_LW, 0) AS cnxl_flt_LW
+	,COALESCE(i1.a0_flt_LW, NULL) AS a0_flt_LW
+	,COALESCE(i1.a14_flt_LW, NULL) AS a14_flt_LW
+	,COALESCE(o1.d0_flt_LW_o, NULL) AS d0_flt_LW_o
+	,COALESCE(o1.d0_flt_LW, NULL) AS d0_flt_LW
+	,COALESCE(o1.sched_flt_LWMinus2, 0) AS sched_flt_LWMinus2
+	,COALESCE(o1.cnxl_flt_LWMinus2, 0) AS cnxl_flt_LWMinus2
+	,COALESCE(i1.a0_flt_LWMinus2, NULL) AS a0_flt_LWMinus2
+	,COALESCE(i1.a14_flt_LWMinus2, NULL) AS a14_flt_LWMinus2
+	,COALESCE(o1.d0_flt_LWMinus2_o, NULL) AS d0_flt_LWMinus2_o
+	,COALESCE(o1.d0_flt_LWMinus2, NULL) AS d0_flt_LWMinus2
+	,COALESCE(o1.sched_flt_mtd, NULL) AS sched_flt_mtd
+	,COALESCE(o1.cnxl_flt_mtd, NULL) AS cnxl_flt_mtd
+	,COALESCE(i1.a0_flt_mtd, NULL) AS a0_flt_mtd
+	,COALESCE(i1.a14_flt_mtd, NULL) AS a14_flt_mtd
+	,COALESCE(o1.d0_flt_mtd_o, NULL) AS d0_flt_mtd_o
+	,COALESCE(o1.d0_flt_mtd, NULL) AS d0_flt_mtd
+	,COALESCE(i1.in_sched_flt_LW, NULL) AS in_sched_flt_LW
+	,COALESCE(i1.in_sched_flt_mtd, NULL) AS in_sched_flt_mtd
+FROM (
+	SELECT CURRENT_TIMESTAMP(6) AS TIME_STAMP
+		,CAST(CASE 
+				WHEN r.sch_dprt_sta_cd = 'ord'
+					THEN 'Chicago'
+				WHEN r.sch_dprt_sta_cd = 'iah'
+					THEN 'Texas'
+				WHEN r.sch_dprt_sta_cd IN (
+						'dca'
+						,'iad'
+						,'bwi'
+						)
+					THEN 'Washington DC'
+				WHEN r.sch_dprt_sta_cd IN (
+						'ewr'
+						,'jfk'
+						,'lga'
+						)
+					THEN 'New York'
+				WHEN r.sch_dprt_sta_cd = 'den'
+					THEN 'Denver'
+				WHEN r.sch_dprt_sta_cd = 'lax'
+					THEN 'Los Angeles'
+				WHEN r.sch_dprt_sta_cd = 'sfo'
+					THEN 'San Francisco'
+				ELSE 'OTHER'
+				END AS VARCHAR(255)) AS CITY
+		,TRIM(r.sch_dprt_sta_cd) AS STATION
+		,'UA' AS CARRIER
+		,CAST(CASE 
+				WHEN r.company_id IN (
+						'co'
+						,'ua'
+						)
+					THEN 'Mainline'
+				ELSE 'Express'
+				END AS VARCHAR(255)) AS ML_EX_IND
+		,SUM(CASE 
+				WHEN r.sch_cd = 's'
+					AND r.report_dt BETWEEN CURRENT_DATE - 7
+						AND CURRENT_DATE - 1
+					THEN 1
+				ELSE 0
+				END) AS sched_flt_LW
+		,sum(CASE 
+				WHEN r.ex_company_id <> ' '
+					AND r.company_id NOT IN (
+						'bu'
+						,'ei'
+						,'af'
+						,'vs'
+						)
+					AND r.report_dt BETWEEN CURRENT_DATE - 7
+						AND CURRENT_DATE - 1
+					THEN 0
+				WHEN r.sch_cd = 's'
+					AND r.cnxl_cd = 'c'
+					AND r.cnxl_reason_cd != 'nt'
+					AND r.cnxl_reason_cd NOT LIKE 'z%'
+					AND r.divert_reason_cd = ' '
+					AND r.company_id NOT IN (
+						'bu'
+						,'ei'
+						,'af'
+						,'vs'
+						)
+					AND r.report_dt BETWEEN CURRENT_DATE - 7
+						AND CURRENT_DATE - 1
+					THEN 1
+				ELSE 0
+				END) AS cnxl_flt_LW
+		,SUM(CASE 
+				WHEN r.ex_company_id <> ' '
+					AND r.ex_dprt_diff_minutes <= 0
+					AND r.report_dt BETWEEN CURRENT_DATE - 7
+						AND CURRENT_DATE - 1
+					THEN 1
+				WHEN r.sch_dprt_sta_cd = r.dprt_sta_cd
+					AND r.cnxl_cd = ' '
+					AND r.dprt_diff_minutes <= 0
+					AND r.report_dt BETWEEN CURRENT_DATE - 7
+						AND CURRENT_DATE - 1
+					THEN 1
+				ELSE 0
+				END) AS d0_flt_LW_o
+		,SUM(CASE 
+			WHEN r.ex_company_id <> ' '
+				AND ex_dprt_diff_minutes <= 0
+				AND r.report_dt BETWEEN CURRENT_DATE - 7
+					AND CURRENT_DATE - 1
+				THEN 1
+			WHEN r.cs_flg = 1
+				AND r.cs_qualified_ox_delay_ind = 'q'
+				AND r.report_dt BETWEEN CURRENT_DATE - 7
+					AND CURRENT_DATE - 1
+				THEN 1
+			WHEN c.ch_qualified_ok_delay_ind = 'q'
+				AND r.report_dt BETWEEN CURRENT_DATE - 7
+					AND CURRENT_DATE - 1
+				THEN 1
+			WHEN r.qualified_bus_delay_ind = 'q'
+				AND r.report_dt BETWEEN CURRENT_DATE - 7
+					AND CURRENT_DATE - 1
+				THEN 1
+			WHEN r.dprt_sta_cd = r.sch_dprt_sta_cd
+				AND r.sch_cd IN (
+					's'
+					,'u'
+					)
+				AND r.cnxl_cd = ' '
+				AND r.dprt_diff_minutes <= 0
+				AND r.report_dt BETWEEN CURRENT_DATE - 7
+					AND CURRENT_DATE - 1
+				THEN 1
+			ELSE 0
+			END) AS d0_flt_LW
+		,SUM(CASE 
+				WHEN r.sch_cd = 's'
+					AND r.report_dt BETWEEN CURRENT_DATE - 15
+						AND CURRENT_DATE - 8
+					THEN 1
+				ELSE 0
+				END) AS sched_flt_LWMinus2
+		,sum(CASE 
+				WHEN r.ex_company_id <> ' '
+					AND r.company_id NOT IN (
+						'bu'
+						,'ei'
+						,'af'
+						,'vs'
+						)
+					AND r.report_dt BETWEEN CURRENT_DATE - 14
+						AND CURRENT_DATE - 7
+					THEN 0
+				WHEN r.sch_cd = 's'
+					AND r.cnxl_cd = 'c'
+					AND r.cnxl_reason_cd != 'nt'
+					AND r.cnxl_reason_cd NOT LIKE 'z%'
+					AND r.divert_reason_cd = ' '
+					AND r.company_id NOT IN (
+						'bu'
+						,'ei'
+						,'af'
+						,'vs'
+						)
+					AND r.report_dt BETWEEN CURRENT_DATE - 14
+						AND CURRENT_DATE - 7
+					THEN 1
+				ELSE 0
+				END) AS cnxl_flt_LWminus2
+		,SUM(CASE 
+				WHEN r.ex_company_id <> ' '
+					AND r.ex_dprt_diff_minutes <= 0
+					AND r.report_dt BETWEEN CURRENT_DATE - 15
+						AND CURRENT_DATE - 8
+					THEN 1
+				WHEN r.sch_dprt_sta_cd = r.dprt_sta_cd
+					AND r.cnxl_cd = ' '
+					AND r.dprt_diff_minutes <= 0
+					AND r.report_dt BETWEEN CURRENT_DATE - 15
+						AND CURRENT_DATE - 8
+					THEN 1
+				ELSE 0
+				END) AS d0_flt_LWMinus2_o
+		,SUM(CASE 
+				WHEN r.ex_company_id <> ' '
+					AND ex_dprt_diff_minutes <= 0
+					AND r.report_dt BETWEEN CURRENT_DATE - 15
+						AND CURRENT_DATE - 8
+					THEN 1
+				WHEN r.cs_flg = 1
+					AND r.cs_qualified_ox_delay_ind = 'q'
+					AND r.report_dt BETWEEN CURRENT_DATE - 15
+						AND CURRENT_DATE - 8
+					THEN 1
+				WHEN c.ch_qualified_ok_delay_ind = 'q'
+					AND r.report_dt BETWEEN CURRENT_DATE - 15
+						AND CURRENT_DATE - 8
+					THEN 1
+				WHEN r.qualified_bus_delay_ind = 'q'
+					AND r.report_dt BETWEEN CURRENT_DATE - 15
+						AND CURRENT_DATE - 8
+					THEN 1
+				WHEN r.dprt_sta_cd = r.sch_dprt_sta_cd
+					AND r.sch_cd IN (
+						's'
+						,'u'
+						)
+					AND r.cnxl_cd = ' '
+					AND r.dprt_diff_minutes <= 0
+					AND r.report_dt BETWEEN CURRENT_DATE - 15
+						AND CURRENT_DATE - 8
+					THEN 1
+				ELSE 0
+				END) AS d0_flt_LWMinus2
+		,SUM(CASE 
+				WHEN r.sch_cd = 's'
+					AND r.report_month = extract(month FROM CURRENT_DATE - 2)
+					THEN 1
+				ELSE 0
+				END) AS sched_flt_mtd
+		,sum(CASE 
+				WHEN r.ex_company_id <> ' '
+					AND r.company_id NOT IN (
+						'bu'
+						,'ei'
+						,'af'
+						,'vs'
+						)
+					AND r.report_month = extract(month FROM CURRENT_DATE - 1)
+					THEN 0
+				WHEN r.sch_cd = 's'
+					AND r.cnxl_cd = 'c'
+					AND r.cnxl_reason_cd != 'nt'
+					AND r.cnxl_reason_cd NOT LIKE 'z%'
+					AND r.divert_reason_cd = ' '
+					AND r.company_id NOT IN (
+						'bu'
+						,'ei'
+						,'af'
+						,'vs'
+						)
+					AND r.report_month = extract(month FROM CURRENT_DATE - 1)
+					THEN 1
+				ELSE 0
+				END) AS cnxl_flt_mtd
+		,SUM(CASE 
+				WHEN r.ex_company_id <> ' '
+					AND r.ex_dprt_diff_minutes <= 0
+					AND r.report_month = extract(month FROM CURRENT_DATE - 2)
+					THEN 1
+				WHEN r.sch_dprt_sta_cd = r.dprt_sta_cd
+					AND r.cnxl_cd = ' '
+					AND r.dprt_diff_minutes <= 0
+					AND r.report_month = extract(month FROM CURRENT_DATE - 2)
+					THEN 1
+				ELSE 0
+				END) AS d0_flt_mtd_o
+		,SUM(CASE 
+				WHEN r.ex_company_id <> ' '
+					AND ex_dprt_diff_minutes <= 0
+					AND r.report_month = extract(month FROM CURRENT_DATE - 2)
+					THEN 1
+				WHEN r.cs_flg = 1
+					AND r.cs_qualified_ox_delay_ind = 'q'
+					AND r.report_month = extract(month FROM CURRENT_DATE - 2)
+					THEN 1
+				WHEN c.ch_qualified_ok_delay_ind = 'q'
+					AND r.report_month = extract(month FROM CURRENT_DATE - 2)
+					THEN 1
+				WHEN r.qualified_bus_delay_ind = 'q'
+					AND r.report_month = extract(month FROM CURRENT_DATE - 2)
+					THEN 1
+				WHEN r.dprt_sta_cd = r.sch_dprt_sta_cd
+					AND r.sch_cd IN (
+						's'
+						,'u'
+						)
+					AND r.cnxl_cd = ' '
+					AND r.dprt_diff_minutes <= 0
+					AND r.report_month = extract(month FROM CURRENT_DATE - 2)
+					THEN 1
+				ELSE 0
+				END) AS d0_flt_mtd
+	FROM co_prod_vmdb.rtf_flt_leg_operation_ss r
+	LEFT JOIN co_prod_vmdb.rtf_flt_leg_conx_saver adj ON adj.report_dt = r.report_dt
+		AND adj.dprt_sta_cd = r.dprt_sta_cd
+		AND adj.company_id = r.company_id
+		AND adj.flt_num = r.flt_num
+		AND adj.cnxl_cd = r.cnxl_cd
+		AND adj.act_dprt_dtmz = r.act_dprt_dtmz
+	LEFT JOIN co_prod_vmdb.vw_rtf_flt_leg_cust_hold c ON r.company_id = c.company_id
+		AND r.report_dt = c.report_dt
+		AND r.flt_num = c.flt_num
+		AND r.dprt_sta_cd = c.dprt_sta_cd
+		AND r.cnxl_cd = c.cnxl_cd
+		AND r.act_dprt_dtmz = c.act_dprt_dtmz
+	WHERE r.report_year = extract(year FROM CURRENT_DATE - 2)
+		AND r.report_dt <= CURRENT_DATE - 2
+		AND r.company_id NOT IN (
+			'ua'
+			,'co'
+			,'bu'
+			)
+		AND r.sch_cd IN (
+			's'
+			,'u'
+			)
+		AND r.return_type_cd = ' '
+		AND r.sch_dprt_sta_cd IN (
+			'ord'
+			,'iah'
+			,'dca'
+			,'iad'
+			,'bwi'
+			,'ewr'
+			,'jfk'
+			,'lga'
+			,'den'
+			,'lax'
+			,'SFO'
+			)
+	GROUP BY 1
+		,2
+		,3
+		,4
+		,5
+	) o1
+FULL OUTER JOIN (
+	SELECT CURRENT_TIMESTAMP(6) AS TIME_STAMP
+		,CAST(CASE 
+				WHEN r.sch_arrv_sta_cd = 'ord'
+					THEN 'Chicago'
+				WHEN r.sch_arrv_sta_cd = 'iah'
+					THEN 'Texas'
+				WHEN r.sch_arrv_sta_cd IN (
+						'dca'
+						,'iad'
+						,'bwi'
+						)
+					THEN 'Washington DC'
+				WHEN r.sch_arrv_sta_cd IN (
+						'ewr'
+						,'jfk'
+						,'lga'
+						)
+					THEN 'New York'
+				WHEN r.sch_arrv_sta_cd = 'den'
+					THEN 'Denver'
+				WHEN r.sch_arrv_sta_cd = 'lax'
+					THEN 'Los Angeles'
+				WHEN r.sch_arrv_sta_cd = 'sfo'
+					THEN 'San Francisco'
+				ELSE 'OTHER'
+				END AS VARCHAR(255)) AS CITY
+		,TRIM(r.sch_arrv_sta_cd) AS STATION
+		,'UA' AS CARRIER
+		,CAST(CASE 
+				WHEN r.company_id IN (
+						'co'
+						,'ua'
+						)
+					THEN 'Mainline'
+				ELSE 'Express'
+				END AS VARCHAR(255)) AS ML_EX_IND
+		,SUM(CASE 
+				WHEN r.sch_cd = 's'
+					AND r.report_dt BETWEEN CURRENT_DATE - 7
+						AND CURRENT_DATE - 1
+					THEN 1
+				ELSE 0
+				END) AS in_sched_flt_LW
+		,SUM(CASE 
+				WHEN r.ex_company_id <> ' '
+					AND r.ex_arrv_diff_minutes <= 0
+					AND r.report_dt BETWEEN CURRENT_DATE - 7
+						AND CURRENT_DATE - 1
+					THEN 1
+				WHEN r.cnxl_cd = ' '
+					AND r.sch_arrv_sta_cd = r.arrv_sta_cd
+					AND r.arrv_diff_minutes <= 0
+					AND r.report_dt BETWEEN CURRENT_DATE - 7
+						AND CURRENT_DATE - 1
+					THEN 1
+				ELSE 0
+				END) AS a0_flt_LW
+		,SUM(CASE 
+				WHEN r.ex_company_id <> ' '
+					AND r.ex_arrv_diff_minutes <= 14
+					AND r.report_dt BETWEEN CURRENT_DATE - 7
+						AND CURRENT_DATE - 1
+					THEN 1
+				WHEN r.cnxl_cd = ' '
+					AND r.sch_arrv_sta_cd = r.arrv_sta_cd
+					AND r.arrv_diff_minutes <= 14
+					AND r.report_dt BETWEEN CURRENT_DATE - 7
+						AND CURRENT_DATE - 1
+					THEN 1
+				ELSE 0
+				END) AS a14_flt_LW
+		,SUM(CASE 
+				WHEN r.sch_cd = 's'
+					AND r.report_dt BETWEEN CURRENT_DATE - 15
+						AND CURRENT_DATE - 8
+					THEN 1
+				ELSE 0
+				END) AS in_sched_flt_LWMinus2
+		,SUM(CASE 
+				WHEN r.ex_company_id <> ' '
+					AND r.ex_arrv_diff_minutes <= 0
+					AND r.report_dt BETWEEN CURRENT_DATE - 15
+						AND CURRENT_DATE - 8
+					THEN 1
+				WHEN r.cnxl_cd = ' '
+					AND r.sch_arrv_sta_cd = r.arrv_sta_cd
+					AND r.arrv_diff_minutes <= 0
+					AND r.report_dt BETWEEN CURRENT_DATE - 15
+						AND CURRENT_DATE - 8
+					THEN 1
+				ELSE 0
+				END) AS a0_flt_LWMinus2
+		,SUM(CASE 
+				WHEN r.ex_company_id <> ' '
+					AND r.ex_arrv_diff_minutes <= 14
+					AND r.report_dt BETWEEN CURRENT_DATE - 15
+						AND CURRENT_DATE - 8
+					THEN 1
+				WHEN r.cnxl_cd = ' '
+					AND r.sch_arrv_sta_cd = r.arrv_sta_cd
+					AND r.arrv_diff_minutes <= 14
+					AND r.report_dt BETWEEN CURRENT_DATE - 15
+						AND CURRENT_DATE - 8
+					THEN 1
+				ELSE 0
+				END) AS a14_flt_LWMinus2
+		,SUM(CASE 
+				WHEN r.sch_cd = 's'
+					AND r.report_month = extract(month FROM CURRENT_DATE - 2)
+					THEN 1
+				ELSE 0
+				END) AS in_sched_flt_mtd
+		,SUM(CASE 
+				WHEN r.ex_company_id <> ' '
+					AND r.ex_arrv_diff_minutes <= 0
+					AND r.report_month = extract(month FROM CURRENT_DATE - 2)
+					THEN 1
+				WHEN r.cnxl_cd = ' '
+					AND r.sch_arrv_sta_cd = r.arrv_sta_cd
+					AND r.arrv_diff_minutes <= 0
+					AND r.report_month = extract(month FROM CURRENT_DATE - 2)
+					THEN 1
+				ELSE 0
+				END) AS a0_flt_mtd
+		,SUM(CASE 
+				WHEN r.ex_company_id <> ' '
+					AND r.ex_arrv_diff_minutes <= 14
+					AND r.report_month = extract(month FROM CURRENT_DATE - 2)
+					THEN 1
+				WHEN r.cnxl_cd = ' '
+					AND r.sch_arrv_sta_cd = r.arrv_sta_cd
+					AND r.arrv_diff_minutes <= 14
+					AND r.report_month = extract(month FROM CURRENT_DATE - 2)
+					THEN 1
+				ELSE 0
+				END) AS a14_flt_mtd
+	FROM co_prod_vmdb.rtf_flt_leg_operation_ss r
+	WHERE r.report_year = extract(year FROM CURRENT_DATE - 2)
+		AND r.report_dt <= CURRENT_DATE - 2
+		AND r.company_id NOT IN (
+			'ua'
+			,'co'
+			,'bu'
+			)
+		AND r.sch_cd IN (
+			's'
+			,'u'
+			)
+		AND r.return_type_cd = ' '
+		AND r.sch_arrv_sta_cd IN (
+			'ord'
+			,'iah'
+			,'dca'
+			,'iad'
+			,'bwi'
+			,'ewr'
+			,'jfk'
+			,'lga'
+			,'den'
+			,'lax'
+			,'SFO'
+			)
+	GROUP BY 1
+		,2
+		,3
+		,4
+		,5
+	) i1 ON o1.CITY = i1.CITY
+	AND o1.CARRIER = i1.CARRIER
+	AND o1.STATION = i1.STATION
+	AND o1.ML_EX_IND = i1.ML_EX_IND
+
+UNION ALL
+
+SELECT COALESCE(o1.TIME_STAMP, NULL) AS TIME_STAMP
+	,COALESCE(o1.CITY, i1.CITY) AS CITY
+	,COALESCE(o1.STATION, i1.STATION) AS STATION
+	,COALESCE(o1.CARRIER, i1.CARRIER) AS CARRIER
+	,COALESCE(o1.ml_ex_ind, i1.ml_ex_ind) AS ML_EX_IND
+	,COALESCE(o1.sched_flt_LW, 0) AS sched_flt_LW
+	,COALESCE(o1.cnxl_flt_LW, 0) AS cnxl_flt_LW
+	,COALESCE(i1.a0_flt_LW, NULL) AS a0_flt_LW
+	,COALESCE(i1.a14_flt_LW, NULL) AS a14_flt_LW
+	,COALESCE(o1.d0_flt_LW_o, NULL) AS d0_flt_LW_o
+	,COALESCE(o1.d0_flt_LW, NULL) AS d0_flt_LW
+	,COALESCE(o1.sched_flt_LWMinus2, 0) AS sched_flt_LWMinus2
+	,COALESCE(o1.cnxl_flt_LWMinus2, 0) AS cnxl_flt_LWMinus2
+	,COALESCE(i1.a0_flt_LWMinus2, NULL) AS a0_flt_LWMinus2
+	,COALESCE(i1.a14_flt_LWMinus2, NULL) AS a14_flt_LWMinus2
+	,COALESCE(o1.d0_flt_LWMinus2_o, NULL) AS d0_flt_LWMinus2_o
+	,COALESCE(o1.d0_flt_LWMinus2, NULL) AS d0_flt_LWMinus2
+	,COALESCE(o1.sched_flt_mtd, NULL) AS sched_flt_mtd
+	,COALESCE(o1.cnxl_flt_mtd, NULL) AS cnxl_flt_mtd
+	,COALESCE(i1.a0_flt_mtd, NULL) AS a0_flt_mtd
+	,COALESCE(i1.a14_flt_mtd, NULL) AS a14_flt_mtd
+	,COALESCE(o1.d0_flt_mtd_o, NULL) AS d0_flt_mtd_o
+	,COALESCE(o1.d0_flt_mtd, NULL) AS d0_flt_mtd
+	,COALESCE(i1.in_sched_flt_LW, NULL) AS in_sched_flt_LW
+	,COALESCE(i1.in_sched_flt_mtd, NULL) AS in_sched_flt_mtd
+FROM (
+	SELECT CURRENT_TIMESTAMP(6) AS TIME_STAMP
+		,'LINE' AS CITY
+		,'LINE' AS STATION
+		,'UA' AS CARRIER
+		,CAST(CASE 
+				WHEN r.company_id IN (
+						'co'
+						,'ua'
+						)
+					THEN 'Mainline'
+				ELSE 'Express'
+				END AS VARCHAR(255)) AS ML_EX_IND
+		,SUM(CASE 
+				WHEN r.sch_cd = 's'
+					AND r.report_dt BETWEEN CURRENT_DATE - 7
+						AND CURRENT_DATE - 1
+					THEN 1
+				ELSE 0
+				END) AS sched_flt_LW
+		,sum(CASE 
+				WHEN r.ex_company_id <> ' '
+					AND r.company_id NOT IN (
+						'bu'
+						,'ei'
+						,'af'
+						,'vs'
+						)
+					AND r.report_dt BETWEEN CURRENT_DATE - 7
+						AND CURRENT_DATE - 1
+					THEN 0
+				WHEN r.sch_cd = 's'
+					AND r.cnxl_cd = 'c'
+					AND r.cnxl_reason_cd != 'nt'
+					AND r.cnxl_reason_cd NOT LIKE 'z%'
+					AND r.divert_reason_cd = ' '
+					AND r.company_id NOT IN (
+						'bu'
+						,'ei'
+						,'af'
+						,'vs'
+						)
+					AND r.report_dt BETWEEN CURRENT_DATE - 7
+						AND CURRENT_DATE - 1
+					THEN 1
+				ELSE 0
+				END) AS cnxl_flt_LW
+		,SUM(CASE 
+				WHEN r.ex_company_id <> ' '
+					AND r.ex_dprt_diff_minutes <= 0
+					AND r.report_dt BETWEEN CURRENT_DATE - 7
+						AND CURRENT_DATE - 1
+					THEN 1
+				WHEN r.sch_dprt_sta_cd = r.dprt_sta_cd
+					AND r.cnxl_cd = ' '
+					AND r.dprt_diff_minutes <= 0
+					AND r.report_dt BETWEEN CURRENT_DATE - 7
+						AND CURRENT_DATE - 1
+					THEN 1
+				ELSE 0
+				END) AS d0_flt_LW_o
+		,SUM(CASE 
+				WHEN r.ex_company_id <> ' '
+					AND ex_dprt_diff_minutes <= 0
+					AND r.report_dt BETWEEN CURRENT_DATE - 8
+						AND CURRENT_DATE - 2
+					THEN 1
+				WHEN r.cs_flg = 1
+					AND r.cs_qualified_ox_delay_ind = 'q'
+					AND r.report_dt BETWEEN CURRENT_DATE - 8
+						AND CURRENT_DATE - 2
+					THEN 1
+				WHEN c.ch_qualified_ok_delay_ind = 'q'
+					AND r.report_dt BETWEEN CURRENT_DATE - 8
+						AND CURRENT_DATE - 2
+					THEN 1
+				WHEN r.qualified_bus_delay_ind = 'q'
+					AND r.report_dt BETWEEN CURRENT_DATE - 8
+						AND CURRENT_DATE - 2
+					THEN 1
+				WHEN r.dprt_sta_cd = r.sch_dprt_sta_cd
+					AND r.sch_cd IN (
+						's'
+						,'u'
+						)
+					AND r.cnxl_cd = ' '
+					AND r.dprt_diff_minutes <= 0
+					AND r.report_dt BETWEEN CURRENT_DATE - 8
+						AND CURRENT_DATE - 2
+					THEN 1
+				ELSE 0
+				END) AS d0_flt_LW
+		,SUM(CASE 
+				WHEN r.sch_cd = 's'
+					AND r.report_dt BETWEEN CURRENT_DATE - 15
+						AND CURRENT_DATE - 8
+					THEN 1
+				ELSE 0
+				END) AS sched_flt_LWMinus2
+		,sum(CASE 
+				WHEN r.ex_company_id <> ' '
+					AND r.company_id NOT IN (
+						'bu'
+						,'ei'
+						,'af'
+						,'vs'
+						)
+					AND r.report_dt BETWEEN CURRENT_DATE - 14
+						AND CURRENT_DATE - 7
+					THEN 0
+				WHEN r.sch_cd = 's'
+					AND r.cnxl_cd = 'c'
+					AND r.cnxl_reason_cd != 'nt'
+					AND r.cnxl_reason_cd NOT LIKE 'z%'
+					AND r.divert_reason_cd = ' '
+					AND r.company_id NOT IN (
+						'bu'
+						,'ei'
+						,'af'
+						,'vs'
+						)
+					AND r.report_dt BETWEEN CURRENT_DATE - 14
+						AND CURRENT_DATE - 7
+					THEN 1
+				ELSE 0
+				END) AS cnxl_flt_LWminus2
+		,SUM(CASE 
+				WHEN r.ex_company_id <> ' '
+					AND r.ex_dprt_diff_minutes <= 0
+					AND r.report_dt BETWEEN CURRENT_DATE - 15
+						AND CURRENT_DATE - 8
+					THEN 1
+				WHEN r.sch_dprt_sta_cd = r.dprt_sta_cd
+					AND r.cnxl_cd = ' '
+					AND r.dprt_diff_minutes <= 0
+					AND r.report_dt BETWEEN CURRENT_DATE - 15
+						AND CURRENT_DATE - 8
+					THEN 1
+				ELSE 0
+				END) AS d0_flt_LWMinus2_o
+		,SUM(CASE 
+				WHEN r.ex_company_id <> ' '
+					AND ex_dprt_diff_minutes <= 0
+					AND r.report_dt BETWEEN CURRENT_DATE - 15
+						AND CURRENT_DATE - 8
+					THEN 1
+				WHEN r.cs_flg = 1
+					AND r.cs_qualified_ox_delay_ind = 'q'
+					AND r.report_dt BETWEEN CURRENT_DATE - 15
+						AND CURRENT_DATE - 8
+					THEN 1
+				WHEN c.ch_qualified_ok_delay_ind = 'q'
+					AND r.report_dt BETWEEN CURRENT_DATE - 15
+						AND CURRENT_DATE - 8
+					THEN 1
+				WHEN r.qualified_bus_delay_ind = 'q'
+					AND r.report_dt BETWEEN CURRENT_DATE - 15
+						AND CURRENT_DATE - 8
+					THEN 1
+				WHEN r.dprt_sta_cd = r.sch_dprt_sta_cd
+					AND r.sch_cd IN (
+						's'
+						,'u'
+						)
+					AND r.cnxl_cd = ' '
+					AND r.dprt_diff_minutes <= 0
+					AND r.report_dt BETWEEN CURRENT_DATE - 15
+						AND CURRENT_DATE - 8
+					THEN 1
+				ELSE 0
+				END) AS d0_flt_LWMinus2
+		,SUM(CASE 
+				WHEN r.sch_cd = 's'
+					AND r.report_month = extract(month FROM CURRENT_DATE - 2)
+					THEN 1
+				ELSE 0
+				END) AS sched_flt_mtd
+		,sum(CASE 
+				WHEN r.ex_company_id <> ' '
+					AND r.company_id NOT IN (
+						'bu'
+						,'ei'
+						,'af'
+						,'vs'
+						)
+					AND r.report_month = extract(month FROM CURRENT_DATE - 1)
+					THEN 0
+				WHEN r.sch_cd = 's'
+					AND r.cnxl_cd = 'c'
+					AND r.cnxl_reason_cd != 'nt'
+					AND r.cnxl_reason_cd NOT LIKE 'z%'
+					AND r.divert_reason_cd = ' '
+					AND r.company_id NOT IN (
+						'bu'
+						,'ei'
+						,'af'
+						,'vs'
+						)
+					AND r.report_month = extract(month FROM CURRENT_DATE - 1)
+					THEN 1
+				ELSE 0
+				END) AS cnxl_flt_mtd
+		,SUM(CASE 
+				WHEN r.ex_company_id <> ' '
+					AND r.ex_dprt_diff_minutes <= 0
+					AND r.report_month = extract(month FROM CURRENT_DATE - 2)
+					THEN 1
+				WHEN r.sch_dprt_sta_cd = r.dprt_sta_cd
+					AND r.cnxl_cd = ' '
+					AND r.dprt_diff_minutes <= 0
+					AND r.report_month = extract(month FROM CURRENT_DATE - 2)
+					THEN 1
+				ELSE 0
+				END) AS d0_flt_mtd_o
+		,SUM(CASE 
+				WHEN r.ex_company_id <> ' '
+					AND ex_dprt_diff_minutes <= 0
+					AND r.report_month = extract(month FROM CURRENT_DATE - 2)
+					THEN 1
+				WHEN r.cs_flg = 1
+					AND r.cs_qualified_ox_delay_ind = 'q'
+					AND r.report_month = extract(month FROM CURRENT_DATE - 2)
+					THEN 1
+				WHEN c.ch_qualified_ok_delay_ind = 'q'
+					AND r.report_month = extract(month FROM CURRENT_DATE - 2)
+					THEN 1
+				WHEN r.qualified_bus_delay_ind = 'q'
+					AND r.report_month = extract(month FROM CURRENT_DATE - 2)
+					THEN 1
+				WHEN r.dprt_sta_cd = r.sch_dprt_sta_cd
+					AND r.sch_cd IN (
+						's'
+						,'u'
+						)
+					AND r.cnxl_cd = ' '
+					AND r.dprt_diff_minutes <= 0
+					AND r.report_month = extract(month FROM CURRENT_DATE - 2)
+					THEN 1
+				ELSE 0
+				END) AS d0_flt_mtd
+	FROM co_prod_vmdb.rtf_flt_leg_operation_ss r
+	LEFT JOIN co_prod_vmdb.rtf_flt_leg_conx_saver adj ON adj.report_dt = r.report_dt
+		AND adj.dprt_sta_cd = r.dprt_sta_cd
+		AND adj.company_id = r.company_id
+		AND adj.flt_num = r.flt_num
+		AND adj.cnxl_cd = r.cnxl_cd
+		AND adj.act_dprt_dtmz = r.act_dprt_dtmz
+	LEFT JOIN co_prod_vmdb.vw_rtf_flt_leg_cust_hold c ON r.company_id = c.company_id
+		AND r.report_dt = c.report_dt
+		AND r.flt_num = c.flt_num
+		AND r.dprt_sta_cd = c.dprt_sta_cd
+		AND r.cnxl_cd = c.cnxl_cd
+		AND r.act_dprt_dtmz = c.act_dprt_dtmz
+	WHERE r.report_year = extract(year FROM CURRENT_DATE - 2)
+		AND r.report_dt <= CURRENT_DATE - 2
+		AND r.company_id NOT IN (
+			'ua'
+			,'co'
+			,'bu'
+			)
+		AND r.sch_cd IN (
+			's'
+			,'u'
+			)
+		AND r.return_type_cd = ' '
+		AND r.sch_dprt_sta_cd NOT IN (
+			'ord'
+			,'iah'
+			,'iad'
+			,'ewr'
+			,'den'
+			,'lax'
+			,'SFO'
+			)
+	GROUP BY 1
+		,2
+		,3
+		,4
+		,5
+	) o1
+FULL OUTER JOIN (
+	SELECT CURRENT_TIMESTAMP(6) AS TIME_STAMP
+		,'LINE' AS CITY
+		,'LINE' AS STATION
+		,'UA' AS CARRIER
+		,CAST(CASE 
+				WHEN r.company_id IN (
+						'co'
+						,'ua'
+						)
+					THEN 'Mainline'
+				ELSE 'Express'
+				END AS VARCHAR(255)) AS ML_EX_IND
+		,SUM(CASE 
+				WHEN r.sch_cd = 's'
+					AND r.report_dt BETWEEN CURRENT_DATE - 7
+						AND CURRENT_DATE - 1
+					THEN 1
+				ELSE 0
+				END) AS in_sched_flt_LW
+		,SUM(CASE 
+				WHEN r.ex_company_id <> ' '
+					AND r.ex_arrv_diff_minutes <= 0
+					AND r.report_dt BETWEEN CURRENT_DATE - 7
+						AND CURRENT_DATE - 1
+					THEN 1
+				WHEN r.cnxl_cd = ' '
+					AND r.sch_arrv_sta_cd = r.arrv_sta_cd
+					AND r.arrv_diff_minutes <= 0
+					AND r.report_dt BETWEEN CURRENT_DATE - 7
+						AND CURRENT_DATE - 1
+					THEN 1
+				ELSE 0
+				END) AS a0_flt_LW
+		,SUM(CASE 
+				WHEN r.ex_company_id <> ' '
+					AND r.ex_arrv_diff_minutes <= 14
+					AND r.report_dt BETWEEN CURRENT_DATE - 7
+						AND CURRENT_DATE - 1
+					THEN 1
+				WHEN r.cnxl_cd = ' '
+					AND r.sch_arrv_sta_cd = r.arrv_sta_cd
+					AND r.arrv_diff_minutes <= 14
+					AND r.report_dt BETWEEN CURRENT_DATE - 7
+						AND CURRENT_DATE - 1
+					THEN 1
+				ELSE 0
+				END) AS a14_flt_LW
+		,SUM(CASE 
+				WHEN r.sch_cd = 's'
+					AND r.report_dt BETWEEN CURRENT_DATE - 15
+						AND CURRENT_DATE - 8
+					THEN 1
+				ELSE 0
+				END) AS in_sched_flt_LWMinus2
+		,SUM(CASE 
+				WHEN r.ex_company_id <> ' '
+					AND r.ex_arrv_diff_minutes <= 0
+					AND r.report_dt BETWEEN CURRENT_DATE - 15
+						AND CURRENT_DATE - 8
+					THEN 1
+				WHEN r.cnxl_cd = ' '
+					AND r.sch_arrv_sta_cd = r.arrv_sta_cd
+					AND r.arrv_diff_minutes <= 0
+					AND r.report_dt BETWEEN CURRENT_DATE - 15
+						AND CURRENT_DATE - 8
+					THEN 1
+				ELSE 0
+				END) AS a0_flt_LWMinus2
+		,SUM(CASE 
+				WHEN r.ex_company_id <> ' '
+					AND r.ex_arrv_diff_minutes <= 14
+					AND r.report_dt BETWEEN CURRENT_DATE - 15
+						AND CURRENT_DATE - 8
+					THEN 1
+				WHEN r.cnxl_cd = ' '
+					AND r.sch_arrv_sta_cd = r.arrv_sta_cd
+					AND r.arrv_diff_minutes <= 14
+					AND r.report_dt BETWEEN CURRENT_DATE - 15
+						AND CURRENT_DATE - 8
+					THEN 1
+				ELSE 0
+				END) AS a14_flt_LWMinus2
+		,SUM(CASE 
+				WHEN r.sch_cd = 's'
+					AND r.report_month = extract(month FROM CURRENT_DATE - 2)
+					THEN 1
+				ELSE 0
+				END) AS in_sched_flt_mtd
+		,SUM(CASE 
+				WHEN r.ex_company_id <> ' '
+					AND r.ex_arrv_diff_minutes <= 0
+					AND r.report_month = extract(month FROM CURRENT_DATE - 2)
+					THEN 1
+				WHEN r.cnxl_cd = ' '
+					AND r.sch_arrv_sta_cd = r.arrv_sta_cd
+					AND r.arrv_diff_minutes <= 0
+					AND r.report_month = extract(month FROM CURRENT_DATE - 2)
+					THEN 1
+				ELSE 0
+				END) AS a0_flt_mtd
+		,SUM(CASE 
+				WHEN r.ex_company_id <> ' '
+					AND r.ex_arrv_diff_minutes <= 14
+					AND r.report_month = extract(month FROM CURRENT_DATE - 2)
+					THEN 1
+				WHEN r.cnxl_cd = ' '
+					AND r.sch_arrv_sta_cd = r.arrv_sta_cd
+					AND r.arrv_diff_minutes <= 14
+					AND r.report_month = extract(month FROM CURRENT_DATE - 2)
+					THEN 1
+				ELSE 0
+				END) AS a14_flt_mtd
+	FROM co_prod_vmdb.rtf_flt_leg_operation_ss r
+	WHERE r.report_year = extract(year FROM CURRENT_DATE - 2)
+		AND r.report_dt <= CURRENT_DATE - 1
+		AND r.company_id NOT IN (
+			'ua'
+			,'co'
+			,'bu'
+			)
+		AND r.sch_cd IN (
+			's'
+			,'u'
+			)
+		AND r.return_type_cd = ' '
+		AND r.sch_arrv_sta_cd IN (
+			'ord'
+			,'iah'
+			,'iad'
+			,'ewr'
+			,'den'
+			,'lax'
+			,'SFO'
+			)
+	GROUP BY 1
+		,2
+		,3
+		,4
+		,5
+	) i1 ON o1.CITY = i1.CITY
+	AND o1.CARRIER = i1.CARRIER
+	AND o1.STATION = i1.STATION
+	AND o1.ML_EX_IND = i1.ML_EX_IND

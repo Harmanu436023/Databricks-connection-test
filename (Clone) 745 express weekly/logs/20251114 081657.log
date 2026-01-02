@@ -1,0 +1,472 @@
+2025-11-14 08:16:58,459 Exception while shutting down a socket
+Traceback (most recent call last):
+  File "/databricks/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/clientserver.py", line 528, in send_command
+    self.socket.sendall(command.encode("utf-8"))
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/databricks/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/databricks/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/clientserver.py", line 531, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/databricks/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 503, in quiet_shutdown
+    socket_instance.shutdown(socket.SHUT_RDWR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-11-14 08:16:58,460 Connecting to Teradata
+2025-11-14 08:16:58,461 Exception while sending command.
+Traceback (most recent call last):
+  File "/databricks/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/clientserver.py", line 528, in send_command
+    self.socket.sendall(command.encode("utf-8"))
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/databricks/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/databricks/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/clientserver.py", line 531, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending
+2025-11-14 08:16:58,463 Command to send: A
+1e5d8e39e11ea7b92ba7095e3af7a4c598aba5612781472207af95c4223e9e25
+
+2025-11-14 08:16:58,464 Answer received: !yv
+2025-11-14 08:16:58,464 Command to send: m
+d
+o445
+e
+
+2025-11-14 08:16:58,466 Answer received: !yv
+2025-11-14 08:16:58,466 Closing down clientserver connection
+2025-11-14 08:16:58,466 Command to send: m
+d
+o446
+e
+
+2025-11-14 08:16:58,466 Answer received: !yv
+2025-11-14 08:16:58,466 Command to send: m
+d
+o447
+e
+
+2025-11-14 08:16:58,466 Answer received: !yv
+2025-11-14 08:16:58,563 Received command c on object id p0
+2025-11-14 08:16:58,567 Connecting to UDH
+2025-11-14 08:16:58,628 UDH connection successful
+2025-11-14 08:16:58,662 Received command c on object id p0
+2025-11-14 08:16:59,742 handle_msg[LSP_COMM_ID]({'header': {'msg_type': 'comm_msg', 'msg_id': '5bb71b46-e8be-4322-91fb-ff26444b45a6', 'session': '', 'username': '', 'date': datetime.datetime(2025, 11, 14, 8, 16, 59, 681000, tzinfo=tzlocal()), 'version': '5.4'}, 'msg_id': '5bb71b46-e8be-4322-91fb-ff26444b45a6', 'msg_type': 'comm_msg', 'parent_header': {'session': '', 'username': '', 'version': '5.3'}, 'metadata': {'enableLSPGoToDefinitionOnModule_v2': 'true', 'enableWSFSPythonModulePeek': 'false', 'jediAutoImportModulesList': 'asyncio,numpy,pandas,pyspark,pyspark.ml,pyspark.sql,seaborn,urllib3'}, 'content': {'comm_id': 'LSP_COMM_ID', 'data': {'header': {'lsm_protocol_version': 0, 'msg_type': 'lsp_msg', 'ls_instance_id': '8efda180-b701-4105-811e-1e3ff7373e5f'}, 'body': {'lsp_msg': {'jsonrpc': '2.0', 'method': 'initialized', 'params': {}}}}}, 'buffers': []})
+2025-11-14 08:17:01,166 Received command c on object id p0
+2025-11-14 08:17:45,367 Running MF SQL queries
+2025-11-14 08:17:45,495 Received command c on object id p0
+2025-11-14 08:17:45,499 Connecting to Masflight
+2025-11-14 08:24:17,134 handle_msg[LSP_COMM_ID]({'header': {'msg_type': 'comm_msg', 'msg_id': 'f266feec-6ab7-4e36-8f54-24353daf7b35', 'session': '', 'username': '', 'date': datetime.datetime(2025, 11, 14, 8, 24, 17, 69000, tzinfo=tzlocal()), 'version': '5.4'}, 'msg_id': 'f266feec-6ab7-4e36-8f54-24353daf7b35', 'msg_type': 'comm_msg', 'parent_header': {'session': '', 'username': '', 'version': '5.3'}, 'metadata': {'enableLSPGoToDefinitionOnModule_v2': 'true', 'enableWSFSPythonModulePeek': 'false', 'jediAutoImportModulesList': 'asyncio,numpy,pandas,pyspark,pyspark.ml,pyspark.sql,seaborn,urllib3'}, 'content': {'comm_id': 'LSP_COMM_ID', 'data': {'header': {'lsm_protocol_version': 0, 'msg_type': 'lsp_msg', 'ls_instance_id': '8efda180-b701-4105-811e-1e3ff7373e5f'}, 'body': {'lsp_msg': {'jsonrpc': '2.0', 'method': 'textDocument/didChange', 'params': {'cellRanges': [{'startLine': 0, 'stopLine': 5, 'commandId': 8801006436713080}, {'startLine': 5, 'stopLine': 29, 'commandId': 6252130007789254}, {'startLine': 29, 'stopLine': 36, 'commandId': 6252130007790467}, {'startLine': 36, 'stopLine': 55, 'commandId': 8801006436713084}, {'startLine': 55, 'stopLine': 63, 'commandId': 8801006436713085}, {'startLine': 63, 'stopLine': 90, 'commandId': 8801006436713087}, {'startLine': 90, 'stopLine': 112, 'commandId': 8801006436713088}, {'startLine': 112, 'stopLine': 122, 'commandId': 8801006436713090}, {'startLine': 122, 'stopLine': 143, 'commandId': 8801006436713092}, {'startLine': 143, 'stopLine': 216, 'commandId': 8801006436713094}, {'startLine': 216, 'stopLine': 271, 'commandId': 8801006436713097}, {'startLine': 271, 'stopLine': 290, 'commandId': 8801006436713105}, {'startLine': 290, 'stopLine': 292, 'commandId': 8801006436713118}], 'editedCommandId': 8801006436713118, 'contentChanges': [{'range': {'start': {'line': 290, 'character': 0}, 'end': {'line': 291, 'character': 0}}, 'text': ''}, {'range': {'start': {'line': 290, 'character': 0}, 'end': {'line': 290, 'character': 0}}, 'text': 'sqlresult_8 = pd.read_sql_query(sqlMf1,masflight_connection_string)\nsqlresult_8.to_csv(OA_SQL_1_CSV_FILE, index=False)\n'}], 'cursorPosition': {'line': 291, 'character': 50}, 'textDocument': {'uri': '/notebook/dddd44d6-8d57-49d8-8393-6f61dff7f820/2297197064326477', 'version': 3}, 'id': 2}}}}}, 'buffers': []})
+2025-11-14 08:24:18,762 Received command c on object id p0
+2025-11-14 08:24:19,644 Command to send: c
+o397
+get
+sspark.databricks.driver.ipykernel.maxErrorMessageLength
+s100000
+e
+
+2025-11-14 08:24:19,644 Error while sending or receiving.
+Traceback (most recent call last):
+  File "/databricks/python/lib/python3.10/site-packages/IPython/core/interactiveshell.py", line 3508, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "/root/.ipykernel/6879/command-8801006436713118-3103899886", line 1, in <module>
+    sqlresult_8 = pd.read_sql_query(sqlMf1,masflight_connection_string)
+  File "/local_disk0/.ephemeral_nfs/cluster_libraries/python/lib/python3.10/site-packages/pandas/io/sql.py", line 525, in read_sql_query
+    with pandasSQL_builder(con) as pandas_sql:
+  File "/local_disk0/.ephemeral_nfs/cluster_libraries/python/lib/python3.10/site-packages/pandas/io/sql.py", line 903, in pandasSQL_builder
+    raise ImportError("Using URI string without sqlalchemy installed.")
+ImportError: Using URI string without sqlalchemy installed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/databricks/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/clientserver.py", line 528, in send_command
+    self.socket.sendall(command.encode("utf-8"))
+ConnectionResetError: [Errno 104] Connection reset by peer
+2025-11-14 08:24:19,644 Closing down clientserver connection
+2025-11-14 08:24:19,644 Exception while shutting down a socket
+Traceback (most recent call last):
+  File "/databricks/python/lib/python3.10/site-packages/IPython/core/interactiveshell.py", line 3508, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "/root/.ipykernel/6879/command-8801006436713118-3103899886", line 1, in <module>
+    sqlresult_8 = pd.read_sql_query(sqlMf1,masflight_connection_string)
+  File "/local_disk0/.ephemeral_nfs/cluster_libraries/python/lib/python3.10/site-packages/pandas/io/sql.py", line 525, in read_sql_query
+    with pandasSQL_builder(con) as pandas_sql:
+  File "/local_disk0/.ephemeral_nfs/cluster_libraries/python/lib/python3.10/site-packages/pandas/io/sql.py", line 903, in pandasSQL_builder
+    raise ImportError("Using URI string without sqlalchemy installed.")
+ImportError: Using URI string without sqlalchemy installed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/databricks/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/clientserver.py", line 528, in send_command
+    self.socket.sendall(command.encode("utf-8"))
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/databricks/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/databricks/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/clientserver.py", line 531, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/databricks/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 503, in quiet_shutdown
+    socket_instance.shutdown(socket.SHUT_RDWR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-11-14 08:24:19,645 Exception while sending command.
+Traceback (most recent call last):
+  File "/databricks/python/lib/python3.10/site-packages/IPython/core/interactiveshell.py", line 3508, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "/root/.ipykernel/6879/command-8801006436713118-3103899886", line 1, in <module>
+    sqlresult_8 = pd.read_sql_query(sqlMf1,masflight_connection_string)
+  File "/local_disk0/.ephemeral_nfs/cluster_libraries/python/lib/python3.10/site-packages/pandas/io/sql.py", line 525, in read_sql_query
+    with pandasSQL_builder(con) as pandas_sql:
+  File "/local_disk0/.ephemeral_nfs/cluster_libraries/python/lib/python3.10/site-packages/pandas/io/sql.py", line 903, in pandasSQL_builder
+    raise ImportError("Using URI string without sqlalchemy installed.")
+ImportError: Using URI string without sqlalchemy installed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/databricks/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/clientserver.py", line 528, in send_command
+    self.socket.sendall(command.encode("utf-8"))
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/databricks/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/databricks/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/clientserver.py", line 531, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending
+2025-11-14 08:24:19,645 Command to send: A
+1e5d8e39e11ea7b92ba7095e3af7a4c598aba5612781472207af95c4223e9e25
+
+2025-11-14 08:24:19,646 Answer received: !yv
+2025-11-14 08:24:19,647 Command to send: c
+o397
+get
+sspark.databricks.driver.ipykernel.maxErrorMessageLength
+s100000
+e
+
+2025-11-14 08:24:19,648 Answer received: !ys100000
+2025-11-14 08:24:19,648 Closing down clientserver connection
+2025-11-14 08:24:19,649 Command to send: c
+o397
+get
+sspark.databricks.driver.ipykernel.maxErrorMessageLength
+s100000
+e
+
+2025-11-14 08:24:19,665 Answer received: !ys100000
+2025-11-14 08:25:04,889 handle_msg[LSP_COMM_ID]({'header': {'msg_type': 'comm_msg', 'msg_id': '3980a76d-2e37-4d3c-8a91-5445f396169c', 'session': '', 'username': '', 'date': datetime.datetime(2025, 11, 14, 8, 25, 4, 837000, tzinfo=tzlocal()), 'version': '5.4'}, 'msg_id': '3980a76d-2e37-4d3c-8a91-5445f396169c', 'msg_type': 'comm_msg', 'parent_header': {'session': '', 'username': '', 'version': '5.3'}, 'metadata': {'enableLSPGoToDefinitionOnModule_v2': 'true', 'enableWSFSPythonModulePeek': 'false', 'jediAutoImportModulesList': 'asyncio,numpy,pandas,pyspark,pyspark.ml,pyspark.sql,seaborn,urllib3'}, 'content': {'comm_id': 'LSP_COMM_ID', 'data': {'header': {'lsm_protocol_version': 0, 'msg_type': 'lsp_msg', 'ls_instance_id': '8efda180-b701-4105-811e-1e3ff7373e5f'}, 'body': {'lsp_msg': {'jsonrpc': '2.0', 'id': 0, 'method': 'initialize', 'params': {'capabilities': {'workspace': {'applyEdit': True, 'workspaceEdit': {'failureHandling': 'textOnlyTransactional', 'documentChanges': True, 'resourceOperations': ['create', 'rename', 'delete'], 'changeAnnotationSupport': {'groupsOnLabel': True}, 'normalizesLineEndings': True}}, 'textDocument': {'publishDiagnostics': {'codeDescriptionSupport': True, 'versionSupport': False, 'tagSupport': {'valueSet': [1, 2]}, 'dataSupport': True, 'relatedInformation': True}, 'synchronization': {'dynamicRegistration': True}, 'definition': {'dynamicRegistration': True, 'linkSupport': True}, 'references': {'dynamicRegistration': True}}, 'window': {'showMessage': {'messageActionItem': {'additionalPropertiesSupport': True}}, 'showDocument': {'support': True}}, 'general': {'staleRequestSupport': {'cancel': True, 'retryOnContentModified': ['textDocument/semanticTokens/full', 'textDocument/semanticTokens/range', 'textDocument/semanticTokens/full/delta']}, 'regularExpressions': {'engine': 'ECMAScript', 'version': 'ES2020'}, 'markdown': {'parser': 'marked', 'version': '1.1.0'}, 'positionEncodings': ['utf-16']}}, 'trace': 'off', 'workspaceFolders': None, 'initializationOptions': {'dbls': {'supportedDblsVersions': []}, 'pylsp': {'plugins': {'ruff': {'enabled': True, 'select': ['E9', 'F407', 'F622', 'F701', 'F702', 'F704', 'F706', 'F82']}, 'pyflakes': {'enabled': False}, 'pylsp_ucx': {'enabled': False}, 'mccabe': {'enabled': False}, 'flake8': {'enabled': False}, 'pycodestyle': {'enabled': False}, 'preload': {'enabled': False}}}}, 'clientInfo': {'name': 'Code - OSS', 'version': '1.93.1'}, 'locale': 'en-US', 'rootUri': None, 'rootPath': None, 'processId': None}}}}}, 'buffers': []})
+2025-11-14 08:25:04,909 handle_msg[LSP_COMM_ID]({'header': {'msg_type': 'comm_msg', 'msg_id': '4e9b7af6-ccb9-4986-a8ed-878ec816f20f', 'session': '', 'username': '', 'date': datetime.datetime(2025, 11, 14, 8, 25, 4, 856000, tzinfo=tzlocal()), 'version': '5.4'}, 'msg_id': '4e9b7af6-ccb9-4986-a8ed-878ec816f20f', 'msg_type': 'comm_msg', 'parent_header': {'session': '', 'username': '', 'version': '5.3'}, 'metadata': {'enableLSPGoToDefinitionOnModule_v2': 'true', 'enableWSFSPythonModulePeek': 'false', 'jediAutoImportModulesList': 'asyncio,numpy,pandas,pyspark,pyspark.ml,pyspark.sql,seaborn,urllib3'}, 'content': {'comm_id': 'LSP_COMM_ID', 'data': {'header': {'lsm_protocol_version': 0, 'msg_type': 'lsp_msg', 'ls_instance_id': '8efda180-b701-4105-811e-1e3ff7373e5f'}, 'body': {'lsp_msg': {'jsonrpc': '2.0', 'method': 'textDocument/didOpen', 'params': {'textDocument': {'uri': '/notebook/9a214d25-90ef-430f-bff4-effb0c0856ab/2297197064326477', 'text': 'from databricks.sdk.runtime import display, displayHTML, getArgument, sc, spark, sql, sqlContext, table, udf;from dbruntime.dbutils import DBUtils as dbutils;from IPython import get_ipython;In={};Out={};_ih=[];_oh={};_dh=[];_=None;__=None;___=None;_i=None;_ii=None;_sqldf=spark.createDataFrame([], schema=[])\n# %pip uninstall -y sqlalchemy\n# %pip install "sqlalchemy==1.4.52"\ndbutils.library.restartPython()\n# %pip install pymysql\nmode = \'PROD\'\n\n\n\nimport pandas as pd\nimport datetime\nimport logging\nimport os\nimport pyodbc\nimport smtplib as smtp\nfrom email.mime.multipart import MIMEMultipart\nfrom email.mime.text import MIMEText\n\nfrom email.utils import formataddr\nfrom email.header import Header\nfrom email import encoders\nfrom email.mime.base import MIMEBase\nfrom email.mime.application import MIMEApplication\nfrom email.mime.image import MIMEImage\nimport urllib.parse\nfrom sqlalchemy import create_engine, text\nimport re\nfrom random import *\nimport psycopg2\nos.chdir(r\'/Workspace/Ops Analysis/Reports/745 express weekly\')\nTODAY = datetime.datetime.today().strftime(\'%Y%m%d\')\nYES = datetime.date.today() - datetime.timedelta(days=1)\nLW = datetime.date.today() - datetime.timedelta(days=7)\nYESTERDAY = YES.strftime(\'%m/%d/%Y\')\nLWDATE = LW.strftime(\'%m/%d/%Y\')\nYEST = YES.strftime(\'%Y-%m-%d\')\n\nif mode == \'PROD\':\n    EMAIL_ADDR_FILE = os.getcwd() + r\'/emailAddr.csv\'\nelse:\n    EMAIL_ADDR_FILE = os.getcwd() + r\'/emailAddr_test.csv\'\n    \nLOG_FILE_NAME = os.getcwd() + r\'/logs/\' + datetime.datetime.today().strftime(\'%Y%m%d %H%M%S\') + \'.log\'\nCSV_FLDR = os.getcwd() + r\'/CSV/\'\nSQL_FOLDER = os.getcwd() + r\'/SQL\'\nXLSX_FLDR = os.getcwd() + r\'/XLSX/\'\nHTML_FLDR = os.getcwd() + r\'/HTML/\'\nPNG_FLDR = os.getcwd() + r\'/DailyImages/\'\nfilename_attach = os.getcwd() + r\'/0745_UAX_WB_Flights.xlsm\'\nPDF_FLDR = os.getcwd() + r\'/PDF/\'\nfilename = os.getcwd() + r\'/0745_UAX_WB_final_v1.xlsm\'\n\nCID1 =  \'1\'\nCID2 =  \'2\'\n\n\nHTML_BDY_FILE_PATH = HTML_FLDR + r\'EmailBody.htm\'\nHTML_FTR_FILE_PATH = HTML_FLDR + r\'EmailFooter.htm\'\n\nXLS_FILE_PATH = XLSX_FLDR + YEST + r\' 0745 UAX Flight details.xlsm\'\n\nXLS_FILE_NAME = YEST + r\' 0745 Weekly UAX Flight details.xlsm\'\n\nEDW_SQL_1= SQL_FOLDER + r\'/UA_SQL_1.sql\'\nEDW_SQL_2= SQL_FOLDER +r\'/CNXL_SQL_2.sql\'\nEDW_SQL_3= SQL_FOLDER +r\'/RES_CNXL_SQL_3.sql\'\nEDW_SQL_4= SQL_FOLDER +r\'/SCH_DEP_SQL_4.sql\'\nEDW_SQL_5= SQL_FOLDER +r\'/DIVERTS_SQL_5.sql\'\nEDW_SQL_6= SQL_FOLDER +r\'/RECOVERED_DIVERTS_SQL_6.sql\'\nEDW_SQL_7= SQL_FOLDER +r\'/UA_HUB_SQL_7.sql\'\nEDW_SQL_8= SQL_FOLDER +r\'/FLIGHTS_NOT_DEPARTED_SQL_8.sql\'\n\nEDW_SQL_9= SQL_FOLDER +r\'/Cancelled_flights_SQL_9.sql\' ## Converted\nEDW_SQL_10= SQL_FOLDER +r\'/Yet_to_Depart_flights_SQL_10.sql\'\nEDW_SQL_11= SQL_FOLDER +r\'/Residual_cancels_SQL_11.sql\' ## Converted\nEDW_SQL_12= SQL_FOLDER +r\'/REPOSITIONED_FLIGHTS_SQL_12.sql\'\n\nEDW_SQL_13= SQL_FOLDER +r\'/REPOSITIONED_FLIGHTS_COUNT_SQL_13.sql\'\nEDW_SQL_14= SQL_FOLDER +r\'/Diverted_flights_SQL_14.sql\'\nEDW_SQL_15 = SQL_FOLDER + r\'/UA_Line.sql\'\nEDW_SQL_16 = SQL_FOLDER + r\'/UA_Seat_Cancels.sql\'\nEDW_SQL_17 = SQL_FOLDER + r\'/Carrier_delays.sql\'\nEDW_SQL_18= SQL_FOLDER +r\'/Delays_info.sql\'\n\n\n\nMF_SQL_1= SQL_FOLDER +r\'/OA_SQL_1.sql\'\nMF_SQL_2= SQL_FOLDER +r\'/OA_SQL_2.sql\'\nMF_SQL_3= SQL_FOLDER +r\'/OA_Line.sql\'\nMF_SQL_4= SQL_FOLDER +r\'/OA_SeatCnxl.sql\'\nUA_SQL_1_CSV_FILE = CSV_FLDR + r\'UA_SQL_1_\' +TODAY+\'.csv\'\nCNXL_SQL_2_CSV_FILE = CSV_FLDR + r\'CNXL_SQL_2_\' +TODAY+\'.csv\'\nRES_CNXL_SQL_3_CSV_FILE = CSV_FLDR + r\'RES_CNXL_SQL_3_\' +TODAY+\'.csv\'\nSCH_DEP_SQL_4_CSV_FILE = CSV_FLDR + r\'SCH_DEP_SQL_4_\' +TODAY+\'.csv\'\nDIVERTS_SQL_5_CSV_FILE = CSV_FLDR + r\'DIVERTS_SQL_5_\' +TODAY+\'.csv\'\nRECOVERED_DIVERTS_SQL_6_CSV_FILE = CSV_FLDR + r\'RECOVERED_DIVERTS_SQL_6_\' +TODAY+\'.csv\'\nUA_HUB_SQL_7_CSV_FILE = CSV_FLDR + r\'UA_HUB_SQL_7_\' +TODAY+\'.csv\'\nFLIGHTS_NOT_DEPARTED_SQL_8_CSV_FILE = CSV_FLDR + r\'FLIGHTS_NOT_DEPARTED_SQL_8_\' +TODAY+\'.csv\'\nREPOSITIONED_FLIGHTS_COUNT_SQL_13_CSV_FILE = CSV_FLDR + r\'REPOSITIONED_FLIGHTS_COUNT_SQL_13_\' +TODAY+\'.csv\'\nCancelled_flights_SQL_9_CSV_FILE = CSV_FLDR + r\'Cancelled_flights_SQL_9_\' +TODAY+\'.csv\'\nYet_to_Depart_flights_SQL_10_CSV_FILE = CSV_FLDR + r\'Yet_to_Depart_flights_SQL_10_\' +TODAY+\'.csv\'\nResidual_cancels_SQL_11_CSV_FILE = CSV_FLDR + r\'Residual_cancels_SQL_11_\' +TODAY+\'.csv\'\nREPOSITIONED_FLIGHTS_SQL_12_CSV_FILE = CSV_FLDR + r\'REPOSITIONED_FLIGHTS_SQL_12_\' +TODAY+\'.csv\'\nDIVERTED_FLIGHTS_SQL_14_CSV_FILE = CSV_FLDR + r\'Diverted_flights_SQL_14\' +TODAY+\'.csv\'\nUA_Line_CSV_FILE = CSV_FLDR + r\'UA_Line\' +TODAY+\'.csv\'\nUA_Seat_Cancels_CSV_FILE = CSV_FLDR + r\'UA_Seat_Cancels\' +TODAY+\'.csv\'\nDELAYS_INFO_CSV_FILE = CSV_FLDR + r\'Delays_info\' +TODAY+\'.csv\'\nCarrier_delays_CSV_FILE = CSV_FLDR + r\'Carrier_delays\' +TODAY+\'.csv\'\nOA_SQL_1_CSV_FILE = CSV_FLDR + r\'OA_SQL_1_\' +TODAY+\'.csv\'\nOA_SQL_2_CSV_FILE = CSV_FLDR + r\'OA_SQL_2_\' +TODAY+\'.csv\'\nOA_Line_CSV_FILE = CSV_FLDR + r\'OA_Line_\' +TODAY+\'.csv\'\nOA_SeatCnxl_CSV_FILE = CSV_FLDR + r\'OA_SeatCnxl_\' +TODAY+\'.csv\'\nPNG_FILE_SYS1 = PNG_FLDR + TODAY + r\' pg1.png\'\nXLS_SHT_SYS1 = \'pg1\'\nPNG_FILE_SYS2 = PNG_FLDR + TODAY + r\' pg2.png\'\nXLS_SHT_SYS2 = \'pg2\'\nPDF_FILE_PATH = PDF_FLDR + YEST + r\'_745_UAX\' +\'.pdf\'\n\nlogging.basicConfig(filename=LOG_FILE_NAME, level=logging.DEBUG, format=\'%(asctime)s %(message)s\')\n\nlogging.info(\'Connecting to Teradata\');\n\n# Database credentials for UDH\nudh_username = \'app_noc_daily_ops_call\'\nudh_pass = \'SBhe09r7h20gsav\'\n\n# Connect to UDH (Redshift)\nlogging.info(\'Connecting to UDH\')\nprint(\'Connecting to UDH\')\n\ntry:\n    connection = psycopg2.connect(\n        user=udh_username,\n        password=udh_pass,\n        host=\'cbs-udh-datalake-prod-redshift-dw1.csjkuisl0oi7.us-east-1.redshift.amazonaws.com\',\n        dbname=\'udhprod\',\n        port=5439\n    )\n    cursor = connection.cursor()\n    logging.info(\'UDH connection successful\')\nexcept Exception as e:\n    logging.error(f\'UDH connection failed: {str(e)}\')\n    raise\n\ne1 = open(EDW_SQL_1, \'r\')\nsqlEdw1 = e1.read()\ne1.close()\n\ne2 = open(EDW_SQL_2, \'r\')\nsqlEdw2 = e2.read()\ne2.close()\n\ne3 = open(EDW_SQL_3, \'r\')\nsqlEdw3 = e3.read()\ne3.close()\n\ne4 = open(EDW_SQL_4, \'r\')\nsqlEdw4 = e4.read()\ne4.close()\n\ne5 = open(EDW_SQL_5, \'r\')\nsqlEdw5 = e5.read()\ne5.close()\n\ne6 = open(EDW_SQL_6, \'r\')\nsqlEdw6 = e6.read()\ne6.close()\n\ne7 = open(EDW_SQL_7, \'r\')\nsqlEdw7 = e7.read()\ne7.close()\n\ne8 = open(EDW_SQL_8, \'r\')\nsqlEdw8 = e8.read()\ne8.close()\n\ne9 = open(EDW_SQL_9, \'r\')\nsqlEdw9 = e9.read()\ne9.close()\n\ne10 = open(EDW_SQL_10, \'r\')\nsqlEdw10 = e10.read()\ne10.close()\n\ne11 = open(EDW_SQL_11, \'r\')\nsqlEdw11 = e11.read()\ne11.close()\n\ne12 = open(EDW_SQL_12, \'r\')\nsqlEdw12 = e12.read()\ne12.close()\n\ne13 = open(EDW_SQL_13, \'r\')\nsqlEdw13 = e13.read()\ne13.close()\n\ne14 = open(EDW_SQL_14, \'r\')\nsqlEdw14 = e14.read()\ne14.close()\n\ne15 = open(EDW_SQL_15, \'r\')\nsqlEdw15 = e15.read()\ne15.close()\n\ne16 = open(EDW_SQL_16, \'r\')\nsqlEdw16 = e16.read()\ne16.close()\n\ne17 = open(EDW_SQL_17, \'r\')\nsqlEdw17 = e17.read()\ne17.close()\n\ne18 = open(EDW_SQL_18, \'r\')\nsqlEdw18 = e18.read()\ne18.close()\n\nsqlresult_1 = pd.read_sql_query(sqlEdw1, connection)\nsqlresult_1.to_csv(UA_SQL_1_CSV_FILE, index=False)\n\nsqlresult_2 = pd.read_sql_query(sqlEdw2, connection)\nsqlresult_2.to_csv(CNXL_SQL_2_CSV_FILE, index=False)\n\nsqlresult_3 = pd.read_sql_query(sqlEdw3, connection)\nsqlresult_3.to_csv(RES_CNXL_SQL_3_CSV_FILE, index=False)\n\nsqlresult_4 = pd.read_sql_query(sqlEdw4, connection)\nsqlresult_4.to_csv(SCH_DEP_SQL_4_CSV_FILE, index=False)\n\nsqlresult_5 = pd.read_sql_query(sqlEdw5, connection)\nsqlresult_5.to_csv(DIVERTS_SQL_5_CSV_FILE, index=False)\n\nsqlresult_6 = pd.read_sql_query(sqlEdw6, connection)\nsqlresult_6.to_csv(RECOVERED_DIVERTS_SQL_6_CSV_FILE, index=False)\n\nsqlresult_7 = pd.read_sql_query(sqlEdw7, connection)\nsqlresult_7.to_csv(UA_HUB_SQL_7_CSV_FILE, index=False)\n\nsqlresult_10 = pd.read_sql_query(sqlEdw8, connection)\nsqlresult_10.to_csv(FLIGHTS_NOT_DEPARTED_SQL_8_CSV_FILE, index=False)\n\nsqlresult_11 = pd.read_sql_query(sqlEdw9, connection)\nsqlresult_11.to_csv(Cancelled_flights_SQL_9_CSV_FILE, index=False)\n\nsqlresult_12 = pd.read_sql_query(sqlEdw10, connection)\nsqlresult_12.to_csv(Yet_to_Depart_flights_SQL_10_CSV_FILE, index=False)\n\nsqlresult_13 = pd.read_sql_query(sqlEdw11, connection)\nsqlresult_13.to_csv(Residual_cancels_SQL_11_CSV_FILE, index=False)\n\nsqlresult_14 = pd.read_sql_query(sqlEdw12, connection)\nsqlresult_14.to_csv(REPOSITIONED_FLIGHTS_SQL_12_CSV_FILE, index=False)\n\nsqlresult_15 = pd.read_sql_query(sqlEdw13, connection)\nsqlresult_15.to_csv(REPOSITIONED_FLIGHTS_COUNT_SQL_13_CSV_FILE, index=False)\n\nsqlresult_16 = pd.read_sql_query(sqlEdw14, connection)\nsqlresult_16.to_csv(DIVERTED_FLIGHTS_SQL_14_CSV_FILE, index=False)\n\nsqlresult_17 = pd.read_sql_query(sqlEdw15, connection)\nsqlresult_17.to_csv(UA_Line_CSV_FILE, index=False)\n\nsqlresult_18 = pd.read_sql_query(sqlEdw16, connection)\nsqlresult_18.to_csv(UA_Seat_Cancels_CSV_FILE, index=False)\n\nsqlresult_19 = pd.read_sql_query(sqlEdw17, connection)\nsqlresult_19.to_csv(Carrier_delays_CSV_FILE, index=False)\n\nsqlresult_20 = pd.read_sql_query(sqlEdw18, connection)\nsqlresult_20.to_csv(DELAYS_INFO_CSV_FILE, index=False)\nlogging.info(\'Running MF SQL queries\');\n\nmasflight_connection_string = "mysql+pymysql://ua_sumit_sharma1:uukexRCsHyAb9kw6rcMX@54.163.228.37:3306/masflightdb_customers_prd?charset=utf8mb4"\nlogging.info(\'Connecting to Masflight\')\n\nm1 = open(MF_SQL_1, \'r\')\nsqlMf1 = text(m1.read())\nm1.close()\n\nm2 = open(MF_SQL_2, \'r\')\nsqlMf2 = text(m2.read())\nm2.close()\n\nm3 = open(MF_SQL_3, \'r\')\nsqlMf3 = text(m3.read())\nm3.close()\n\nm4 = open(MF_SQL_4, \'r\')\nsqlMf4 = text(m4.read())\nm4.close()\n\nsqlresult_8 = pd.read_sql_query(sqlMf1,masflight_connection_string)\nsqlresult_8.to_csv(OA_SQL_1_CSV_FILE, index=False)\n'}, 'cellRanges': [{'startLine': 0, 'stopLine': 5, 'commandId': 8801006436713080}, {'startLine': 5, 'stopLine': 29, 'commandId': 6252130007789254}, {'startLine': 29, 'stopLine': 36, 'commandId': 6252130007790467}, {'startLine': 36, 'stopLine': 55, 'commandId': 8801006436713084}, {'startLine': 55, 'stopLine': 63, 'commandId': 8801006436713085}, {'startLine': 63, 'stopLine': 90, 'commandId': 8801006436713087}, {'startLine': 90, 'stopLine': 112, 'commandId': 8801006436713088}, {'startLine': 112, 'stopLine': 122, 'commandId': 8801006436713090}, {'startLine': 122, 'stopLine': 143, 'commandId': 8801006436713092}, {'startLine': 143, 'stopLine': 216, 'commandId': 8801006436713094}, {'startLine': 216, 'stopLine': 271, 'commandId': 8801006436713097}, {'startLine': 271, 'stopLine': 290, 'commandId': 8801006436713105}, {'startLine': 290, 'stopLine': 292, 'commandId': 8801006436713118}], 'id': 1}}}}}, 'buffers': []})
+2025-11-14 08:25:05,342 handle_msg[LSP_COMM_ID]({'header': {'msg_type': 'comm_msg', 'msg_id': '40401242-12e8-4663-91d9-8afdeb2e0022', 'session': '', 'username': '', 'date': datetime.datetime(2025, 11, 14, 8, 25, 5, 298000, tzinfo=tzlocal()), 'version': '5.4'}, 'msg_id': '40401242-12e8-4663-91d9-8afdeb2e0022', 'msg_type': 'comm_msg', 'parent_header': {'session': '', 'username': '', 'version': '5.3'}, 'metadata': {'enableLSPGoToDefinitionOnModule_v2': 'true', 'enableWSFSPythonModulePeek': 'false', 'jediAutoImportModulesList': 'asyncio,numpy,pandas,pyspark,pyspark.ml,pyspark.sql,seaborn,urllib3'}, 'content': {'comm_id': 'LSP_COMM_ID', 'data': {'header': {'lsm_protocol_version': 0, 'msg_type': 'lsp_msg', 'ls_instance_id': '8efda180-b701-4105-811e-1e3ff7373e5f'}, 'body': {'lsp_msg': {'jsonrpc': '2.0', 'method': 'initialized', 'params': {}}}}}, 'buffers': []})
+2025-11-14 08:25:09,521 Received command c on object id p0
+2025-11-14 08:25:09,525 Command to send: c
+t
+getNotebookScopedPythonEnvManager
+e
+
+2025-11-14 08:25:09,526 Answer received: !yro448
+2025-11-14 08:25:09,526 Command to send: c
+o448
+parseCmd
+spip
+suninstall -y sqlalchemy
+e
+
+2025-11-14 08:25:09,526 Answer received: !yro449
+2025-11-14 08:25:09,526 Command to send: c
+o449
+error
+e
+
+2025-11-14 08:25:09,527 Answer received: !ys
+2025-11-14 08:25:09,527 Command to send: c
+o449
+warning
+e
+
+2025-11-14 08:25:09,527 Answer received: !ys
+2025-11-14 08:25:09,527 Command to send: c
+o449
+isMutation
+e
+
+2025-11-14 08:25:09,527 Answer received: !ybtrue
+2025-11-14 08:25:09,527 Command to send: c
+o448
+getIsEnvCloned
+e
+
+2025-11-14 08:25:09,527 Answer received: !ybtrue
+2025-11-14 08:25:09,528 Command to send: c
+o448
+markAsCustomized
+e
+
+2025-11-14 08:25:09,528 Answer received: !yv
+2025-11-14 08:25:09,529 Command to send: c
+o449
+rewrittenCommand
+e
+
+2025-11-14 08:25:09,529 Answer received: !ys--disable-pip-version-check uninstall -y sqlalchemy
+2025-11-14 08:25:09,529 Command to send: c
+t
+getNotebookScopedPythonEnvManager
+e
+
+2025-11-14 08:25:09,529 Answer received: !yro450
+2025-11-14 08:25:09,529 Command to send: c
+o449
+magicCmd
+e
+
+2025-11-14 08:25:09,530 Answer received: !yspip
+2025-11-14 08:25:09,530 Command to send: c
+o449
+rewrittenCommand
+e
+
+2025-11-14 08:25:09,530 Answer received: !ys--disable-pip-version-check uninstall -y sqlalchemy
+2025-11-14 08:25:09,530 Command to send: c
+o449
+virtualEnvScript
+e
+
+2025-11-14 08:25:09,530 Answer received: !ys/local_disk0/.ephemeral_nfs/envs/pythonEnv-531d5ee8-d76f-401f-bee7-8820e3bf6650/python_start_notebook_scoped.sh
+2025-11-14 08:25:10,523 Command to send: c
+o450
+logPipCommandDuration
+ro449
+d0.9922096729278564
+i0
+e
+
+2025-11-14 08:25:10,524 Answer received: !yv
+2025-11-14 08:25:10,524 Command to send: c
+o448
+postExecute
+ro449
+e
+
+2025-11-14 08:25:11,134 Answer received: !yv
+2025-11-14 08:25:11,134 Command to send: c
+o449
+isMutation
+e
+
+2025-11-14 08:25:11,134 Answer received: !ybtrue
+2025-11-14 08:25:12,136 Command to send: c
+t
+getNotebookScopedPythonEnvManager
+e
+
+2025-11-14 08:25:12,136 Answer received: !yro451
+2025-11-14 08:25:12,137 Command to send: c
+o451
+parseCmd
+spip
+sinstall "sqlalchemy==1.4.52"
+e
+
+2025-11-14 08:25:12,137 Answer received: !yro452
+2025-11-14 08:25:12,137 Command to send: c
+o452
+error
+e
+
+2025-11-14 08:25:12,138 Answer received: !ys
+2025-11-14 08:25:12,138 Command to send: c
+o452
+warning
+e
+
+2025-11-14 08:25:12,138 Answer received: !ys
+2025-11-14 08:25:12,139 Command to send: c
+o452
+isMutation
+e
+
+2025-11-14 08:25:12,139 Answer received: !ybtrue
+2025-11-14 08:25:12,139 Command to send: c
+o451
+getIsEnvCloned
+e
+
+2025-11-14 08:25:12,139 Answer received: !ybtrue
+2025-11-14 08:25:12,139 Command to send: c
+o451
+markAsCustomized
+e
+
+2025-11-14 08:25:12,141 Answer received: !yv
+2025-11-14 08:25:12,141 Command to send: c
+o452
+rewrittenCommand
+e
+
+2025-11-14 08:25:12,142 Answer received: !ys--disable-pip-version-check install "sqlalchemy==1.4.52"
+2025-11-14 08:25:12,142 Command to send: c
+t
+getNotebookScopedPythonEnvManager
+e
+
+2025-11-14 08:25:12,142 Answer received: !yro453
+2025-11-14 08:25:12,142 Command to send: c
+o452
+magicCmd
+e
+
+2025-11-14 08:25:12,142 Answer received: !yspip
+2025-11-14 08:25:12,143 Command to send: c
+o452
+rewrittenCommand
+e
+
+2025-11-14 08:25:12,143 Answer received: !ys--disable-pip-version-check install "sqlalchemy==1.4.52"
+2025-11-14 08:25:12,143 Command to send: c
+o452
+virtualEnvScript
+e
+
+2025-11-14 08:25:12,143 Answer received: !ys/local_disk0/.ephemeral_nfs/envs/pythonEnv-531d5ee8-d76f-401f-bee7-8820e3bf6650/python_start_notebook_scoped.sh
+2025-11-14 08:25:13,900 Command to send: m
+d
+o448
+e
+
+2025-11-14 08:25:13,901 Answer received: !yv
+2025-11-14 08:25:13,901 Command to send: m
+d
+o449
+e
+
+2025-11-14 08:25:13,901 Answer received: !yv
+2025-11-14 08:25:13,901 Command to send: m
+d
+o450
+e
+
+2025-11-14 08:25:13,902 Answer received: !yv
+2025-11-14 08:25:15,824 Command to send: c
+o453
+logPipCommandDuration
+ro452
+d3.680342674255371
+i0
+e
+
+2025-11-14 08:25:15,825 Answer received: !yv
+2025-11-14 08:25:15,825 Command to send: c
+o451
+postExecute
+ro452
+e
+
+2025-11-14 08:25:16,460 Answer received: !yv
+2025-11-14 08:25:16,460 Command to send: c
+o452
+isMutation
+e
+
+2025-11-14 08:25:16,460 Answer received: !ybtrue
+2025-11-14 08:25:17,462 Command to send: c
+t
+restartInterpAfterExecution
+e
+
+2025-11-14 08:25:17,462 Answer received: !yv
+2025-11-14 08:25:17,463 Command to send: c
+t
+getNotebookScopedPythonEnvManager
+e
+
+2025-11-14 08:25:17,463 Answer received: !yro454
+2025-11-14 08:25:17,463 Command to send: c
+o454
+parseCmd
+spip
+sinstall pymysql
+e
+
+2025-11-14 08:25:17,464 Answer received: !yro455
+2025-11-14 08:25:17,464 Command to send: c
+o455
+error
+e
+
+2025-11-14 08:25:17,464 Answer received: !ys
+2025-11-14 08:25:17,464 Command to send: c
+o455
+warning
+e
+
+2025-11-14 08:25:17,464 Answer received: !ys
+2025-11-14 08:25:17,464 Command to send: c
+o455
+isMutation
+e
+
+2025-11-14 08:25:17,465 Answer received: !ybtrue
+2025-11-14 08:25:17,465 Command to send: c
+o454
+getIsEnvCloned
+e
+
+2025-11-14 08:25:17,465 Answer received: !ybtrue
+2025-11-14 08:25:17,465 Command to send: c
+o454
+markAsCustomized
+e
+
+2025-11-14 08:25:17,466 Answer received: !yv
+2025-11-14 08:25:17,466 Command to send: c
+o455
+rewrittenCommand
+e
+
+2025-11-14 08:25:17,466 Answer received: !ys--disable-pip-version-check install pymysql
+2025-11-14 08:25:17,467 Command to send: c
+t
+getNotebookScopedPythonEnvManager
+e
+
+2025-11-14 08:25:17,467 Answer received: !yro456
+2025-11-14 08:25:17,467 Command to send: c
+o455
+magicCmd
+e
+
+2025-11-14 08:25:17,467 Answer received: !yspip
+2025-11-14 08:25:17,467 Command to send: c
+o455
+rewrittenCommand
+e
+
+2025-11-14 08:25:17,467 Answer received: !ys--disable-pip-version-check install pymysql
+2025-11-14 08:25:17,468 Command to send: c
+o455
+virtualEnvScript
+e
+
+2025-11-14 08:25:17,468 Answer received: !ys/local_disk0/.ephemeral_nfs/envs/pythonEnv-531d5ee8-d76f-401f-bee7-8820e3bf6650/python_start_notebook_scoped.sh

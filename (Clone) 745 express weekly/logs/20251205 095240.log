@@ -1,0 +1,664 @@
+2025-12-05 09:52:41,298 - INFO - Starting 745 Express Weekly Report Process
+2025-12-05 09:52:41,299 - INFO - Connecting to UDH
+2025-12-05 09:52:41,348 - INFO - UDH connection successful
+2025-12-05 09:52:41,348 - INFO - Checking SuperSnapshot data availability
+2025-12-05 09:52:41,676 - INFO - Number of rows in SuperSnapshot: 4796
+2025-12-05 09:52:41,676 - INFO - SuperSnapshot data available, proceeding with queries
+2025-12-05 09:52:41,677 - INFO - Running ALL UDH SQL queries
+2025-12-05 09:52:44,868 - INFO - UA_SQL_1 completed - 1 rows
+2025-12-05 09:52:45,810 - INFO - CNXL_SQL_2 completed - 29 rows
+2025-12-05 09:52:48,470 - INFO - RES_CNXL_SQL_3 completed - 0 rows
+2025-12-05 09:52:49,292 - INFO - SCH_DEP_SQL_4 completed - 10 rows
+2025-12-05 09:52:52,723 - INFO - DIVERTS_SQL_5 completed - 1 rows
+2025-12-05 09:52:53,754 - INFO - RECOVERED_DIVERTS_SQL_6 completed - 1 rows
+2025-12-05 09:53:00,401 - INFO - UA_HUB_SQL_7 completed - 11 rows
+2025-12-05 09:53:01,053 - INFO - FLIGHTS_NOT_DEPARTED_SQL_8 completed - 1 rows
+2025-12-05 09:53:02,561 - INFO - CANCELLED_FLIGHTS_SQL_9 completed - 843 rows
+2025-12-05 09:53:03,339 - INFO - YET_TO_DEPART_SQL_10 completed - 0 rows
+2025-12-05 09:53:07,858 - INFO - RESIDUAL_CANCELS_SQL_11 completed - 0 rows
+2025-12-05 09:53:08,728 - INFO - REPOSITIONED_FLIGHTS_SQL_12 completed - 203 rows
+2025-12-05 09:53:10,154 - INFO - REPOSITIONED_COUNT_SQL_13 completed - 1 rows
+2025-12-05 09:53:15,262 - INFO - DIVERTED_FLIGHTS_SQL_14 completed - 30 rows
+2025-12-05 09:53:57,817 - INFO - UA_SQL_15 completed - 10 rows
+2025-12-05 09:53:59,717 - INFO - UA_LINE completed - 229 rows
+2025-12-05 09:54:04,363 - INFO - UA_SEAT_CANCELS completed - 1 rows
+2025-12-05 09:54:06,772 - INFO - CARRIER_DELAYS completed - 5 rows
+2025-12-05 09:54:08,222 - INFO - DELAYS completed - 1 rows
+2025-12-05 09:54:08,222 - INFO - Querying MasFlight Data
+2025-12-05 09:54:09,004 - INFO - OA_SQL_1 completed - 2 rows
+2025-12-05 09:54:09,400 - INFO - OA_SQL_2 completed - 50 rows
+2025-12-05 09:54:09,812 - INFO - OA_LINE completed - 7 rows
+2025-12-05 09:54:10,080 - INFO - OA_SEATCNXL completed - 2 rows
+2025-12-05 09:54:10,089 - ERROR - Latest data unavailable in UDH - insufficient rows
+2025-12-05 09:54:10,090 - INFO - ===== STARTING EXCEL UPDATE PROCESS =====
+2025-12-05 09:54:19,608 - INFO - ===== STEP 1: UPDATING RAW DATA SHEETS =====
+2025-12-05 09:54:19,609 - INFO - All_Cancels_Raw sheet exists - updating
+2025-12-05 09:54:19,638 - INFO - All_Cancels_Raw sheet updated with 843 rows
+2025-12-05 09:54:19,638 - INFO - Yet_to_Depart_Raw sheet exists - updating
+2025-12-05 09:54:19,639 - INFO - Yet_to_Depart_Raw sheet updated with 0 rows
+2025-12-05 09:54:19,639 - INFO - Residual_Cancels_Raw sheet exists - updating
+2025-12-05 09:54:19,640 - INFO - Residual_Cancels_Raw sheet updated with 0 rows
+2025-12-05 09:54:19,641 - INFO - Diverted_Flights_Raw sheet exists - updating
+2025-12-05 09:54:19,644 - INFO - Diverted_Flights_Raw sheet updated with 30 rows
+2025-12-05 09:54:19,644 - INFO - Repositioned_Flights_Raw sheet exists - updating
+2025-12-05 09:54:19,652 - INFO - Repositioned_Flights_Raw sheet updated with 203 rows
+2025-12-05 09:54:19,653 - INFO - ===== STEP 2: UPDATING TEMPLATE/PROCESSED SHEETS =====
+2025-12-05 09:54:19,655 - INFO - Updated existing template sheet: UA_SQL_1 with 1 rows
+2025-12-05 09:54:19,657 - INFO - Updated existing template sheet: OA_SQL_1 with 2 rows
+2025-12-05 09:54:19,661 - INFO - Updated existing template sheet: OA_SQL_2 with 50 rows
+2025-12-05 09:54:19,663 - INFO - Updated existing template sheet: CNXL_SQL_2 with 29 rows
+2025-12-05 09:54:19,664 - INFO - Updated existing template sheet: RES_CNXL_SQL_3 with 0 rows
+2025-12-05 09:54:19,665 - INFO - Updated existing template sheet: SCH_DEP_SQL_4 with 10 rows
+2025-12-05 09:54:19,665 - INFO - Updated existing template sheet: TOTAL_DIVERTS_SQL_5 with 1 rows
+2025-12-05 09:54:19,666 - INFO - Updated existing template sheet: DIVERTS_RECOVERED_SQL_6 with 1 rows
+2025-12-05 09:54:19,670 - INFO - Updated existing template sheet: UA_HUB_SQL_7 with 11 rows
+2025-12-05 09:54:19,671 - INFO - Updated existing template sheet: FLIGHTS_NOT_DEPARTED_SQL_8 with 1 rows
+2025-12-05 09:54:19,671 - INFO - Updated existing template sheet: REPOSITIONED_FLIGHTS_SQL_13 with 1 rows
+2025-12-05 09:54:19,697 - INFO - Updated existing template sheet: UA_Line with 229 rows
+2025-12-05 09:54:19,698 - INFO - UA_SQL_15 sheet created
+2025-12-05 09:54:19,699 - INFO - UA_SQL_15 sheet updated with 10 rows
+2025-12-05 09:54:19,700 - INFO - Updated existing template sheet: UA_Seat_cancels with 1 rows
+2025-12-05 09:54:19,702 - INFO - Updated existing template sheet: Delays_info with 1 rows
+2025-12-05 09:54:19,703 - INFO - Updated existing template sheet: Carrier_delays with 5 rows
+2025-12-05 09:54:19,704 - INFO - Updated existing template sheet: OA_Line with 7 rows
+2025-12-05 09:54:19,704 - INFO - Updated existing template sheet: OA_SeatCnxl with 2 rows
+2025-12-05 09:54:19,768 - INFO - Updated existing template sheet: All_Cancels_Raw with 843 rows
+2025-12-05 09:54:19,770 - INFO - Updated existing template sheet: Yet_to_Depart_Raw with 0 rows
+2025-12-05 09:54:19,771 - INFO - Updated existing template sheet: Residual_Cancels_Raw with 0 rows
+2025-12-05 09:54:19,776 - INFO - Updated existing template sheet: Diverted_Flights_Raw with 30 rows
+2025-12-05 09:54:19,788 - INFO - Updated existing template sheet: Repositioned_Flights_Raw with 203 rows
+2025-12-05 09:54:24,961 - INFO - Closing down clientserver connection
+2025-12-05 09:54:24,963 - INFO - Closing down clientserver connection
+2025-12-05 09:56:55,233 - INFO - Received command c on object id p0
+2025-12-05 09:56:55,282 - INFO - Error while sending or receiving.
+Traceback (most recent call last):
+  File "/databricks/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/clientserver.py", line 528, in send_command
+    self.socket.sendall(command.encode("utf-8"))
+ConnectionResetError: [Errno 104] Connection reset by peer
+2025-12-05 09:56:55,286 - INFO - Closing down clientserver connection
+2025-12-05 09:56:55,286 - INFO - Exception while sending command.
+Traceback (most recent call last):
+  File "/databricks/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/clientserver.py", line 528, in send_command
+    self.socket.sendall(command.encode("utf-8"))
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/databricks/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/databricks/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/clientserver.py", line 531, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending
+2025-12-05 09:56:55,291 - INFO - Closing down clientserver connection
+2025-12-05 09:56:59,515 - INFO - Starting 745 Express Weekly Report Process
+2025-12-05 09:56:59,515 - INFO - Connecting to UDH
+2025-12-05 09:56:59,571 - INFO - UDH connection successful
+2025-12-05 09:56:59,571 - INFO - Checking SuperSnapshot data availability
+2025-12-05 09:57:00,884 - INFO - Number of rows in SuperSnapshot: 4796
+2025-12-05 09:57:00,885 - INFO - SuperSnapshot data available, proceeding with queries
+2025-12-05 09:57:00,886 - INFO - Running ALL UDH SQL queries
+2025-12-05 09:57:08,584 - INFO - UA_SQL_1 completed - 1 rows
+2025-12-05 09:57:09,138 - INFO - Error while sending or receiving.
+Traceback (most recent call last):
+  File "/databricks/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/clientserver.py", line 528, in send_command
+    self.socket.sendall(command.encode("utf-8"))
+ConnectionResetError: [Errno 104] Connection reset by peer
+2025-12-05 09:57:09,138 - INFO - Closing down clientserver connection
+2025-12-05 09:57:09,139 - INFO - Exception while sending command.
+Traceback (most recent call last):
+  File "/databricks/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/clientserver.py", line 528, in send_command
+    self.socket.sendall(command.encode("utf-8"))
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/databricks/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/databricks/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/clientserver.py", line 531, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending
+2025-12-05 09:57:09,142 - INFO - Closing down clientserver connection
+2025-12-05 09:57:10,012 - INFO - CNXL_SQL_2 completed - 29 rows
+2025-12-05 09:57:14,782 - INFO - RES_CNXL_SQL_3 completed - 0 rows
+2025-12-05 09:57:15,922 - INFO - SCH_DEP_SQL_4 completed - 10 rows
+2025-12-05 09:57:22,090 - INFO - DIVERTS_SQL_5 completed - 1 rows
+2025-12-05 09:57:22,766 - INFO - RECOVERED_DIVERTS_SQL_6 completed - 1 rows
+2025-12-05 09:57:29,357 - INFO - UA_HUB_SQL_7 completed - 11 rows
+2025-12-05 09:57:29,752 - INFO - FLIGHTS_NOT_DEPARTED_SQL_8 completed - 1 rows
+2025-12-05 09:57:31,359 - INFO - CANCELLED_FLIGHTS_SQL_9 completed - 843 rows
+2025-12-05 09:57:32,958 - INFO - YET_TO_DEPART_SQL_10 completed - 0 rows
+2025-12-05 09:57:35,461 - INFO - RESIDUAL_CANCELS_SQL_11 completed - 0 rows
+2025-12-05 09:57:36,263 - INFO - REPOSITIONED_FLIGHTS_SQL_12 completed - 203 rows
+2025-12-05 09:57:36,797 - INFO - REPOSITIONED_COUNT_SQL_13 completed - 1 rows
+2025-12-05 09:57:41,187 - INFO - DIVERTED_FLIGHTS_SQL_14 completed - 30 rows
+2025-12-05 09:57:43,748 - INFO - UA_SQL_15 completed - 10 rows
+2025-12-05 09:57:45,660 - INFO - UA_LINE completed - 229 rows
+2025-12-05 09:57:47,386 - INFO - UA_SEAT_CANCELS completed - 1 rows
+2025-12-05 09:57:48,839 - INFO - CARRIER_DELAYS completed - 5 rows
+2025-12-05 09:57:49,975 - INFO - DELAYS completed - 1 rows
+2025-12-05 09:57:49,975 - INFO - Querying MasFlight Data
+2025-12-05 09:58:26,074 - INFO - Received command c on object id p0
+2025-12-05 09:58:29,524 - INFO - Starting 745 Express Weekly Report Process
+2025-12-05 09:58:29,525 - INFO - Connecting to UDH
+2025-12-05 09:58:29,603 - INFO - UDH connection successful
+2025-12-05 09:58:29,603 - INFO - Checking SuperSnapshot data availability
+2025-12-05 09:58:30,195 - INFO - Number of rows in SuperSnapshot: 4796
+2025-12-05 09:58:30,196 - INFO - SuperSnapshot data available, proceeding with queries
+2025-12-05 09:58:30,196 - INFO - Running ALL UDH SQL queries
+2025-12-05 09:58:33,357 - INFO - UA_SQL_1 completed - 1 rows
+2025-12-05 09:58:34,499 - INFO - CNXL_SQL_2 completed - 29 rows
+2025-12-05 09:58:37,096 - INFO - RES_CNXL_SQL_3 completed - 0 rows
+2025-12-05 09:58:37,716 - INFO - SCH_DEP_SQL_4 completed - 10 rows
+2025-12-05 09:58:40,197 - INFO - DIVERTS_SQL_5 completed - 1 rows
+2025-12-05 09:58:40,674 - INFO - RECOVERED_DIVERTS_SQL_6 completed - 1 rows
+2025-12-05 09:58:46,507 - INFO - UA_HUB_SQL_7 completed - 11 rows
+2025-12-05 09:58:46,907 - INFO - FLIGHTS_NOT_DEPARTED_SQL_8 completed - 1 rows
+2025-12-05 09:58:47,813 - INFO - CANCELLED_FLIGHTS_SQL_9 completed - 843 rows
+2025-12-05 09:58:48,274 - INFO - YET_TO_DEPART_SQL_10 completed - 0 rows
+2025-12-05 09:58:50,750 - INFO - RESIDUAL_CANCELS_SQL_11 completed - 0 rows
+2025-12-05 09:58:51,361 - INFO - REPOSITIONED_FLIGHTS_SQL_12 completed - 203 rows
+2025-12-05 09:58:52,237 - INFO - REPOSITIONED_COUNT_SQL_13 completed - 1 rows
+2025-12-05 09:58:55,492 - INFO - DIVERTED_FLIGHTS_SQL_14 completed - 30 rows
+2025-12-05 09:58:57,431 - INFO - UA_SQL_15 completed - 10 rows
+2025-12-05 09:58:58,767 - INFO - UA_LINE completed - 229 rows
+2025-12-05 09:58:59,986 - INFO - UA_SEAT_CANCELS completed - 1 rows
+2025-12-05 09:59:00,929 - INFO - CARRIER_DELAYS completed - 5 rows
+2025-12-05 09:59:01,827 - INFO - DELAYS completed - 1 rows
+2025-12-05 09:59:01,827 - INFO - Querying MasFlight Data
+2025-12-05 09:59:02,361 - INFO - OA_SQL_1 completed - 2 rows
+2025-12-05 09:59:02,555 - INFO - OA_SQL_2 completed - 50 rows
+2025-12-05 09:59:02,854 - INFO - OA_LINE completed - 7 rows
+2025-12-05 09:59:02,976 - INFO - OA_SEATCNXL completed - 2 rows
+2025-12-05 09:59:02,988 - ERROR - Latest data unavailable in UDH - insufficient rows
+2025-12-05 09:59:02,989 - INFO - ===== STARTING EXCEL UPDATE PROCESS =====
+2025-12-05 09:59:14,673 - INFO - ===== STEP 1: UPDATING RAW DATA SHEETS =====
+2025-12-05 09:59:14,710 - INFO - All_Cancels_Raw sheet exists - updating
+2025-12-05 09:59:14,756 - INFO - All_Cancels_Raw sheet updated with 843 rows
+2025-12-05 09:59:14,756 - INFO - Yet_to_Depart_Raw sheet exists - updating
+2025-12-05 09:59:14,758 - INFO - Yet_to_Depart_Raw sheet updated with 0 rows
+2025-12-05 09:59:14,759 - INFO - Residual_Cancels_Raw sheet exists - updating
+2025-12-05 09:59:14,759 - INFO - Residual_Cancels_Raw sheet updated with 0 rows
+2025-12-05 09:59:14,760 - INFO - Diverted_Flights_Raw sheet exists - updating
+2025-12-05 09:59:14,764 - INFO - Diverted_Flights_Raw sheet updated with 30 rows
+2025-12-05 09:59:14,764 - INFO - Repositioned_Flights_Raw sheet exists - updating
+2025-12-05 09:59:14,773 - INFO - Repositioned_Flights_Raw sheet updated with 203 rows
+2025-12-05 09:59:14,773 - INFO - ===== STEP 2: UPDATING TEMPLATE/PROCESSED SHEETS =====
+2025-12-05 09:59:14,776 - INFO - Updated existing template sheet: UA_SQL_1 with 1 rows
+2025-12-05 09:59:14,777 - INFO - Updated existing template sheet: OA_SQL_1 with 2 rows
+2025-12-05 09:59:14,782 - INFO - Updated existing template sheet: OA_SQL_2 with 50 rows
+2025-12-05 09:59:14,784 - INFO - Updated existing template sheet: CNXL_SQL_2 with 29 rows
+2025-12-05 09:59:14,785 - INFO - Updated existing template sheet: RES_CNXL_SQL_3 with 0 rows
+2025-12-05 09:59:14,786 - INFO - Updated existing template sheet: SCH_DEP_SQL_4 with 10 rows
+2025-12-05 09:59:14,786 - INFO - Updated existing template sheet: TOTAL_DIVERTS_SQL_5 with 1 rows
+2025-12-05 09:59:14,787 - INFO - Updated existing template sheet: DIVERTS_RECOVERED_SQL_6 with 1 rows
+2025-12-05 09:59:14,793 - INFO - Updated existing template sheet: UA_HUB_SQL_7 with 11 rows
+2025-12-05 09:59:14,794 - INFO - Updated existing template sheet: FLIGHTS_NOT_DEPARTED_SQL_8 with 1 rows
+2025-12-05 09:59:14,794 - INFO - Updated existing template sheet: REPOSITIONED_FLIGHTS_SQL_13 with 1 rows
+2025-12-05 09:59:14,821 - INFO - Updated existing template sheet: UA_Line with 229 rows
+2025-12-05 09:59:14,822 - INFO - UA_SQL_15 sheet created
+2025-12-05 09:59:14,824 - INFO - UA_SQL_15 sheet updated with 10 rows
+2025-12-05 09:59:14,824 - INFO - Updated existing template sheet: UA_Seat_cancels with 1 rows
+2025-12-05 09:59:14,826 - INFO - Updated existing template sheet: Delays_info with 1 rows
+2025-12-05 09:59:14,827 - INFO - Updated existing template sheet: Carrier_delays with 5 rows
+2025-12-05 09:59:14,828 - INFO - Updated existing template sheet: OA_Line with 7 rows
+2025-12-05 09:59:14,828 - INFO - Updated existing template sheet: OA_SeatCnxl with 2 rows
+2025-12-05 09:59:14,886 - INFO - Updated existing template sheet: All_Cancels_Raw with 843 rows
+2025-12-05 09:59:14,887 - INFO - Updated existing template sheet: Yet_to_Depart_Raw with 0 rows
+2025-12-05 09:59:14,888 - INFO - Updated existing template sheet: Residual_Cancels_Raw with 0 rows
+2025-12-05 09:59:14,891 - INFO - Updated existing template sheet: Diverted_Flights_Raw with 30 rows
+2025-12-05 09:59:14,903 - INFO - Updated existing template sheet: Repositioned_Flights_Raw with 203 rows
+2025-12-05 09:59:20,142 - INFO - ✓ Compiled workbook saved: 2512050745_UAX_WB_Weekly.xlsx
+2025-12-05 09:59:20,151 - INFO - Sending email
+2025-12-05 09:59:20,214 - INFO - Attaching Compiled Excel
+2025-12-05 09:59:22,992 - INFO - Email sent and process is completed
+2025-12-05 09:59:23,045 - INFO - ===== PROCESS COMPLETED SUCCESSFULLY =====
+2025-12-05 10:10:36,985 - INFO - Received command c on object id p0
+2025-12-05 10:10:40,287 - ERROR - KeyboardInterrupt while sending command.
+Traceback (most recent call last):
+  File "/databricks/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/databricks/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/clientserver.py", line 536, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+KeyboardInterrupt
+2025-12-05 10:10:40,290 - INFO - Search for sockets that match local addr ('127.0.0.1', 49488) and remote addr ('127.0.0.1', 34035)
+2025-12-05 10:10:40,290 - INFO - Shutting down matched socket <socket.socket fd=56, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 47184), raddr=('127.0.0.1', 34035)>
+2025-12-05 10:10:40,290 - INFO - Close connection stream
+2025-12-05 10:10:40,290 - INFO - Send shutdown request for the Java socket 127.0.0.1, remote port 49488, local port 34035
+2025-12-05 10:10:40,290 - INFO - Close connection
+2025-12-05 10:10:40,291 - INFO - Closing down clientserver connection
+2025-12-05 10:10:40,291 - INFO - Connection is closed
+2025-12-05 10:10:40,291 - INFO - Finished shutdown of socket None
+2025-12-05 10:10:40,291 - INFO - Shutting down the current connection <py4j.clientserver.ClientServerConnection object at 0x7fd864339ed0>
+2025-12-05 10:10:40,291 - INFO - Close connection stream
+2025-12-05 10:10:40,291 - INFO - Send shutdown request for the Java socket 127.0.0.1, remote port 49488, local port 34035
+2025-12-05 10:10:40,292 - INFO - Close connection
+2025-12-05 10:10:40,292 - INFO - Closing down clientserver connection
+2025-12-05 10:10:40,292 - INFO - Connection is closed
+2025-12-05 10:10:41,182 - INFO - Received command c on object id p0
+2025-12-05 10:10:45,698 - INFO - Starting 745 Express Weekly Report Process
+2025-12-05 10:10:45,699 - INFO - Connecting to UDH
+2025-12-05 10:10:45,865 - INFO - UDH connection successful
+2025-12-05 10:10:45,865 - INFO - Checking SuperSnapshot data availability
+2025-12-05 10:10:46,547 - INFO - Number of rows in SuperSnapshot: 4796
+2025-12-05 10:10:46,547 - INFO - SuperSnapshot data available, proceeding with queries
+2025-12-05 10:10:46,548 - INFO - Running ALL UDH SQL queries
+2025-12-05 10:10:50,613 - INFO - UA_SQL_1 completed - 1 rows
+2025-12-05 10:10:53,271 - INFO - CNXL_SQL_2 completed - 29 rows
+2025-12-05 10:11:00,225 - INFO - RES_CNXL_SQL_3 completed - 0 rows
+2025-12-05 10:11:00,662 - INFO - SCH_DEP_SQL_4 completed - 10 rows
+2025-12-05 10:11:03,717 - INFO - DIVERTS_SQL_5 completed - 1 rows
+2025-12-05 10:11:04,535 - INFO - RECOVERED_DIVERTS_SQL_6 completed - 1 rows
+2025-12-05 10:11:14,479 - INFO - UA_HUB_SQL_7 completed - 11 rows
+2025-12-05 10:11:14,808 - INFO - FLIGHTS_NOT_DEPARTED_SQL_8 completed - 1 rows
+2025-12-05 10:11:18,533 - INFO - CANCELLED_FLIGHTS_SQL_9 completed - 843 rows
+2025-12-05 10:11:21,881 - INFO - YET_TO_DEPART_SQL_10 completed - 0 rows
+2025-12-05 10:11:26,267 - INFO - RESIDUAL_CANCELS_SQL_11 completed - 0 rows
+2025-12-05 10:11:27,121 - INFO - REPOSITIONED_FLIGHTS_SQL_12 completed - 203 rows
+2025-12-05 10:11:29,206 - INFO - REPOSITIONED_COUNT_SQL_13 completed - 1 rows
+2025-12-05 10:11:35,499 - INFO - DIVERTED_FLIGHTS_SQL_14 completed - 30 rows
+2025-12-05 10:11:38,332 - INFO - UA_SQL_15 completed - 10 rows
+2025-12-05 10:11:40,916 - INFO - UA_LINE completed - 229 rows
+2025-12-05 10:11:41,983 - INFO - UA_SEAT_CANCELS completed - 1 rows
+2025-12-05 10:11:44,161 - INFO - CARRIER_DELAYS completed - 5 rows
+2025-12-05 10:11:45,038 - INFO - DELAYS completed - 1 rows
+2025-12-05 10:11:45,038 - INFO - Querying MasFlight Data
+2025-12-05 10:11:45,266 - INFO - OA_SQL_1 completed - 2 rows
+2025-12-05 10:11:45,587 - INFO - OA_SQL_2 completed - 50 rows
+2025-12-05 10:11:45,911 - INFO - OA_LINE completed - 7 rows
+2025-12-05 10:11:46,100 - INFO - OA_SEATCNXL completed - 2 rows
+2025-12-05 10:11:46,109 - ERROR - Latest data unavailable in UDH - insufficient rows
+2025-12-05 10:11:46,110 - INFO - ===== STARTING EXCEL UPDATE PROCESS =====
+2025-12-05 10:11:55,759 - INFO - ===== STEP 1: UPDATING RAW DATA SHEETS =====
+2025-12-05 10:11:55,760 - INFO - All_Cancels_Raw sheet exists - updating
+2025-12-05 10:11:55,789 - INFO - All_Cancels_Raw sheet updated with 843 rows
+2025-12-05 10:11:55,789 - INFO - Yet_to_Depart_Raw sheet exists - updating
+2025-12-05 10:11:55,790 - INFO - Yet_to_Depart_Raw sheet updated with 0 rows
+2025-12-05 10:11:55,791 - INFO - Residual_Cancels_Raw sheet exists - updating
+2025-12-05 10:11:55,791 - INFO - Residual_Cancels_Raw sheet updated with 0 rows
+2025-12-05 10:11:55,792 - INFO - Diverted_Flights_Raw sheet exists - updating
+2025-12-05 10:11:55,795 - INFO - Diverted_Flights_Raw sheet updated with 30 rows
+2025-12-05 10:11:55,795 - INFO - Repositioned_Flights_Raw sheet exists - updating
+2025-12-05 10:11:55,804 - INFO - Repositioned_Flights_Raw sheet updated with 203 rows
+2025-12-05 10:11:55,804 - INFO - ===== STEP 2: UPDATING TEMPLATE/PROCESSED SHEETS =====
+2025-12-05 10:11:55,807 - INFO - Updated existing template sheet: UA_SQL_1 with 1 rows
+2025-12-05 10:11:55,809 - INFO - Updated existing template sheet: OA_SQL_1 with 2 rows
+2025-12-05 10:11:55,816 - INFO - Updated existing template sheet: OA_SQL_2 with 50 rows
+2025-12-05 10:11:55,819 - INFO - Updated existing template sheet: CNXL_SQL_2 with 29 rows
+2025-12-05 10:11:55,820 - INFO - Updated existing template sheet: RES_CNXL_SQL_3 with 0 rows
+2025-12-05 10:11:55,821 - INFO - Updated existing template sheet: SCH_DEP_SQL_4 with 10 rows
+2025-12-05 10:11:55,821 - INFO - Updated existing template sheet: TOTAL_DIVERTS_SQL_5 with 1 rows
+2025-12-05 10:11:55,822 - INFO - Updated existing template sheet: DIVERTS_RECOVERED_SQL_6 with 1 rows
+2025-12-05 10:11:55,826 - INFO - Updated existing template sheet: UA_HUB_SQL_7 with 11 rows
+2025-12-05 10:11:55,827 - INFO - Updated existing template sheet: FLIGHTS_NOT_DEPARTED_SQL_8 with 1 rows
+2025-12-05 10:11:55,827 - INFO - Updated existing template sheet: REPOSITIONED_FLIGHTS_SQL_13 with 1 rows
+2025-12-05 10:11:55,853 - INFO - Updated existing template sheet: UA_Line with 229 rows
+2025-12-05 10:11:55,854 - INFO - UA_SQL_15 sheet created
+2025-12-05 10:11:55,855 - INFO - UA_SQL_15 sheet updated with 10 rows
+2025-12-05 10:11:55,856 - INFO - Updated existing template sheet: UA_Seat_cancels with 1 rows
+2025-12-05 10:11:55,858 - INFO - Updated existing template sheet: Delays_info with 1 rows
+2025-12-05 10:11:55,860 - INFO - Updated existing template sheet: Carrier_delays with 5 rows
+2025-12-05 10:11:55,861 - INFO - Updated existing template sheet: OA_Line with 7 rows
+2025-12-05 10:11:55,862 - INFO - Updated existing template sheet: OA_SeatCnxl with 2 rows
+2025-12-05 10:11:55,915 - INFO - Updated existing template sheet: All_Cancels_Raw with 843 rows
+2025-12-05 10:11:55,916 - INFO - Updated existing template sheet: Yet_to_Depart_Raw with 0 rows
+2025-12-05 10:11:55,917 - INFO - Updated existing template sheet: Residual_Cancels_Raw with 0 rows
+2025-12-05 10:11:55,920 - INFO - Updated existing template sheet: Diverted_Flights_Raw with 30 rows
+2025-12-05 10:11:55,932 - INFO - Updated existing template sheet: Repositioned_Flights_Raw with 203 rows
+2025-12-05 10:12:01,147 - INFO - ✓ Compiled workbook saved: 2512050745_UAX_WB_Weekly.xlsx
+2025-12-05 10:12:01,149 - INFO - Sending email
+2025-12-05 10:12:01,231 - INFO - Attaching Compiled Excel
+2025-12-05 10:12:04,015 - INFO - Email sent and process is completed
+2025-12-05 10:12:04,042 - INFO - ===== PROCESS COMPLETED SUCCESSFULLY =====
+2025-12-05 10:24:53,552 - INFO - Received command c on object id p0
+2025-12-05 10:24:57,808 - INFO - Starting 745 Express Weekly Report Process
+2025-12-05 10:24:57,809 - INFO - Connecting to UDH
+2025-12-05 10:24:57,858 - INFO - UDH connection successful
+2025-12-05 10:24:57,858 - INFO - Checking SuperSnapshot data availability
+2025-12-05 10:24:58,704 - INFO - Number of rows in SuperSnapshot: 4796
+2025-12-05 10:24:58,705 - INFO - SuperSnapshot data available, proceeding with queries
+2025-12-05 10:24:58,706 - INFO - Running ALL UDH SQL queries
+2025-12-05 10:25:02,276 - INFO - UA_SQL_1 completed - 1 rows
+2025-12-05 10:25:06,676 - INFO - CNXL_SQL_2 completed - 29 rows
+2025-12-05 10:25:12,104 - INFO - RES_CNXL_SQL_3 completed - 0 rows
+2025-12-05 10:25:13,547 - INFO - SCH_DEP_SQL_4 completed - 10 rows
+2025-12-05 10:25:17,002 - INFO - DIVERTS_SQL_5 completed - 1 rows
+2025-12-05 10:25:17,685 - INFO - RECOVERED_DIVERTS_SQL_6 completed - 1 rows
+2025-12-05 10:25:27,427 - INFO - UA_HUB_SQL_7 completed - 11 rows
+2025-12-05 10:25:28,463 - INFO - FLIGHTS_NOT_DEPARTED_SQL_8 completed - 1 rows
+2025-12-05 10:25:30,288 - INFO - CANCELLED_FLIGHTS_SQL_9 completed - 843 rows
+2025-12-05 10:25:31,446 - INFO - YET_TO_DEPART_SQL_10 completed - 0 rows
+2025-12-05 10:25:34,247 - INFO - RESIDUAL_CANCELS_SQL_11 completed - 0 rows
+2025-12-05 10:25:35,424 - INFO - REPOSITIONED_FLIGHTS_SQL_12 completed - 203 rows
+2025-12-05 10:25:36,701 - INFO - REPOSITIONED_COUNT_SQL_13 completed - 1 rows
+2025-12-05 10:25:41,523 - INFO - DIVERTED_FLIGHTS_SQL_14 completed - 30 rows
+2025-12-05 10:25:43,850 - INFO - UA_SQL_15 completed - 10 rows
+2025-12-05 10:25:46,086 - INFO - UA_LINE completed - 229 rows
+2025-12-05 10:25:46,910 - INFO - UA_SEAT_CANCELS completed - 1 rows
+2025-12-05 10:25:48,544 - INFO - CARRIER_DELAYS completed - 5 rows
+2025-12-05 10:25:50,103 - INFO - DELAYS completed - 1 rows
+2025-12-05 10:25:50,103 - INFO - Querying MasFlight Data
+2025-12-05 10:25:50,633 - INFO - OA_SQL_1 completed - 2 rows
+2025-12-05 10:25:50,913 - INFO - OA_SQL_2 completed - 50 rows
+2025-12-05 10:25:51,268 - INFO - OA_LINE completed - 7 rows
+2025-12-05 10:25:51,378 - INFO - OA_SEATCNXL completed - 2 rows
+2025-12-05 10:25:51,386 - ERROR - Latest data unavailable in UDH - insufficient rows
+2025-12-05 10:25:51,387 - INFO - ===== STARTING EXCEL UPDATE PROCESS =====
+2025-12-05 10:26:00,663 - INFO - ===== STEP 1: UPDATING RAW DATA SHEETS =====
+2025-12-05 10:26:00,666 - INFO - All_Cancels_Raw sheet exists - updating
+2025-12-05 10:26:00,696 - INFO - All_Cancels_Raw sheet updated with 843 rows
+2025-12-05 10:26:00,697 - INFO - Yet_to_Depart_Raw sheet exists - updating
+2025-12-05 10:26:00,697 - INFO - Yet_to_Depart_Raw sheet updated with 0 rows
+2025-12-05 10:26:00,698 - INFO - Residual_Cancels_Raw sheet exists - updating
+2025-12-05 10:26:00,698 - INFO - Residual_Cancels_Raw sheet updated with 0 rows
+2025-12-05 10:26:00,699 - INFO - Diverted_Flights_Raw sheet exists - updating
+2025-12-05 10:26:00,702 - INFO - Diverted_Flights_Raw sheet updated with 30 rows
+2025-12-05 10:26:00,702 - INFO - Repositioned_Flights_Raw sheet exists - updating
+2025-12-05 10:26:00,711 - INFO - Repositioned_Flights_Raw sheet updated with 203 rows
+2025-12-05 10:26:00,711 - INFO - ===== STEP 2: UPDATING TEMPLATE/PROCESSED SHEETS =====
+2025-12-05 10:26:00,714 - INFO - Updated existing template sheet: UA_SQL_1 with 1 rows
+2025-12-05 10:26:00,715 - INFO - Updated existing template sheet: OA_SQL_1 with 2 rows
+2025-12-05 10:26:00,719 - INFO - Updated existing template sheet: OA_SQL_2 with 50 rows
+2025-12-05 10:26:00,721 - INFO - Updated existing template sheet: CNXL_SQL_2 with 29 rows
+2025-12-05 10:26:00,723 - INFO - Updated existing template sheet: RES_CNXL_SQL_3 with 0 rows
+2025-12-05 10:26:00,724 - INFO - Updated existing template sheet: SCH_DEP_SQL_4 with 10 rows
+2025-12-05 10:26:00,724 - INFO - Updated existing template sheet: TOTAL_DIVERTS_SQL_5 with 1 rows
+2025-12-05 10:26:00,725 - INFO - Updated existing template sheet: DIVERTS_RECOVERED_SQL_6 with 1 rows
+2025-12-05 10:26:00,730 - INFO - Updated existing template sheet: UA_HUB_SQL_7 with 11 rows
+2025-12-05 10:26:00,730 - INFO - Updated existing template sheet: FLIGHTS_NOT_DEPARTED_SQL_8 with 1 rows
+2025-12-05 10:26:00,731 - INFO - Updated existing template sheet: REPOSITIONED_FLIGHTS_SQL_13 with 1 rows
+2025-12-05 10:26:00,767 - INFO - Updated existing template sheet: UA_Line with 229 rows
+2025-12-05 10:26:00,768 - INFO - UA_SQL_15 sheet created
+2025-12-05 10:26:00,769 - INFO - UA_SQL_15 sheet updated with 10 rows
+2025-12-05 10:26:00,770 - INFO - Updated existing template sheet: UA_Seat_cancels with 1 rows
+2025-12-05 10:26:00,771 - INFO - Updated existing template sheet: Delays_info with 1 rows
+2025-12-05 10:26:00,773 - INFO - Updated existing template sheet: Carrier_delays with 5 rows
+2025-12-05 10:26:00,774 - INFO - Updated existing template sheet: OA_Line with 7 rows
+2025-12-05 10:26:00,774 - INFO - Updated existing template sheet: OA_SeatCnxl with 2 rows
+2025-12-05 10:26:00,827 - INFO - Updated existing template sheet: All_Cancels_Raw with 843 rows
+2025-12-05 10:26:00,828 - INFO - Updated existing template sheet: Yet_to_Depart_Raw with 0 rows
+2025-12-05 10:26:00,830 - INFO - Updated existing template sheet: Residual_Cancels_Raw with 0 rows
+2025-12-05 10:26:00,833 - INFO - Updated existing template sheet: Diverted_Flights_Raw with 30 rows
+2025-12-05 10:26:00,846 - INFO - Updated existing template sheet: Repositioned_Flights_Raw with 203 rows
+2025-12-05 10:26:07,011 - INFO - ✓ Compiled workbook saved: 2512050745_UAX_WB_Weekly.xlsx
+2025-12-05 10:26:07,013 - INFO - Sending email
+2025-12-05 10:26:07,110 - INFO - Attaching Compiled Excel
+2025-12-05 10:26:09,749 - INFO - Email sent and process is completed
+2025-12-05 10:26:09,779 - INFO - ===== PROCESS COMPLETED SUCCESSFULLY =====
+2025-12-05 10:40:47,168 - INFO - Received command c on object id p0
+2025-12-05 10:40:51,724 - INFO - Starting 745 Express Weekly Report Process
+2025-12-05 10:40:51,725 - INFO - Connecting to UDH
+2025-12-05 10:40:51,782 - INFO - UDH connection successful
+2025-12-05 10:40:51,783 - INFO - Checking SuperSnapshot data availability
+2025-12-05 10:40:52,323 - INFO - Number of rows in SuperSnapshot: 4796
+2025-12-05 10:40:52,324 - INFO - SuperSnapshot data available, proceeding with queries
+2025-12-05 10:40:52,325 - INFO - Running ALL UDH SQL queries
+2025-12-05 10:40:55,505 - INFO - UA_SQL_1 completed - 1 rows
+2025-12-05 10:40:56,134 - INFO - CNXL_SQL_2 completed - 29 rows
+2025-12-05 10:40:59,645 - INFO - RES_CNXL_SQL_3 completed - 0 rows
+2025-12-05 10:41:00,254 - INFO - SCH_DEP_SQL_4 completed - 10 rows
+2025-12-05 10:41:03,414 - INFO - DIVERTS_SQL_5 completed - 1 rows
+2025-12-05 10:41:04,038 - INFO - RECOVERED_DIVERTS_SQL_6 completed - 1 rows
+2025-12-05 10:41:13,234 - INFO - UA_HUB_SQL_7 completed - 11 rows
+2025-12-05 10:41:13,640 - INFO - FLIGHTS_NOT_DEPARTED_SQL_8 completed - 1 rows
+2025-12-05 10:41:16,202 - INFO - CANCELLED_FLIGHTS_SQL_9 completed - 843 rows
+2025-12-05 10:41:17,598 - INFO - YET_TO_DEPART_SQL_10 completed - 0 rows
+2025-12-05 10:41:22,590 - INFO - RESIDUAL_CANCELS_SQL_11 completed - 0 rows
+2025-12-05 10:41:24,475 - INFO - REPOSITIONED_FLIGHTS_SQL_12 completed - 203 rows
+2025-12-05 10:41:25,748 - INFO - REPOSITIONED_COUNT_SQL_13 completed - 1 rows
+2025-12-05 10:41:29,760 - INFO - DIVERTED_FLIGHTS_SQL_14 completed - 30 rows
+2025-12-05 10:41:31,748 - INFO - UA_SQL_15 completed - 10 rows
+2025-12-05 10:41:33,149 - INFO - UA_LINE completed - 229 rows
+2025-12-05 10:41:35,268 - INFO - UA_SEAT_CANCELS completed - 1 rows
+2025-12-05 10:41:36,718 - INFO - CARRIER_DELAYS completed - 5 rows
+2025-12-05 10:41:38,504 - INFO - DELAYS completed - 1 rows
+2025-12-05 10:41:38,505 - INFO - Querying MasFlight Data
+2025-12-05 10:41:38,761 - INFO - OA_SQL_1 completed - 2 rows
+2025-12-05 10:41:39,059 - INFO - OA_SQL_2 completed - 50 rows
+2025-12-05 10:41:39,358 - INFO - OA_LINE completed - 7 rows
+2025-12-05 10:41:39,466 - INFO - OA_SEATCNXL completed - 2 rows
+2025-12-05 10:41:39,476 - ERROR - Latest data unavailable in UDH - insufficient rows
+2025-12-05 10:41:39,477 - INFO - ===== STARTING EXCEL UPDATE PROCESS =====
+2025-12-05 10:41:48,619 - INFO - ===== STEP 1: UPDATING RAW DATA SHEETS =====
+2025-12-05 10:41:48,620 - INFO - All_Cancels_Raw sheet exists - updating
+2025-12-05 10:41:48,652 - INFO - All_Cancels_Raw sheet updated with 843 rows
+2025-12-05 10:41:48,652 - INFO - Yet_to_Depart_Raw sheet exists - updating
+2025-12-05 10:41:48,654 - INFO - Yet_to_Depart_Raw sheet updated with 0 rows
+2025-12-05 10:41:48,654 - INFO - Residual_Cancels_Raw sheet exists - updating
+2025-12-05 10:41:48,655 - INFO - Residual_Cancels_Raw sheet updated with 0 rows
+2025-12-05 10:41:48,655 - INFO - Diverted_Flights_Raw sheet exists - updating
+2025-12-05 10:41:48,658 - INFO - Diverted_Flights_Raw sheet updated with 30 rows
+2025-12-05 10:41:48,658 - INFO - Repositioned_Flights_Raw sheet exists - updating
+2025-12-05 10:41:48,667 - INFO - Repositioned_Flights_Raw sheet updated with 203 rows
+2025-12-05 10:41:48,667 - INFO - ===== STEP 2: UPDATING TEMPLATE/PROCESSED SHEETS =====
+2025-12-05 10:41:48,670 - INFO - Updated existing template sheet: UA_SQL_1 with 1 rows
+2025-12-05 10:41:48,671 - INFO - Updated existing template sheet: OA_SQL_1 with 2 rows
+2025-12-05 10:41:48,676 - INFO - Updated existing template sheet: OA_SQL_2 with 50 rows
+2025-12-05 10:41:48,678 - INFO - Updated existing template sheet: CNXL_SQL_2 with 29 rows
+2025-12-05 10:41:48,679 - INFO - Updated existing template sheet: RES_CNXL_SQL_3 with 0 rows
+2025-12-05 10:41:48,680 - INFO - Updated existing template sheet: SCH_DEP_SQL_4 with 10 rows
+2025-12-05 10:41:48,680 - INFO - Updated existing template sheet: TOTAL_DIVERTS_SQL_5 with 1 rows
+2025-12-05 10:41:48,681 - INFO - Updated existing template sheet: DIVERTS_RECOVERED_SQL_6 with 1 rows
+2025-12-05 10:41:48,686 - INFO - Updated existing template sheet: UA_HUB_SQL_7 with 11 rows
+2025-12-05 10:41:48,687 - INFO - Updated existing template sheet: FLIGHTS_NOT_DEPARTED_SQL_8 with 1 rows
+2025-12-05 10:41:48,687 - INFO - Updated existing template sheet: REPOSITIONED_FLIGHTS_SQL_13 with 1 rows
+2025-12-05 10:41:48,714 - INFO - Updated existing template sheet: UA_Line with 229 rows
+2025-12-05 10:41:48,715 - INFO - UA_SQL_15 sheet created
+2025-12-05 10:41:48,716 - INFO - UA_SQL_15 sheet updated with 10 rows
+2025-12-05 10:41:48,717 - INFO - Updated existing template sheet: UA_Seat_cancels with 1 rows
+2025-12-05 10:41:48,719 - INFO - Updated existing template sheet: Delays_info with 1 rows
+2025-12-05 10:41:48,720 - INFO - Updated existing template sheet: Carrier_delays with 5 rows
+2025-12-05 10:41:48,721 - INFO - Updated existing template sheet: OA_Line with 7 rows
+2025-12-05 10:41:48,721 - INFO - Updated existing template sheet: OA_SeatCnxl with 2 rows
+2025-12-05 10:41:48,776 - INFO - Updated existing template sheet: All_Cancels_Raw with 843 rows
+2025-12-05 10:41:48,777 - INFO - Updated existing template sheet: Yet_to_Depart_Raw with 0 rows
+2025-12-05 10:41:48,778 - INFO - Updated existing template sheet: Residual_Cancels_Raw with 0 rows
+2025-12-05 10:41:48,782 - INFO - Updated existing template sheet: Diverted_Flights_Raw with 30 rows
+2025-12-05 10:41:48,793 - INFO - Updated existing template sheet: Repositioned_Flights_Raw with 203 rows
+2025-12-05 10:41:53,871 - INFO - ✓ Compiled workbook saved: 2512050745_UAX_WB_Weekly.xlsx
+2025-12-05 10:41:53,874 - INFO - Sending email
+2025-12-05 10:41:53,958 - INFO - Attaching Compiled Excel
+2025-12-05 10:41:56,560 - INFO - Email sent and process is completed
+2025-12-05 10:41:56,587 - INFO - ===== PROCESS COMPLETED SUCCESSFULLY =====
+2025-12-05 11:00:13,328 - INFO - Received command c on object id p0
+2025-12-05 11:00:17,393 - INFO - Starting 745 Express Weekly Report Process
+2025-12-05 11:00:17,394 - INFO - Connecting to UDH
+2025-12-05 11:00:17,453 - INFO - UDH connection successful
+2025-12-05 11:00:17,454 - INFO - Checking SuperSnapshot data availability
+2025-12-05 11:00:18,430 - INFO - Number of rows in SuperSnapshot: 4796
+2025-12-05 11:00:18,431 - INFO - SuperSnapshot data available, proceeding with queries
+2025-12-05 11:00:18,432 - INFO - Running ALL UDH SQL queries
+2025-12-05 11:00:24,193 - INFO - UA_SQL_1 completed - 1 rows
+2025-12-05 11:00:25,760 - INFO - CNXL_SQL_2 completed - 29 rows
+2025-12-05 11:00:32,079 - INFO - RES_CNXL_SQL_3 completed - 0 rows
+2025-12-05 11:00:32,789 - INFO - SCH_DEP_SQL_4 completed - 10 rows
+2025-12-05 11:00:37,114 - INFO - DIVERTS_SQL_5 completed - 1 rows
+2025-12-05 11:00:38,704 - INFO - RECOVERED_DIVERTS_SQL_6 completed - 1 rows
+2025-12-05 11:00:47,426 - INFO - UA_HUB_SQL_7 completed - 11 rows
+2025-12-05 11:00:48,086 - INFO - FLIGHTS_NOT_DEPARTED_SQL_8 completed - 1 rows
+2025-12-05 11:00:50,059 - INFO - CANCELLED_FLIGHTS_SQL_9 completed - 843 rows
+2025-12-05 11:00:50,977 - INFO - YET_TO_DEPART_SQL_10 completed - 0 rows
+2025-12-05 11:00:54,088 - INFO - RESIDUAL_CANCELS_SQL_11 completed - 0 rows
+2025-12-05 11:00:56,023 - INFO - REPOSITIONED_FLIGHTS_SQL_12 completed - 203 rows
+2025-12-05 11:00:56,634 - INFO - REPOSITIONED_COUNT_SQL_13 completed - 1 rows
+2025-12-05 11:01:00,376 - INFO - DIVERTED_FLIGHTS_SQL_14 completed - 30 rows
+2025-12-05 11:01:02,413 - INFO - UA_SQL_15 completed - 10 rows
+2025-12-05 11:01:03,768 - INFO - UA_LINE completed - 229 rows
+2025-12-05 11:01:05,270 - INFO - UA_SEAT_CANCELS completed - 1 rows
+2025-12-05 11:01:06,393 - INFO - CARRIER_DELAYS completed - 5 rows
+2025-12-05 11:01:07,529 - INFO - DELAYS completed - 1 rows
+2025-12-05 11:01:07,529 - INFO - Querying MasFlight Data
+2025-12-05 11:01:07,708 - INFO - OA_SQL_1 completed - 2 rows
+2025-12-05 11:01:07,855 - INFO - OA_SQL_2 completed - 50 rows
+2025-12-05 11:01:08,303 - INFO - OA_LINE completed - 7 rows
+2025-12-05 11:02:40,985 - INFO - Received command c on object id p0
+2025-12-05 11:02:44,986 - INFO - Starting 745 Express Weekly Report Process
+2025-12-05 11:02:44,987 - INFO - Connecting to UDH
+2025-12-05 11:02:45,068 - INFO - UDH connection successful
+2025-12-05 11:02:45,069 - INFO - Checking SuperSnapshot data availability
+2025-12-05 11:02:46,016 - INFO - Number of rows in SuperSnapshot: 4796
+2025-12-05 11:02:46,017 - INFO - SuperSnapshot data available, proceeding with queries
+2025-12-05 11:02:46,018 - INFO - Running ALL UDH SQL queries
+2025-12-05 11:02:50,719 - INFO - UA_SQL_1 completed - 1 rows
+2025-12-05 11:02:52,185 - INFO - CNXL_SQL_2 completed - 29 rows
+2025-12-05 11:02:59,333 - INFO - RES_CNXL_SQL_3 completed - 0 rows
+2025-12-05 11:03:00,054 - INFO - SCH_DEP_SQL_4 completed - 10 rows
+2025-12-05 11:03:04,059 - INFO - DIVERTS_SQL_5 completed - 1 rows
+2025-12-05 11:03:05,847 - INFO - RECOVERED_DIVERTS_SQL_6 completed - 1 rows
+2025-12-05 11:03:14,411 - INFO - UA_HUB_SQL_7 completed - 11 rows
+2025-12-05 11:03:14,706 - INFO - FLIGHTS_NOT_DEPARTED_SQL_8 completed - 1 rows
+2025-12-05 11:03:17,173 - INFO - CANCELLED_FLIGHTS_SQL_9 completed - 843 rows
+2025-12-05 11:03:18,687 - INFO - YET_TO_DEPART_SQL_10 completed - 0 rows
+2025-12-05 11:03:23,655 - INFO - RESIDUAL_CANCELS_SQL_11 completed - 0 rows
+2025-12-05 11:03:24,588 - INFO - REPOSITIONED_FLIGHTS_SQL_12 completed - 203 rows
+2025-12-05 11:03:25,459 - INFO - REPOSITIONED_COUNT_SQL_13 completed - 1 rows
+2025-12-05 11:03:29,193 - INFO - DIVERTED_FLIGHTS_SQL_14 completed - 30 rows
+2025-12-05 11:03:31,389 - INFO - UA_SQL_15 completed - 10 rows
+2025-12-05 11:03:33,744 - INFO - UA_LINE completed - 229 rows
+2025-12-05 11:03:35,924 - INFO - UA_SEAT_CANCELS completed - 1 rows
+2025-12-05 11:03:37,693 - INFO - CARRIER_DELAYS completed - 5 rows
+2025-12-05 11:03:39,224 - INFO - DELAYS completed - 1 rows
+2025-12-05 11:03:39,225 - INFO - Querying MasFlight Data
+2025-12-05 11:03:39,498 - INFO - OA_SQL_1 completed - 2 rows
+2025-12-05 11:03:39,705 - INFO - OA_SQL_2 completed - 50 rows
+2025-12-05 11:03:40,101 - INFO - OA_LINE completed - 7 rows
+2025-12-05 11:08:11,209 - INFO - Received command c on object id p0
+2025-12-05 11:08:14,570 - INFO - Starting 745 Express Weekly Report Process
+2025-12-05 11:08:14,571 - INFO - Connecting to UDH
+2025-12-05 11:08:14,643 - INFO - UDH connection successful
+2025-12-05 11:08:14,644 - INFO - Checking SuperSnapshot data availability
+2025-12-05 11:08:16,391 - INFO - Number of rows in SuperSnapshot: 4796
+2025-12-05 11:08:16,391 - INFO - SuperSnapshot data available, proceeding with queries
+2025-12-05 11:08:16,393 - INFO - Running ALL UDH SQL queries
+2025-12-05 11:08:19,307 - INFO - UA_SQL_1 completed - 1 rows
+2025-12-05 11:08:22,782 - INFO - CNXL_SQL_2 completed - 29 rows
+2025-12-05 11:09:40,235 - INFO - Received command c on object id p0
+2025-12-05 11:09:43,819 - INFO - Starting 745 Express Weekly Report Process
+2025-12-05 11:09:43,819 - INFO - Connecting to UDH
+2025-12-05 11:09:43,860 - INFO - UDH connection successful
+2025-12-05 11:09:43,861 - INFO - Checking SuperSnapshot data availability
+2025-12-05 11:09:44,263 - INFO - Number of rows in SuperSnapshot: 4796
+2025-12-05 11:09:44,263 - INFO - SuperSnapshot data available, proceeding with queries
+2025-12-05 11:09:44,264 - INFO - Running ALL UDH SQL queries
+2025-12-05 11:09:49,830 - INFO - UA_SQL_1 completed - 1 rows
+2025-12-05 11:09:50,930 - INFO - CNXL_SQL_2 completed - 29 rows
+2025-12-05 11:09:58,368 - INFO - RES_CNXL_SQL_3 completed - 0 rows
+2025-12-05 11:09:59,394 - INFO - SCH_DEP_SQL_4 completed - 10 rows
+2025-12-05 11:10:08,369 - INFO - DIVERTS_SQL_5 completed - 1 rows
+2025-12-05 11:10:10,427 - INFO - RECOVERED_DIVERTS_SQL_6 completed - 1 rows
+2025-12-05 11:10:21,791 - INFO - UA_HUB_SQL_7 completed - 11 rows
+2025-12-05 11:10:22,335 - INFO - FLIGHTS_NOT_DEPARTED_SQL_8 completed - 1 rows
+2025-12-05 11:10:23,564 - INFO - CANCELLED_FLIGHTS_SQL_9 completed - 843 rows
+2025-12-05 11:10:25,917 - INFO - YET_TO_DEPART_SQL_10 completed - 0 rows
+2025-12-05 11:10:29,212 - INFO - RESIDUAL_CANCELS_SQL_11 completed - 0 rows
+2025-12-05 11:10:30,003 - INFO - REPOSITIONED_FLIGHTS_SQL_12 completed - 203 rows
+2025-12-05 11:10:30,915 - INFO - REPOSITIONED_COUNT_SQL_13 completed - 1 rows
+2025-12-05 11:10:35,529 - INFO - DIVERTED_FLIGHTS_SQL_14 completed - 30 rows
+2025-12-05 11:10:37,918 - INFO - UA_SQL_15 completed - 10 rows
+2025-12-05 11:10:39,687 - INFO - UA_LINE completed - 229 rows
+2025-12-05 11:11:25,560 - INFO - Received command c on object id p0
+2025-12-05 11:11:29,065 - INFO - Starting 745 Express Weekly Report Process
+2025-12-05 11:11:29,065 - INFO - Connecting to UDH
+2025-12-05 11:11:29,105 - INFO - UDH connection successful
+2025-12-05 11:11:29,105 - INFO - Checking SuperSnapshot data availability
+2025-12-05 11:11:29,511 - INFO - Number of rows in SuperSnapshot: 4796
+2025-12-05 11:11:29,511 - INFO - SuperSnapshot data available, proceeding with queries
+2025-12-05 11:11:29,512 - INFO - Running ALL UDH SQL queries
+2025-12-05 11:11:33,223 - INFO - UA_SQL_1 completed - 1 rows
+2025-12-05 11:11:34,743 - INFO - CNXL_SQL_2 completed - 29 rows
+2025-12-05 11:11:38,249 - INFO - RES_CNXL_SQL_3 completed - 0 rows
+2025-12-05 11:11:38,911 - INFO - SCH_DEP_SQL_4 completed - 10 rows
+2025-12-05 11:11:45,691 - INFO - DIVERTS_SQL_5 completed - 1 rows
+2025-12-05 11:11:47,176 - INFO - RECOVERED_DIVERTS_SQL_6 completed - 1 rows
+2025-12-05 11:11:56,564 - INFO - UA_HUB_SQL_7 completed - 11 rows
+2025-12-05 11:11:57,035 - INFO - FLIGHTS_NOT_DEPARTED_SQL_8 completed - 1 rows
+2025-12-05 11:11:59,137 - INFO - CANCELLED_FLIGHTS_SQL_9 completed - 843 rows
+2025-12-05 11:12:00,090 - INFO - YET_TO_DEPART_SQL_10 completed - 0 rows
+2025-12-05 11:12:06,383 - INFO - RESIDUAL_CANCELS_SQL_11 completed - 0 rows
+2025-12-05 11:12:07,065 - INFO - REPOSITIONED_FLIGHTS_SQL_12 completed - 203 rows
+2025-12-05 11:12:07,709 - INFO - REPOSITIONED_COUNT_SQL_13 completed - 1 rows
+2025-12-05 11:12:13,383 - INFO - DIVERTED_FLIGHTS_SQL_14 completed - 30 rows
+2025-12-05 11:12:16,300 - INFO - UA_SQL_15 completed - 10 rows
+2025-12-05 11:12:22,889 - INFO - UA_LINE completed - 229 rows
+2025-12-05 11:12:24,980 - INFO - UA_SEAT_CANCELS completed - 1 rows
+2025-12-05 11:12:49,870 - INFO - Received command c on object id p0
+2025-12-05 11:12:53,510 - INFO - Starting 745 Express Weekly Report Process
+2025-12-05 11:12:53,511 - INFO - Connecting to UDH
+2025-12-05 11:12:53,554 - INFO - UDH connection successful
+2025-12-05 11:12:53,555 - INFO - Checking SuperSnapshot data availability
+2025-12-05 11:12:54,312 - INFO - Number of rows in SuperSnapshot: 4796
+2025-12-05 11:12:54,312 - INFO - SuperSnapshot data available, proceeding with queries
+2025-12-05 11:12:54,313 - INFO - Running ALL UDH SQL queries
+2025-12-05 11:12:57,743 - INFO - UA_SQL_1 completed - 1 rows
+2025-12-05 11:12:58,795 - INFO - CNXL_SQL_2 completed - 29 rows
+2025-12-05 11:13:03,991 - INFO - RES_CNXL_SQL_3 completed - 0 rows
+2025-12-05 11:13:04,488 - INFO - SCH_DEP_SQL_4 completed - 10 rows
+2025-12-05 11:13:09,754 - INFO - DIVERTS_SQL_5 completed - 1 rows
+2025-12-05 11:13:10,538 - INFO - RECOVERED_DIVERTS_SQL_6 completed - 1 rows
+2025-12-05 11:13:17,718 - INFO - UA_HUB_SQL_7 completed - 11 rows
+2025-12-05 11:13:18,132 - INFO - FLIGHTS_NOT_DEPARTED_SQL_8 completed - 1 rows
+2025-12-05 11:13:22,961 - INFO - CANCELLED_FLIGHTS_SQL_9 completed - 843 rows
+2025-12-05 11:13:24,319 - INFO - YET_TO_DEPART_SQL_10 completed - 0 rows
+2025-12-05 11:13:28,156 - INFO - RESIDUAL_CANCELS_SQL_11 completed - 0 rows
+2025-12-05 11:13:30,204 - INFO - REPOSITIONED_FLIGHTS_SQL_12 completed - 203 rows
+2025-12-05 11:13:32,099 - INFO - REPOSITIONED_COUNT_SQL_13 completed - 1 rows
+2025-12-05 11:13:35,646 - INFO - DIVERTED_FLIGHTS_SQL_14 completed - 30 rows
+2025-12-05 11:13:38,058 - INFO - UA_SQL_15 completed - 10 rows
+2025-12-05 11:13:40,671 - INFO - UA_LINE completed - 229 rows
+2025-12-05 11:13:42,554 - INFO - UA_SEAT_CANCELS completed - 1 rows
+2025-12-05 11:13:45,237 - INFO - CARRIER_DELAYS completed - 5 rows
+2025-12-05 11:13:46,221 - INFO - DELAYS completed - 1 rows
+2025-12-05 11:13:46,222 - INFO - Querying MasFlight Data
+2025-12-05 11:13:46,447 - INFO - OA_SQL_1 completed - 2 rows
+2025-12-05 11:13:46,591 - INFO - OA_SQL_2 completed - 50 rows
+2025-12-05 11:13:46,966 - INFO - OA_LINE completed - 7 rows
+2025-12-05 11:13:47,227 - INFO - OA_SEATCNXL completed - 2 rows
+2025-12-05 11:13:47,237 - ERROR - Latest data unavailable in UDH - insufficient rows
+2025-12-05 11:13:47,238 - INFO - ===== STARTING EXCEL UPDATE PROCESS =====
+2025-12-05 11:13:49,518 - INFO - Closing down clientserver connection
+2025-12-05 11:13:49,519 - INFO - Closing down clientserver connection
+2025-12-05 11:13:56,577 - INFO - ===== STEP 1: UPDATING RAW DATA SHEETS =====
+2025-12-05 11:13:56,577 - INFO - All_Cancels_Raw sheet exists - updating
+2025-12-05 11:13:56,607 - INFO - All_Cancels_Raw sheet updated with 843 rows
+2025-12-05 11:13:56,607 - INFO - Yet_to_Depart_Raw sheet exists - updating
+2025-12-05 11:13:56,608 - INFO - Yet_to_Depart_Raw sheet updated with 0 rows
+2025-12-05 11:13:56,609 - INFO - Residual_Cancels_Raw sheet exists - updating
+2025-12-05 11:13:56,610 - INFO - Residual_Cancels_Raw sheet updated with 0 rows
+2025-12-05 11:13:56,610 - INFO - Diverted_Flights_Raw sheet exists - updating
+2025-12-05 11:13:56,613 - INFO - Diverted_Flights_Raw sheet updated with 30 rows
+2025-12-05 11:13:56,613 - INFO - Repositioned_Flights_Raw sheet exists - updating
+2025-12-05 11:13:56,622 - INFO - Repositioned_Flights_Raw sheet updated with 203 rows
+2025-12-05 11:13:56,622 - INFO - ===== STEP 2: UPDATING TEMPLATE/PROCESSED SHEETS =====
+2025-12-05 11:13:56,625 - INFO - Updated existing template sheet: UA_SQL_1 with 1 rows
+2025-12-05 11:13:56,627 - INFO - Updated existing template sheet: OA_SQL_1 with 2 rows
+2025-12-05 11:13:56,631 - INFO - Updated existing template sheet: OA_SQL_2 with 50 rows
+2025-12-05 11:13:56,633 - INFO - Updated existing template sheet: CNXL_SQL_2 with 29 rows
+2025-12-05 11:13:56,634 - INFO - Updated existing template sheet: RES_CNXL_SQL_3 with 0 rows
+2025-12-05 11:13:56,635 - INFO - Updated existing template sheet: SCH_DEP_SQL_4 with 10 rows
+2025-12-05 11:13:56,635 - INFO - Updated existing template sheet: TOTAL_DIVERTS_SQL_5 with 1 rows
+2025-12-05 11:13:56,636 - INFO - Updated existing template sheet: DIVERTS_RECOVERED_SQL_6 with 1 rows
+2025-12-05 11:13:56,640 - INFO - Updated existing template sheet: UA_HUB_SQL_7 with 11 rows
+2025-12-05 11:13:56,641 - INFO - Updated existing template sheet: FLIGHTS_NOT_DEPARTED_SQL_8 with 1 rows
+2025-12-05 11:13:56,641 - INFO - Updated existing template sheet: REPOSITIONED_FLIGHTS_SQL_13 with 1 rows
+2025-12-05 11:13:56,668 - INFO - Updated existing template sheet: UA_Line with 229 rows
+2025-12-05 11:13:56,669 - INFO - UA_SQL_15 sheet created
+2025-12-05 11:13:56,671 - INFO - UA_SQL_15 sheet updated with 10 rows
+2025-12-05 11:13:56,671 - INFO - Updated existing template sheet: UA_Seat_cancels with 1 rows
+2025-12-05 11:13:56,673 - INFO - Updated existing template sheet: Delays_info with 1 rows
+2025-12-05 11:13:56,674 - INFO - Updated existing template sheet: Carrier_delays with 5 rows
+2025-12-05 11:13:56,675 - INFO - Updated existing template sheet: OA_Line with 7 rows
+2025-12-05 11:13:56,676 - INFO - Updated existing template sheet: OA_SeatCnxl with 2 rows
+2025-12-05 11:13:56,729 - INFO - Updated existing template sheet: All_Cancels_Raw with 843 rows
+2025-12-05 11:13:56,730 - INFO - Updated existing template sheet: Yet_to_Depart_Raw with 0 rows
+2025-12-05 11:13:56,731 - INFO - Updated existing template sheet: Residual_Cancels_Raw with 0 rows
+2025-12-05 11:13:56,734 - INFO - Updated existing template sheet: Diverted_Flights_Raw with 30 rows
+2025-12-05 11:13:56,746 - INFO - Updated existing template sheet: Repositioned_Flights_Raw with 203 rows
+2025-12-05 11:14:01,845 - INFO - ✓ Compiled workbook saved: 2512050745_UAX_WB_Weekly.xlsx
+2025-12-05 11:14:01,848 - INFO - Sending email
+2025-12-05 11:14:02,000 - INFO - Attaching Compiled Excel
+2025-12-05 11:14:04,786 - INFO - Email sent and process is completed
+2025-12-05 11:14:04,814 - INFO - ===== PROCESS COMPLETED SUCCESSFULLY =====
+2025-12-05 11:31:06,085 - INFO - Received command c on object id p0

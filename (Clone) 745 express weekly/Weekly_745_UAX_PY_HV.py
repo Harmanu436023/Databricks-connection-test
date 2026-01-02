@@ -1,0 +1,560 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Nov 20 04:10:28 2020
+
+@author: u346552
+"""
+
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Jan 30 09:39:45 2020
+
+@author: u346552
+"""
+
+mode = 'PROD'
+
+import pandas as pd
+import datetime
+import logging
+import os
+import pyodbc
+import smtplib as smtp
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+import win32com.client
+from email.utils import formataddr
+from email.header import Header
+from email import encoders
+from email.mime.base import MIMEBase
+from email.mime.application import MIMEApplication
+from email.mime.image import MIMEImage
+import urllib.parse
+from sqlalchemy import create_engine, text
+from O365 import*
+import re
+from random import *
+import psycopg2
+
+os.chdir(r'D:\UDH_Migration\745_Express\Weekly_report')
+TODAY = datetime.datetime.today().strftime('%Y%m%d')
+YES = datetime.date.today() - datetime.timedelta(days=1)
+LW = datetime.date.today() - datetime.timedelta(days=7)
+YESTERDAY = YES.strftime('%m/%d/%Y')
+LWDATE = LW.strftime('%m/%d/%Y')
+YEST = YES.strftime('%Y-%m-%d')
+
+if mode == 'PROD':
+    EMAIL_ADDR_FILE = os.getcwd() + r'/emailAddr.csv'
+else:
+    EMAIL_ADDR_FILE = os.getcwd() + r'/emailAddr_test.csv'
+    
+LOG_FILE_NAME = os.getcwd() + r'/logs/' + datetime.datetime.today().strftime('%Y%m%d %H%M%S') + '.log'
+CSV_FLDR = os.getcwd() + r'/CSV/'
+SQL_FOLDER = os.getcwd() + r'/SQL'
+XLSX_FLDR = os.getcwd() + r'/XLSX/'
+HTML_FLDR = os.getcwd() + r'/HTML/'
+PNG_FLDR = os.getcwd() + r'/DailyImages/'
+filename_attach = os.getcwd() + r'/0745_UAX_WB_Flights.xlsm'
+PDF_FLDR = os.getcwd() + r'/PDF/'
+filename = os.getcwd() + r'/0745_UAX_WB_final_v2.xlsm'
+
+
+#CID =  str(randint(1,9))
+CID1 =  '1'
+CID2 =  '2'
+
+HTML_BDY_FILE_PATH = HTML_FLDR + r'EmailBody.htm'
+HTML_FTR_FILE_PATH = HTML_FLDR + r'EmailFooter.htm'
+
+XLS_FILE_PATH = XLSX_FLDR + YEST + r' 0745 UAX Flight details.xlsm'
+
+XLS_FILE_NAME = YEST + r' 0745 Weekly UAX Flight details.xlsm'
+
+XLS_MAIN_FILE_PATH=XLSX_FLDR + YEST + r' 0745_UAX_WB_final_v2.xlsm'
+
+
+
+EDW_SQL_1= SQL_FOLDER + r'/UA_SQL_1.sql'
+EDW_SQL_2= SQL_FOLDER +r'/CNXL_SQL_2.sql'
+EDW_SQL_3= SQL_FOLDER +r'/RES_CNXL_SQL_3.sql'
+EDW_SQL_4= SQL_FOLDER +r'/SCH_DEP_SQL_4.sql'
+EDW_SQL_5= SQL_FOLDER +r'/DIVERTS_SQL_5.sql'
+EDW_SQL_6= SQL_FOLDER +r'/RECOVERED_DIVERTS_SQL_6.sql'
+EDW_SQL_7= SQL_FOLDER +r'/UA_HUB_SQL_7.sql'
+EDW_SQL_8= SQL_FOLDER +r'/FLIGHTS_NOT_DEPARTED_SQL_8.sql'
+
+EDW_SQL_9= SQL_FOLDER +r'/Cancelled_flights_SQL_9.sql' ## Converted
+EDW_SQL_10= SQL_FOLDER +r'/Yet_to_Depart_flights_SQL_10.sql'
+EDW_SQL_11= SQL_FOLDER +r'/Residual_cancels_SQL_11.sql' ## Converted
+EDW_SQL_12= SQL_FOLDER +r'/REPOSITIONED_FLIGHTS_SQL_12.sql'
+
+EDW_SQL_13= SQL_FOLDER +r'/REPOSITIONED_FLIGHTS_COUNT_SQL_13.sql'
+EDW_SQL_14= SQL_FOLDER +r'/Diverted_flights_SQL_14.sql'
+EDW_SQL_15 = SQL_FOLDER + r'/UA_Line.sql'
+EDW_SQL_16 = SQL_FOLDER + r'/UA_Seat_Cancels.sql'
+EDW_SQL_17 = SQL_FOLDER + r'/Carrier_delays.sql'
+EDW_SQL_18= SQL_FOLDER +r'/Delays_info.sql'
+
+
+
+MF_SQL_1= SQL_FOLDER +r'/OA_SQL_1.sql'
+MF_SQL_2= SQL_FOLDER +r'/OA_SQL_2.sql'
+MF_SQL_3= SQL_FOLDER +r'/OA_Line.sql'
+MF_SQL_4= SQL_FOLDER +r'/OA_SeatCnxl.sql'
+
+UA_SQL_1_CSV_FILE = CSV_FLDR + r'UA_SQL_1_' +TODAY+'.csv'
+CNXL_SQL_2_CSV_FILE = CSV_FLDR + r'CNXL_SQL_2_' +TODAY+'.csv'
+RES_CNXL_SQL_3_CSV_FILE = CSV_FLDR + r'RES_CNXL_SQL_3_' +TODAY+'.csv'
+SCH_DEP_SQL_4_CSV_FILE = CSV_FLDR + r'SCH_DEP_SQL_4_' +TODAY+'.csv'
+DIVERTS_SQL_5_CSV_FILE = CSV_FLDR + r'DIVERTS_SQL_5_' +TODAY+'.csv'
+RECOVERED_DIVERTS_SQL_6_CSV_FILE = CSV_FLDR + r'RECOVERED_DIVERTS_SQL_6_' +TODAY+'.csv'
+UA_HUB_SQL_7_CSV_FILE = CSV_FLDR + r'UA_HUB_SQL_7_' +TODAY+'.csv'
+FLIGHTS_NOT_DEPARTED_SQL_8_CSV_FILE = CSV_FLDR + r'FLIGHTS_NOT_DEPARTED_SQL_8_' +TODAY+'.csv'
+REPOSITIONED_FLIGHTS_COUNT_SQL_13_CSV_FILE = CSV_FLDR + r'REPOSITIONED_FLIGHTS_COUNT_SQL_13_' +TODAY+'.csv'
+
+Cancelled_flights_SQL_9_CSV_FILE = CSV_FLDR + r'Cancelled_flights_SQL_9_' +TODAY+'.csv'
+Yet_to_Depart_flights_SQL_10_CSV_FILE = CSV_FLDR + r'Yet_to_Depart_flights_SQL_10_' +TODAY+'.csv'
+Residual_cancels_SQL_11_CSV_FILE = CSV_FLDR + r'Residual_cancels_SQL_11_' +TODAY+'.csv'
+REPOSITIONED_FLIGHTS_SQL_12_CSV_FILE = CSV_FLDR + r'REPOSITIONED_FLIGHTS_SQL_12_' +TODAY+'.csv'
+DIVERTED_FLIGHTS_SQL_14_CSV_FILE = CSV_FLDR + r'Diverted_flights_SQL_14' +TODAY+'.csv'
+UA_Line_CSV_FILE = CSV_FLDR + r'UA_Line' +TODAY+'.csv'
+UA_Seat_Cancels_CSV_FILE = CSV_FLDR + r'UA_Seat_Cancels' +TODAY+'.csv'
+DELAYS_INFO_CSV_FILE = CSV_FLDR + r'Delays_info' +TODAY+'.csv'
+Carrier_delays_CSV_FILE = CSV_FLDR + r'Carrier_delays' +TODAY+'.csv'
+
+OA_SQL_1_CSV_FILE = CSV_FLDR + r'OA_SQL_1_' +TODAY+'.csv'
+
+OA_SQL_2_CSV_FILE = CSV_FLDR + r'OA_SQL_2_' +TODAY+'.csv'
+
+OA_Line_CSV_FILE = CSV_FLDR + r'OA_Line_' +TODAY+'.csv'
+OA_SeatCnxl_CSV_FILE = CSV_FLDR + r'OA_SeatCnxl_' +TODAY+'.csv'
+
+
+PNG_FILE_SYS1 = PNG_FLDR + TODAY + r' pg1.png'
+XLS_SHT_SYS1 = 'pg1'
+
+PNG_FILE_SYS2 = PNG_FLDR + TODAY + r' pg2.png'
+XLS_SHT_SYS2 = 'pg2'
+
+
+PDF_FILE_PATH = PDF_FLDR + YEST + r'_745_UAX' +'.pdf'
+
+logging.basicConfig(filename=LOG_FILE_NAME, level=logging.DEBUG, format='%(asctime)s %(message)s')
+
+logging.info('Connecting to Teradata');
+
+
+USER_ACC = pd.read_csv(r'C:\AUTH\Daily_Ops_Call.csv')
+
+udh_username = USER_ACC['user'][0]
+udh_pass = USER_ACC['pass'][0]
+
+connection = psycopg2.connect(user = udh_username,
+password = udh_pass,
+host =  'cbs-udh-datalake-prod-redshift-dw1.csjkuisl0oi7.us-east-1.redshift.amazonaws.com',
+dbname = 'udhprod',
+port = 5439)
+cursor = connection.cursor()
+
+
+logging.info('Running EDW SQL queries');
+
+
+e1 = open(EDW_SQL_1, 'r')
+sqlEdw1 = e1.read()
+e1.close()
+
+e2 = open(EDW_SQL_2, 'r')
+sqlEdw2 = e2.read()
+e2.close()
+
+e3 = open(EDW_SQL_3, 'r')
+sqlEdw3 = e3.read()
+e3.close()
+
+e4 = open(EDW_SQL_4, 'r')
+sqlEdw4 = e4.read()
+e4.close()
+
+e5 = open(EDW_SQL_5, 'r')
+sqlEdw5 = e5.read()
+e5.close()
+
+e6 = open(EDW_SQL_6, 'r')
+sqlEdw6 = e6.read()
+e6.close()
+
+e7 = open(EDW_SQL_7, 'r')
+sqlEdw7 = e7.read()
+e7.close()
+
+e8 = open(EDW_SQL_8, 'r')
+sqlEdw8 = e8.read()
+e8.close()
+
+e9 = open(EDW_SQL_9, 'r')
+sqlEdw9 = e9.read()
+e9.close()
+
+e10 = open(EDW_SQL_10, 'r')
+sqlEdw10 = e10.read()
+e10.close()
+
+e11 = open(EDW_SQL_11, 'r')
+sqlEdw11 = e11.read()
+e11.close()
+
+e12 = open(EDW_SQL_12, 'r')
+sqlEdw12 = e12.read()
+e12.close()
+
+e13 = open(EDW_SQL_13, 'r')
+sqlEdw13 = e13.read()
+e13.close()
+
+e14 = open(EDW_SQL_14, 'r')
+sqlEdw14 = e14.read()
+e14.close()
+
+e15 = open(EDW_SQL_15, 'r')
+sqlEdw15 = e15.read()
+e15.close()
+
+e16 = open(EDW_SQL_16, 'r')
+sqlEdw16 = e16.read()
+e16.close()
+
+e17 = open(EDW_SQL_17, 'r')
+sqlEdw17 = e17.read()
+e17.close()
+
+e18 = open(EDW_SQL_18, 'r')
+sqlEdw18 = e18.read()
+e18.close()
+
+sqlresult_1 = pd.read_sql_query(sqlEdw1, connection)
+sqlresult_1.to_csv(UA_SQL_1_CSV_FILE, index=False)
+
+sqlresult_2 = pd.read_sql_query(sqlEdw2, connection)
+sqlresult_2.to_csv(CNXL_SQL_2_CSV_FILE, index=False)
+
+sqlresult_3 = pd.read_sql_query(sqlEdw3, connection)
+sqlresult_3.to_csv(RES_CNXL_SQL_3_CSV_FILE, index=False)
+
+sqlresult_4 = pd.read_sql_query(sqlEdw4, connection)
+sqlresult_4.to_csv(SCH_DEP_SQL_4_CSV_FILE, index=False)
+
+sqlresult_5 = pd.read_sql_query(sqlEdw5, connection)
+sqlresult_5.to_csv(DIVERTS_SQL_5_CSV_FILE, index=False)
+
+sqlresult_6 = pd.read_sql_query(sqlEdw6, connection)
+sqlresult_6.to_csv(RECOVERED_DIVERTS_SQL_6_CSV_FILE, index=False)
+
+sqlresult_7 = pd.read_sql_query(sqlEdw7, connection)
+sqlresult_7.to_csv(UA_HUB_SQL_7_CSV_FILE, index=False)
+
+sqlresult_10 = pd.read_sql_query(sqlEdw8, connection)
+sqlresult_10.to_csv(FLIGHTS_NOT_DEPARTED_SQL_8_CSV_FILE, index=False)
+
+sqlresult_11 = pd.read_sql_query(sqlEdw9, connection)
+sqlresult_11.to_csv(Cancelled_flights_SQL_9_CSV_FILE, index=False)
+
+sqlresult_12 = pd.read_sql_query(sqlEdw10, connection)
+sqlresult_12.to_csv(Yet_to_Depart_flights_SQL_10_CSV_FILE, index=False)
+
+sqlresult_13 = pd.read_sql_query(sqlEdw11, connection)
+sqlresult_13.to_csv(Residual_cancels_SQL_11_CSV_FILE, index=False)
+
+sqlresult_14 = pd.read_sql_query(sqlEdw12, connection)
+sqlresult_14.to_csv(REPOSITIONED_FLIGHTS_SQL_12_CSV_FILE, index=False)
+
+sqlresult_15 = pd.read_sql_query(sqlEdw13, connection)
+sqlresult_15.to_csv(REPOSITIONED_FLIGHTS_COUNT_SQL_13_CSV_FILE, index=False)
+
+sqlresult_16 = pd.read_sql_query(sqlEdw14, connection)
+sqlresult_16.to_csv(DIVERTED_FLIGHTS_SQL_14_CSV_FILE, index=False)
+
+sqlresult_17 = pd.read_sql_query(sqlEdw15, connection)
+sqlresult_17.to_csv(UA_Line_CSV_FILE, index=False)
+
+sqlresult_18 = pd.read_sql_query(sqlEdw16, connection)
+sqlresult_18.to_csv(UA_Seat_Cancels_CSV_FILE, index=False)
+
+sqlresult_19 = pd.read_sql_query(sqlEdw17, connection)
+sqlresult_19.to_csv(Carrier_delays_CSV_FILE, index=False)
+
+sqlresult_20 = pd.read_sql_query(sqlEdw18, connection)
+sqlresult_20.to_csv(DELAYS_INFO_CSV_FILE, index=False)
+logging.info('Running MF SQL queries');
+
+masflight_connection_string = "mysql+pymysql://ua_sumit_sharma1:uukexRCsHyAb9kw6rcMX@54.163.228.37:3306/masflightdb_customers_prd?charset=utf8mb4"
+logging.info('Connecting to Masflight')
+
+m1 = open(MF_SQL_1, 'r')
+sqlMf1 = m1.read()
+m1.close()
+
+m2 = open(MF_SQL_2, 'r')
+sqlMf2 = m2.read()
+m2.close()
+
+m3 = open(MF_SQL_3, 'r')
+sqlMf3 = m3.read()
+m3.close()
+
+m4 = open(MF_SQL_4, 'r')
+sqlMf4 = m4.read()
+m4.close()
+
+sqlresult_8 = pd.read_sql_query(sqlMf1,masflight_connection_string)
+sqlresult_8.to_csv(OA_SQL_1_CSV_FILE, index=False)
+
+sqlresult_9 = pd.read_sql_query(sqlMf2,masflight_connection_string)
+sqlresult_9.to_csv(OA_SQL_2_CSV_FILE, index=False)
+
+sqlresult_21 = pd.read_sql_query(sqlMf3,masflight_connection_string)
+sqlresult_21.to_csv(OA_Line_CSV_FILE, index=False)
+
+sqlresult_22 = pd.read_sql_query(sqlMf4,masflight_connection_string)
+sqlresult_22.to_csv(OA_SeatCnxl_CSV_FILE, index=False)
+
+logging.info('SQL queries run');
+print('SQL run')
+
+logging.info('Opening excel file');
+
+xlApp = win32com.client.DispatchEx('Excel.Application')
+xlApp.Visible = 1
+
+wb = xlApp.Workbooks.Open(filename)
+
+logging.info('Clearing raw data Sheets');
+
+wb.Application.Run("ClearSheet", "UA_SQL_1")
+wb.Application.Run("ClearSheet", "OA_SQL_1")
+wb.Application.Run("ClearSheet", "CNXL_SQL_2")
+wb.Application.Run("ClearSheet", "RES_CNXL_SQL_3")
+wb.Application.Run("ClearSheet", "SCH_DEP_SQL_4")
+wb.Application.Run("ClearSheet", "TOTAL_DIVERTS_SQL_5")
+wb.Application.Run("ClearSheet", "DIVERTS_RECOVERED_SQL_6")
+wb.Application.Run("ClearSheet", "UA_HUB_SQL_7")
+wb.Application.Run("ClearSheet", "FLIGHTS_NOT_DEPARTED_SQL_8")
+wb.Application.Run("ClearSheet", "REPOSITIONED_FLIGHTS_SQL_13")
+wb.Application.Run("ClearSheet", "UA_Line")
+wb.Application.Run("ClearSheet", "UA_Seat_Cancels")
+wb.Application.Run("ClearSheet", "Delays_Info")
+wb.Application.Run("ClearSheet", "Carrier_delays")
+
+logging.info('Importing data from csv')
+
+wb.Application.Run("ImportData", UA_SQL_1_CSV_FILE, "UA_SQL_1")
+wb.Application.Run("ImportData", OA_SQL_1_CSV_FILE, "OA_SQL_1")
+wb.Application.Run("ImportData", OA_SQL_2_CSV_FILE, "OA_SQL_2")
+wb.Application.Run("ImportData", CNXL_SQL_2_CSV_FILE, "CNXL_SQL_2")
+wb.Application.Run("ImportData", RES_CNXL_SQL_3_CSV_FILE, "RES_CNXL_SQL_3")
+wb.Application.Run("ImportData", SCH_DEP_SQL_4_CSV_FILE, "SCH_DEP_SQL_4")
+wb.Application.Run("ImportData", DIVERTS_SQL_5_CSV_FILE, "TOTAL_DIVERTS_SQL_5")
+wb.Application.Run("ImportData", RECOVERED_DIVERTS_SQL_6_CSV_FILE, "DIVERTS_RECOVERED_SQL_6")
+wb.Application.Run("ImportData", UA_HUB_SQL_7_CSV_FILE, "UA_HUB_SQL_7")
+wb.Application.Run("ImportData", FLIGHTS_NOT_DEPARTED_SQL_8_CSV_FILE, "FLIGHTS_NOT_DEPARTED_SQL_8")
+wb.Application.Run("ImportData", UA_Line_CSV_FILE, "UA_Line")
+wb.Application.Run("ImportData", UA_Seat_Cancels_CSV_FILE, "UA_Seat_Cancels")
+wb.Application.Run("ImportData", DELAYS_INFO_CSV_FILE, "Delays_Info")
+wb.Application.Run("ImportData", Carrier_delays_CSV_FILE, "Carrier_delays")
+wb.Application.Run("ImportData", REPOSITIONED_FLIGHTS_COUNT_SQL_13_CSV_FILE, "REPOSITIONED_FLIGHTS_SQL_13")
+
+
+logging.info('Creating image')
+#wb.Application.Run("createPng", PNG_FILE_SYS, XLS_SHT_SYS)
+wb.Application.Run("createPng2", PNG_FILE_SYS1, XLS_SHT_SYS1)
+wb.Application.Run("createPng2", PNG_FILE_SYS2, XLS_SHT_SYS2)
+    
+xlApp.DisplayAlerts = False
+wb.SaveAs(XLS_MAIN_FILE_PATH)    
+#xlApp.DisplayAlerts = True
+#xlApp.Visible = 0
+wb.Close(True)
+
+os.system('taskkill /T /IM EXCEL.exe')
+
+logging.info('Opening excel file for flight level details');
+
+xlApp = win32com.client.DispatchEx('Excel.Application')
+xlApp.Visible = 1
+xlApp.DisplayAlerts = False
+wb = xlApp.Workbooks.Open(filename_attach)
+
+logging.info('Clearing raw data Sheets');
+
+wb.Application.Run("ClearSheetData", "All_cancels")
+wb.Application.Run("ClearSheetData", "Diverted_Flights")
+wb.Application.Run("ClearSheetData", "Yet_to_Depart")
+wb.Application.Run("ClearSheetData", "Residual_cancels")
+wb.Application.Run("ClearSheetData", "Repositioned_Flights")
+
+logging.info('Importing data from csv')
+
+wb.Application.Run("ImportData", Cancelled_flights_SQL_9_CSV_FILE, "All_cancels")
+wb.Application.Run("ImportData", DIVERTED_FLIGHTS_SQL_14_CSV_FILE, "Diverted_Flights")
+wb.Application.Run("ImportData", Yet_to_Depart_flights_SQL_10_CSV_FILE, "Yet_to_Depart")
+wb.Application.Run("ImportData", Residual_cancels_SQL_11_CSV_FILE, "Residual_cancels")
+wb.Application.Run("ImportData", REPOSITIONED_FLIGHTS_SQL_12_CSV_FILE, "Repositioned_Flights")
+
+#removing excel formulae
+wb.Application.Run("All_Cells_In_All_WorkSheets_2")
+
+
+wb.SaveAs(XLS_FILE_PATH)
+xlApp.DisplayAlerts = True
+xlApp.Visible = 0
+wb.Close(True)
+
+os.system('taskkill /T /IM EXCEL.exe')
+
+
+logging.info('Create image for email')
+print('Create image for email')
+pngSys1 = open(PNG_FILE_SYS1, 'rb')
+pngImageSys1 = MIMEImage(pngSys1.read())
+pngSys1.close()
+pngImageSys1.add_header('Content-ID', '<image'+CID1+'>')
+
+pngSys2 = open(PNG_FILE_SYS2, 'rb')
+pngImageSys2 = MIMEImage(pngSys2.read())
+pngSys2.close()
+pngImageSys2.add_header('Content-ID', '<image'+CID2+'>')
+
+print('Image for email created')
+
+    
+
+
+from PIL import Image
+
+# convert images to PDF - to be used in the email
+Img1= Image.open(PNG_FILE_SYS1)
+Img1 = Img1.convert('RGB')
+
+Img2= Image.open(PNG_FILE_SYS2)
+Img2 = Img2.convert('RGB')
+
+
+
+imagelist = [Img2]
+
+Img1.save(PDF_FILE_PATH, save_all=True, append_images=imagelist)
+
+print('pdf created')
+        
+
+#logging.info('HTMLs created')
+#logging.info('Excel saved and closed')
+
+logging.info('Sending email');
+server = smtp.SMTP('mailout.ual.com:25')
+emailFrom = 'sumit.sharma1@united.com'
+emailFromHdr = formataddr((str(Header(r'Sharma, Sumit')), emailFrom))
+
+# Distribution list
+dfEmail = pd.read_csv(EMAIL_ADDR_FILE, index_col=False)
+listEmailTo = dfEmail['TO'].tolist()
+listEmailTo = [x for x in listEmailTo if str(x) != 'nan']
+
+listEmailCc = dfEmail['CC'].tolist()
+listEmailCc = [x for x in listEmailCc if str(x) != 'nan']
+
+listEmailBcc = dfEmail['BCC'].tolist()
+listEmailBcc = [x for x in listEmailBcc if str(x) != 'nan']
+
+# Create message container - the correct MIME type is multipart/alternative.
+msg = MIMEMultipart()
+msg['From'] = emailFromHdr
+
+if mode == 'PROD':
+    msg['Subject'] = "Weekly 745 Express Report - " + YEST
+else:
+    msg['Subject'] = "[UDH Test]: Weekly 745 Express Report - " + YEST
+    listEmailTo=['harsh.gautam@united.com']
+    listEmailBcc=['opsanalysis-ikc@united.com']
+    listEmailCc=['harsh.gautam@united.com']
+    
+msg['To'] = ','.join(listEmailTo)
+msg['Cc'] = ','.join(listEmailCc)
+msg['Bcc'] = ','.join(listEmailBcc)
+
+
+
+html_header = """<html>
+    	<head></head>
+        <STYLE type="text/css">
+          BODY {text-align: left}
+        </STYLE> 
+	    <body>
+		<p>Hi all,
+		<br>
+		<br>Please see below UAX Weekly Snapshot for the week of <strong>"""+ LWDATE + """ - """ + YESTERDAY+"""</strong>.
+        <br>
+		</p>
+	    </body>
+        </html>"""
+		
+       
+#HTML_HDR_FILE_PATH = HTML_FLDR + r'EmailHeader.htm'
+#HTML_BDY_FILE_PATH = HTML_FLDR + r'EmailBody.htm'
+#HTML_BDY_PAGE_1_FILE_PATH = HTML_FLDR + r'PAGE_1.htm'
+
+
+html_footer = """<html>
+<p>
+<font face="calibri" size="2">Regards</font>
+<br>
+<font face="calibri" size="2"><span style="color: #1F497D;"><strong>Ops Planning & Analysis</strong></span></font>
+</font>
+</p>
+</html>"""
+#html_body1 = open(HTML_BDY_FILE_PATH, 'r').read()
+html_body1 = """<br><center><img src="cid:image"""+ CID1 +"""" ></center><br><br>"""
+html_body2 = """<br><center><img src="cid:image"""+ CID2 +"""" ></center><br><br>"""
+PDF_part = MIMEBase('application', "octet-stream")
+PDF_part.set_payload(open(PDF_FILE_PATH, "rb").read())
+encoders.encode_base64(PDF_part)
+PDF_part.add_header('Content-Disposition', 'attachment; filename={0}'.format(os.path.basename(PDF_FILE_PATH)))
+#PDF_part = MIMEBase('application', "octet-stream")
+#PDF_part.set_payload(open(PDF_FILE_PATH, "rb").read())
+#encoders.encode_base64(PDF_part)
+#PDF_part.add_header('Content-Disposition', 'attachment; filename={0}'.format(os.path.basename(PDF_FILE_PATH)))
+
+
+
+
+email_body = MIMEText(html_header + html_body1 + html_body2 + html_footer, 'html')
+
+xlsx = open(XLS_FILE_PATH, 'rb').read()
+
+#email_body = MIMEText(html_header + html_footer, 'html')
+
+msgXlsx = MIMEApplication(xlsx, 'xlsm')  # pdf for exemple
+msgXlsx.add_header('Content-ID', '<xlsx1>')  # if no cid, mail.app (only one?) don't show the attachment
+msgXlsx.add_header('Content-Disposition', 'attachment', filename=XLS_FILE_NAME)
+msgXlsx.add_header('Content-Disposition', 'inline', filename=XLS_FILE_NAME)
+
+
+
+
+msg.attach(email_body)
+msg.attach(pngImageSys1)
+msg.attach(pngImageSys2)
+msg.attach(PDF_part)
+msg.attach(msgXlsx)
+
+server.sendmail(emailFrom, listEmailTo + listEmailCc + listEmailBcc, msg.as_string())
+        
+logging.info('Email sent and process is completed');
+        
+
+print('Email sent')
+server.quit()
+
+# cursor.execute("""INSERT INTO opfl_dept_db.email_reports_monitoring (REPORT_TIME, REPORT_NAME,EMAIL_SUCCESS,ROWS_COUNT,ERROR_MSG) VALUES (CURRENT_TIMESTAMP,'745_Exp_Weekly','Y',0,'None')""")
+# connection.close()
