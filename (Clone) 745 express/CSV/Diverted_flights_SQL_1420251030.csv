@@ -1,0 +1,2 @@
+express partner,flight num,original segment,dep stn,divert stn,act arrv stn,divert description,a/c type,nose,sch arrv time (local),divert time (divert sta local),act arrv time (local),arrv diff mins,status,divert recovered
+YV-Mesa,6275,IAH- OAX,IAH ,VER ,OAX ,DC - AIRPORT CONDITIONS,ERJ-175,1357,2025-10-29 11:29:00,12:22,13:37,128  ,AT GATE IN OAX,Yes

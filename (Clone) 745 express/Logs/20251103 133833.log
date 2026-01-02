@@ -1,0 +1,15 @@
+2025-11-03 13:38:33,242 Connecting to Teradata
+2025-11-03 13:38:36,110 Checking SuperSnapshot data - yesterdays
+2025-11-03 13:38:37,427 Number of rows in SuperSnapsot: 0
+2025-11-03 13:38:38,162 Number of rows in SuperSnapsot: 4614
+2025-11-03 13:38:38,164 Running EDW SQL queries
+2025-11-03 13:41:45,909 Running MF SQL queries
+2025-11-03 13:41:45,909 Connecting to Masflight
+2025-11-03 13:49:53,037 Connecting to Teradata
+2025-11-03 13:49:55,881 Checking SuperSnapshot data - yesterdays
+2025-11-03 13:49:56,803 Number of rows in SuperSnapsot: 0
+2025-11-03 13:49:57,980 Number of rows in SuperSnapsot: 4614
+2025-11-03 13:49:57,980 Running EDW SQL queries
+2025-11-03 13:52:54,347 Running MF SQL queries
+2025-11-03 13:52:54,347 Connecting to Masflight
+2025-11-03 13:57:13,247 Connecting to Teradata

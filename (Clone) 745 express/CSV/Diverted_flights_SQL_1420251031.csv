@@ -1,0 +1,7 @@
+express partner,flight num,original segment,dep stn,divert stn,act arrv stn,divert description,a/c type,nose,sch arrv time (local),divert time (divert sta local),act arrv time (local),arrv diff mins,status,divert recovered
+OO-Skywest,5645,ORD- SCE,ORD ,IAD ,SCE ,DW - WEATHER/ATC,CRJ-550,0533,2025-10-30 10:10:00,11:36,15:37,327  ,AT GATE IN SCE,Yes
+G7-GoJet,4552,IAD- PWM,IAD ,BGR ,PWM ,DW - WEATHER/ATC,CRJ-550,0541,2025-10-30 18:59:00,21:47, ,     ,AT GATE IN BGR,Yes
+G7-GoJet,4434,EWR- DCA,EWR ,BWI ,DCA ,DW - WEATHER/ATC,CRJ-550,0540,2025-10-30 08:29:00,08:43,10:41,132  ,AT GATE IN DCA,Yes
+YX-Republic,3442,CLT- EWR,CLT ,IAD ,EWR ,DW - WEATHER/ATC,ERJ-175,0741,2025-10-30 16:11:00,20:58, ,     ,AT GATE IN IAD,Yes
+YX-Republic,3483,ORD- ROC,ORD ,BUF ,ROC ,DW - WEATHER/ATC,ERJ-175,0733,2025-10-30 13:36:00,12:36,17:08,212  ,AT GATE IN ROC,Yes
+C5-Commutair,4897,IAD- ROA,IAD ,CHO ,ROA ,DW - WEATHER/ATC,ERJ-145,0147,2025-10-30 23:30:00,00:10, ,     ,AT GATE IN CHO,Yes

@@ -1,0 +1,2 @@
+carrier,report_year,report_month,ml_ex_ind,scheduled_flights,cnxl_flt,dep0_cnt,new_dep0_cnt,arr0_cnt,arr14_cnt,star_sch_flt_count,star_d00_count,controllable_cancels
+UA,2019,10,Express,86044,1161,61545,62075,55237,66847,14163,12185,61

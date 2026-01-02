@@ -1,0 +1,8 @@
+CITY,CARRIER,ML_EX_IND,Yest_Scheduled_Flights,Yest_D00_Flights,Yest_Completed_Flights
+OTHER,AA,Mainline,1533.0,895.0,1428.0
+Line Int,AA,Mainline,66.0,42.0,63.0
+OTHER,AS,Mainline,1292.0,828.0,1272.0
+Line Dom,DL,Mainline,846.0,542.0,716.0
+Line Dom,AA,Mainline,1479.0,909.0,1390.0
+OTHER,DL,Mainline,835.0,498.0,665.0
+Line Int,DL,Mainline,35.0,24.0,28.0

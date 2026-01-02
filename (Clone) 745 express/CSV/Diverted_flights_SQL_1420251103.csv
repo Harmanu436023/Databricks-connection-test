@@ -1,0 +1,3 @@
+express partner,flight num,original segment,dep stn,divert stn,act arrv stn,divert description,a/c type,nose,sch arrv time (local),divert time (divert sta local),act arrv time (local),arrv diff mins,status,divert recovered
+G7-GoJet,4468,ORD- LEX,ORD ,IND ,LEX ,DW - WEATHER/ATC,CRJ-550,0577,2025-11-02 23:44:00,23:35, ,     ,AT GATE IN IND,Yes
+C5-Commutair,4810,IAH- TYS,IAH ,GSP ,TYS ,DW - WEATHER/ATC,ERJ-145,0144,2025-11-02 23:44:00,23:32, ,     ,AT GATE IN GSP,Yes
